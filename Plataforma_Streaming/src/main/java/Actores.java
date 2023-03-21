@@ -1,80 +1,99 @@
-public class Actores {
-    String nombre;
-    String apellido;
-    String sexo;
-    int edad;
-    String nacionalidad;
-    double altura;
-    double peso;
+//This is the class Actores
 
-    public Actores(String nombre, String apellido, String sexo, int edad, String nacionalidad, double altura, double peso) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.sexo = sexo;
-        this.edad = edad;
-        this.nacionalidad = nacionalidad;
-        this.altura = altura;
-        this.peso = peso;
+/**
+ *
+ * @author Miguel
+ */
+
+public class Actores implements Comparable {
+    private String name;
+    private String lastname;
+    private String sex;
+    private int age;
+    private String nationality;
+    private double height;
+    private double weight;
+    
+    //This is the default constructor of the class
+    public Actores() {
+    }
+    
+    //This is the constructor of the class
+    public Actores(String name, String lastname, String sex, int age, String nationality, double height, double weight) {
+        this.name = name;
+        this.lastname = lastname;
+        this.sex = sex;
+        this.age = age;
+        this.nationality = nationality;
+        this.height = height;
+        this.weight = weight;
+    }
+    //Getter's and Setter's
+    public String getName() {
+        return name;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getApellido() {
-        return apellido;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public String getSex() {
+        return sex;
     }
 
-    public String getSexo() {
-        return sexo;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public int getAge() {
+        return age;
     }
 
-    public int getEdad() {
-        return edad;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public String getNationality() {
+        return nationality;
     }
 
-    public String getNacionalidad() {
-        return nacionalidad;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
+    public double getHeight() {
+        return height;
     }
 
-    public double getAltura() {
-        return altura;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    public double getWeight() {
+        return weight;
     }
 
-    public double getPeso() {
-        return peso;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
+    
+    
+    //This is the metod toString with Override
     @Override
     public String toString() {
-        return "Actores{" + "Nombre= " + nombre + ", apellido= " + apellido + ", sexo= " + sexo + ", edad= " + edad + ", nacionalidad= " + nacionalidad + ", altura= " + altura + ", peso= " + peso + '}';
+        return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", sexo= " + sex + ", edad= " + age + ", nacionalidad= " + nationality + ", altura= " + height + ", peso= " + weight + '}';
+    }
+    //This is the Override of compareTo
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
