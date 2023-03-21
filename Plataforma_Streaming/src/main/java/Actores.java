@@ -91,7 +91,7 @@ public class Actores implements Comparable {
     public String toString() {
         return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", sexo= " + sex + ", edad= " + age + ", nacionalidad= " + nationality + ", altura= " + height + ", peso= " + weight + '}';
     }
-    //This is the Override of compareTo
+    //This is the Override of compareTo.
     @Override
     public int compareTo(Object o) {
         return 0;
