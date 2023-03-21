@@ -1,7 +1,5 @@
-//This is the class Director
-
 /**
- *
+ * This is the class Director
  * @author Alvaro Lopez 
  */
 
@@ -12,21 +10,19 @@ public class Director  implements Comparable <Director>{
     private int age;
     private String nationality;
 
-    
-    
-    /**
-     * Constructor por defecto
+     /**
+     * default constructor
      * */
     public Director() {
     }
     
     /**
-     * Constructor parametrizado
-     * @param name Nombre del director
-     * @param lastname Apellidos del director
-     * @param sex Sexo del director
-     * @param age Edad del director
-     * @param nationality Nacionalidad del director
+     * parameterized constructor
+     * @param name Director name
+     * @param lastname Last name of the director
+     * @param sex Director's sex
+     * @param age Director's age
+     * @param nationality Nationality of the director
      * */
     public Director(String name, String lastname, String sex, int age, String nationality) {
         this.name = name;
@@ -36,8 +32,7 @@ public class Director  implements Comparable <Director>{
         this.nationality = nationality;
        
     }
-    //Getter's and Setter's
-    
+        
     /**
      * Returns the value of the variable name
      * @return value attribute name
@@ -128,12 +123,22 @@ public class Director  implements Comparable <Director>{
         this.nationality = nationality;
     }
 
-    //This is the metod toString with Override
+    /**
+     * Returns a string representation of the object.
+     * @return a string representation of the object
+     * 
+     * */
     @Override
     public String toString() {
         return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", sexo= " + sex + ", edad= " + age + ", nacionalidad= " + nationality + '}';
     }
-    //This is the Override of compareTo.
+    
+    /**
+	 * Compare between two Directors
+	 * @param or Director with which you want to check
+	 * @return if the value is 0 the two Directors are equal; a value less than 0 if this name is less than the name of o; and a value greater than 0 if this name is greater than the name of o.
+	 * */
+	
     @Override
     public int compareTo(Director o) {
         return 0;
