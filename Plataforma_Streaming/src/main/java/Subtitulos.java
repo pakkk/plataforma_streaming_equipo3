@@ -1,10 +1,11 @@
+
+enum Idioma {INGLES,FRANCES,ESPAÑOL,CHINO,NODISPONE}
 /**
  * Clase que representa la categoria a la que pertenece un objeto audiovisual
  * @author Silvia Mesa
  * */
-enum Idioma {INGLES,FRANCES,ESPAÑOL,CHINO,NODISPONE}
 
-public class Subtitulos implements Comparable {
+public class Subtitulos implements Comparable<Subtitulos> {
 	
 	/**
 	 *subtitle language, represented as a set of translations
@@ -20,8 +21,12 @@ public class Subtitulos implements Comparable {
 	public Subtitulos(Idioma idioma) {
 		this.idiomaSubtitulo=idioma;
 	}
+	/**
+	 * Default constructor
+	 * Subtitle language
+	 * */
 	public Subtitulos() {
-		this.idiomaSubtitulo=idiomaSubtitulo.NODISPONE;
+		this.idiomaSubtitulo=Idioma.NODISPONE;
 	}
 		
 	/**
@@ -58,9 +63,9 @@ public class Subtitulos implements Comparable {
 	* and a value greater than 0 if this name is greater than the name of o.
 	* */
 	@Override
-	public int compareTo(Object o) {
-		Idioma dos=(Idioma)o;
-		return this.idiomaSubtitulo.compareTo(dos);
+	public int compareTo(Subtitulos o) {
+		
+		return this.idiomaSubtitulo.compareTo(o.idiomaSubtitulo);
 	}
 
 }
