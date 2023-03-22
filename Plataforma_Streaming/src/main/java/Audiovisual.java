@@ -1,3 +1,8 @@
+/**
+ * This is the class Director
+ * @author Alvaro Lopez 
+ */
+
 public class Audiovisual implements Comparable<Audiovisual> {
 
     String titulo;
@@ -53,8 +58,6 @@ public class Audiovisual implements Comparable<Audiovisual> {
         this.anioDeCreacion = anioDeCreacion;
     }
     
-    
-
     public Categoria[] getCategorias() {
         return categorias;
     }
