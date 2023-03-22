@@ -4,46 +4,62 @@
  *
  * @author alvar
  */
-public class Recomendaciones {
-int valoracionesPositivas;
-int valoracionesNegativas;
-int vecesVista;
-
-    public Recomendaciones(int valoracionesPositivas, int valoracionesNegativas, int vecesVista) {
-        this.valoracionesPositivas = valoracionesPositivas;
-        this.valoracionesNegativas = valoracionesNegativas;
-        this.vecesVista = vecesVista;
+public class Recomendaciones implements Comparable<Recomendaciones> {
+private String nombreUsuario;
+private int valoraciones;
+private String comentario;
+	public Recomendaciones() {
+		
+	}
+    public Recomendaciones(int valoraciones, String comentario) {
+    	
+    	if(!(valoraciones>10 || valoraciones<0)) {
+    		this.valoraciones= valoraciones;
+    	
+    	}else {
+    		this.valoraciones= 5;
+    	}
+        
+       
+        this.comentario=comentario;
     }
 
-    public int getValoracionesNegativas() {
-        return valoracionesNegativas;
+    public int getValoraciones(){
+        return valoraciones;
     }
 
-    public int getValoracionesPositivas() {
-        return valoracionesPositivas;
+    
+    public String getComentario() {
+		return comentario;
+	}
+    
+    public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+    public boolean setValoraciones(int valoraciones) {
+    	if(!(valoraciones>10 || valoraciones<0)) {
+    		this.valoraciones= valoraciones;
+    		return true;
+    	}else {
+    		return false;
+    	}
+        
     }
 
-    public int getVecesVista() {
-        return vecesVista;
-    }
+   
 
-    public void setValoracionesPositivas(int valoracionesPositivas) {
-        this.valoracionesPositivas = valoracionesPositivas;
-    }
-
-    public void setValoracionesNegativas(int valoracionesNegativas) {
-        this.valoracionesNegativas = valoracionesNegativas;
-    }
-
-    public void setVecesVista(int vecesVista) {
-        this.vecesVista = vecesVista;
-    }
+   
 
     @Override
     public String toString() {
-        return "Recomendaciones{" + "valoracionesPositivas=" + valoracionesPositivas + ", valoracionesNegativas=" + valoracionesNegativas + ", vecesVista=" + vecesVista + '}';
+        return "Recomendaciones{" + "valoracionesPositivas=" + valoraciones + ", valoracionesNegativas=" + valoraciones + ", vecesVista=" + vecesVista + '}';
     }
-    
+    @Override
+    public int compareTo(Object o) {
+    	Recomendaciones e=(Recomendaciones)o;
+		return this.vecesVista.compareTo(vecesVista);
+	}
     
     
 }
