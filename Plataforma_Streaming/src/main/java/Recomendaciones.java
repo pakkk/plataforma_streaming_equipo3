@@ -101,7 +101,7 @@ public class Recomendaciones implements Comparable <Recomendaciones> {
     /**
 	 * Compare between two Ratings
 	 * @return The value 0 if the two valuations are equal
-	 * a	 value less than 0 if this value is less than the name of o
+	 * a value less than 0 if this value is less than the name of o
 	 * and a value greater than 0 if this value is greater than the name of o.
 	 * 
 	 * */
