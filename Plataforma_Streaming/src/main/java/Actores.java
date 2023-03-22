@@ -1,5 +1,3 @@
-
-
 /**
  * This is class of Actores
  * @author Miguel
@@ -122,12 +120,11 @@ public class Actores implements Comparable<Actores> {
     }
     
     /**
-	 * Compara entre dos Actores
+	 * Ordena los Actores
 	 * @param a Actores con la se quiere comprobar
-	 * @return el valor 0 si los Actores son iguales; un valor menor a 0 si este nombre es menor que el nombre de o; y un valor superior a 0 si este nombre es mayor que el nombre de o.
 	 * */
     @Override
     public int compareTo(Actores a) {
-        return 0;
+        return this.name.compareTo(a.name);
     }
 }

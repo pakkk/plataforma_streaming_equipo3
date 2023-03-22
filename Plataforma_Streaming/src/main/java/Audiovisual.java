@@ -1,3 +1,8 @@
+/**
+ * This is the class Director
+ * @author Alvaro Lopez 
+ */
+
 public class Audiovisual implements Comparable<Audiovisual> {
 
     String titulo;
@@ -10,6 +15,10 @@ public class Audiovisual implements Comparable<Audiovisual> {
     Subtitulos[] subtitulos;
 
     public Audiovisual() {
+    	subtitulos = new Subtitulos[0];
+    	categoria = new Categoria[0]
+    	director = new Director[0];
+    	actores = new Actores[0];
     }
 
     public Audiovisual(String titulo, String idiomaOriginal, Actores[] actoresDeReparto, Director[] directores, Categoria[] categorias, int anioDeCreacion, int visualizaciones, Subtitulos[] subtitulos) {
@@ -30,6 +39,16 @@ public class Audiovisual implements Comparable<Audiovisual> {
     public void setActoresDeReparto(Actores[] actoresDeReparto) {
         this.actoresDeReparto = actoresDeReparto;
     }
+    
+    public void addActoresDeReparto(Actores nuevoActor){
+        this.actoresDeReparto = Arrays.copyOf(this.actoresDeReparto, this.actoresDeReparto.length+1);
+        this.actoresDeReparto[this.actoresDeReparto.length-1] = nuevoActor;
+    }
+
+    public void deleteActoresDeReparto(int pos) {
+        System.arraycopy(actoresDeReparto, pos, actoresDeReparto, pos +1, actoresDeReparto.length-pos+1);
+        this.actoresDeReparto = Arrays.copyOf(this.actoresDeReparto, this.actoresDeReparto.length-1);
+    }
 
     public int getAnioDeCreacion() {
         return anioDeCreacion;
@@ -38,13 +57,24 @@ public class Audiovisual implements Comparable<Audiovisual> {
     public void setAnioDeCreacion(int anioDeCreacion) {
         this.anioDeCreacion = anioDeCreacion;
     }
-
+    
     public Categoria[] getCategorias() {
         return categorias;
     }
 
     public void setCategorias(Categoria[] categorias) {
         this.categorias = categorias;
+    }
+    
+    public void addCategorias(Categoria  nuevaCategorias ){
+    	
+        this.categorias = Arrays.copyOf(this.categorias, this.categoria.length+1);
+        this.categorias[this.categoria.length-1] = nuevaCategorias;
+    }
+
+    public void deleteCategoria(int pos) {
+        System.arraycopy(categorias, pos, categorias, pos +1, categorias.length-pos+1);
+        this.categorias = Arrays.copyOf(this.categorias, this.categorias.length-1);
     }
 
     public Director[] getDirectores() {
@@ -53,6 +83,17 @@ public class Audiovisual implements Comparable<Audiovisual> {
 
     public void setDirectores(Director[] directores) {
         this.directores = directores;
+    }
+    
+    public void addDirectores(Director  nuevoDirectores ){
+    	
+        this.directores = Arrays.copyOf(this.directores, this.directores.length+1);
+        this.directores[this.directores.length-1] = nuevoDirectores;
+    }
+
+    public void deleteCategoria(int pos) {
+        System.arraycopy(directores, pos, directores, pos +1, directores.length-pos+1);
+        this.directores = Arrays.copyOf(this.directores, this.directores.length-1);
     }
 
     public String getIdiomaOriginal() {
@@ -69,6 +110,17 @@ public class Audiovisual implements Comparable<Audiovisual> {
 
     public void setSubtitulos(Subtitulos[] subtitulos) {
         this.subtitulos = subtitulos;
+    }
+    
+    public void addSubtitulos(Subtitulos  nuevoSubtitulos ){
+    	
+        this.subtitulos = Arrays.copyOf(this.subtitulos, this.subtitulos.length+1);
+        this.subtitulos[this.subtitulos.length-1] = nuevoSubtitulos;
+    }
+
+    public void deleteSubtitulos(int pos) {
+        System.arraycopy(subtitulos, pos, subtitulos, pos +1, subtitulos.length-pos+1);
+        this.subtitulos = Arrays.copyOf(this.subtitulos, this.subtitulos.length-1);
     }
 
     public String getTitulo() {
