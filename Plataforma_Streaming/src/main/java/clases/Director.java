@@ -1,3 +1,4 @@
+package clases;
 /**
  * This is the class Director
  * @author Alvaro Lopez 
