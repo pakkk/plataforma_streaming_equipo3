@@ -1,8 +1,9 @@
 package clases;
 /**
- *
- * @author Mikel
+ * This is class of Actores
+ * @author Miguel
  */
+
 public class Serie extends Audiovisual implements Comparable<Audiovisual>{
     int capitulos;
     int temporadas;
