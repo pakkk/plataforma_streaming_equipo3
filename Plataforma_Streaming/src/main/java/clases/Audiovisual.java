@@ -1,3 +1,7 @@
+package clases;
+
+import java.util.Arrays;
+
 /**
  * This is the class Director
  * @author Alvaro Lopez 
@@ -16,12 +20,12 @@ public class Audiovisual implements Comparable<Audiovisual> {
 
     public Audiovisual() {
     	subtitulos = new Subtitulos[0];
-    	categoria = new Categoria[0]
-    	director = new Director[0];
-    	actores = new Actores[0];
+    	Categoria[] categorias = new Categoria[0];
+    	Director[] directores = new Director[0];
+    	Actores [] actores = new Actores[0];
     }
 
-    public Audiovisual(String titulo, String idiomaOriginal, Actores[] actoresDeReparto, Director[] directores, Categoria[] categorias, int anioDeCreacion, int visualizaciones, Subtitulos[] subtitulos) {
+    public Audiovisual(String titulo, String idiomaOriginal, Actores actoresDeReparto[], Director[] directores, Categoria[] categorias, int anioDeCreacion, int visualizaciones, Subtitulos[] subtitulos) {
         this.titulo = titulo;
         this.idiomaOriginal = idiomaOriginal;
         this.actoresDeReparto = actoresDeReparto;
@@ -68,8 +72,8 @@ public class Audiovisual implements Comparable<Audiovisual> {
     
     public void addCategorias(Categoria  nuevaCategorias ){
     	
-        this.categorias = Arrays.copyOf(this.categorias, this.categoria.length+1);
-        this.categorias[this.categoria.length-1] = nuevaCategorias;
+        this.categorias = Arrays.copyOf(this.categorias, this.categorias.length+1);
+        this.categorias[this.categorias.length-1] = nuevaCategorias;
     }
 
     public void deleteCategoria(int pos) {
@@ -91,7 +95,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
         this.directores[this.directores.length-1] = nuevoDirectores;
     }
 
-    public void deleteCategoria(int pos) {
+    public void deleteDirectores(int pos) {
         System.arraycopy(directores, pos, directores, pos +1, directores.length-pos+1);
         this.directores = Arrays.copyOf(this.directores, this.directores.length-1);
     }
