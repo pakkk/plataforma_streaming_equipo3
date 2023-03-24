@@ -7,7 +7,7 @@ package clases;
 public class Actores implements Comparable<Actores> {
     private String name;
     private String lastname;
-    private String sex;
+    private String gender;
     private int age;
     private String nationality;
     
@@ -23,10 +23,10 @@ public class Actores implements Comparable<Actores> {
 	 * @param age Edad del Actor
 	 * @param nationality Nacionalidad del Actor
 	 * */
-    public Actores(String name, String lastname, String sex, int age, String nationality) {
+    public Actores(String name, String lastname, String gender, int age, String nationality) {
         this.name = name;
         this.lastname = lastname;
-        this.sex = sex;
+        this.gender = gender;
         this.age = age;
         this.nationality = nationality;
     }
@@ -67,16 +67,16 @@ public class Actores implements Comparable<Actores> {
 	 * Devuelve el valor del atributo Sex
 	 * @return Sexo del objeto
 	 * */
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
     
     /**
 	 * Asigna el valor del atributo sex
 	 * @param sex Nuevo Sexo que se quiere asignar
 	 * */
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
     /**
@@ -117,7 +117,7 @@ public class Actores implements Comparable<Actores> {
 	 * */
     @Override
     public String toString() {
-        return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", sexo= " + sex + ", edad= " + age + ", nacionalidad= " + nationality + '}';
+        return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", genero= " + gender + ", edad= " + age + ", nacionalidad= " + nationality + '}';
     }
     
     /**

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * This is the class Director
- * @author Alvaro Lopez 
+ * @author Alvaro Lopez Montero 
  */
 
 public class Audiovisual implements Comparable<Audiovisual> {
