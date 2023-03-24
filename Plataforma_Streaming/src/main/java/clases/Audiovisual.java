@@ -9,138 +9,138 @@ import java.util.Arrays;
 
 public class Audiovisual implements Comparable<Audiovisual> {
 
-    String titulo;
-    String idiomaOriginal;
-    Actores[] actoresDeReparto;
-    Director[] directores;
-    Categoria[] categorias;
-    int anioDeCreacion;
-    int visualizaciones;
-    Subtitulos[] subtitulos;
+    String title;
+    String originalLanguage;
+    Actor[] supportingActores;
+    Director[] directors;
+    Categoria[] categories;
+    int yearOfCreation;
+    int views;
+    Subtitulos[] Subtitulos;
 
     public Audiovisual() {
-    	subtitulos = new Subtitulos[0];
-    	Categoria[] categorias = new Categoria[0];
-    	Director[] directores = new Director[0];
-    	Actores [] actores = new Actores[0];
+    	Subtitulos = new Subtitulos[0];
+    	Categoria[] categories = new Categoria[0];
+    	Director[] directors = new Director[0];
+    	Actor [] Actores = new Actor[0];
     }
 
-    public Audiovisual(String titulo, String idiomaOriginal, Actores actoresDeReparto[], Director[] directores, Categoria[] categorias, int anioDeCreacion, int visualizaciones, Subtitulos[] subtitulos) {
-        this.titulo = titulo;
-        this.idiomaOriginal = idiomaOriginal;
-        this.actoresDeReparto = actoresDeReparto;
-        this.directores = directores;
-        this.categorias = categorias;
-        this.anioDeCreacion = anioDeCreacion;
-        this.visualizaciones = visualizaciones;
-        this.subtitulos = subtitulos;
+    public Audiovisual(String title, String originalLanguage, Actor supportingActores[], Director[] directors, Categoria[] categories, int yearOfCreation, int views, Subtitulos[] Subtitulos) {
+        this.title = title;
+        this.originalLanguage = originalLanguage;
+        this.supportingActores = supportingActores;
+        this.directors = directors;
+        this.categories = categories;
+        this.yearOfCreation = yearOfCreation;
+        this.views = views;
+        this.Subtitulos = Subtitulos;
     }
 
-    public Actores[] getActoresDeReparto() {
-        return actoresDeReparto;
+    public Actor[] getsupportingActores() {
+        return supportingActores;
     }
 
-    public void setActoresDeReparto(Actores[] actoresDeReparto) {
-        this.actoresDeReparto = actoresDeReparto;
+    public void setsupportingActores(Actor[] supportingActores) {
+        this.supportingActores = supportingActores;
     }
     
-    public void addActoresDeReparto(Actores nuevoActor){
-        this.actoresDeReparto = Arrays.copyOf(this.actoresDeReparto, this.actoresDeReparto.length+1);
-        this.actoresDeReparto[this.actoresDeReparto.length-1] = nuevoActor;
+    public void addsupportingActores(Actor newActor){
+        this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length+1);
+        this.supportingActores[this.supportingActores.length-1] = newActor;
     }
 
-    public void deleteActoresDeReparto(int pos) {
-        System.arraycopy(actoresDeReparto, pos, actoresDeReparto, pos +1, actoresDeReparto.length-pos+1);
-        this.actoresDeReparto = Arrays.copyOf(this.actoresDeReparto, this.actoresDeReparto.length-1);
+    public void deletesupportingActores(int pos) {
+        System.arraycopy(supportingActores, pos, supportingActores, pos +1, supportingActores.length-pos+1);
+        this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length-1);
     }
 
-    public int getAnioDeCreacion() {
-        return anioDeCreacion;
+    public int getyearOfCreation() {
+        return yearOfCreation;
     }
 
-    public void setAnioDeCreacion(int anioDeCreacion) {
-        this.anioDeCreacion = anioDeCreacion;
+    public void setyearOfCreation(int yearOfCreation) {
+        this.yearOfCreation = yearOfCreation;
     }
     
-    public Categoria[] getCategorias() {
-        return categorias;
+    public Categoria[] getcategories() {
+        return categories;
     }
 
-    public void setCategorias(Categoria[] categorias) {
-        this.categorias = categorias;
+    public void setcategories(Categoria[] categories) {
+        this.categories = categories;
     }
     
-    public void addCategorias(Categoria  nuevaCategorias ){
+    public void addcategories(Categoria  nuevacategories ){
     	
-        this.categorias = Arrays.copyOf(this.categorias, this.categorias.length+1);
-        this.categorias[this.categorias.length-1] = nuevaCategorias;
+        this.categories = Arrays.copyOf(this.categories, this.categories.length+1);
+        this.categories[this.categories.length-1] = nuevacategories;
     }
 
     public void deleteCategoria(int pos) {
-        System.arraycopy(categorias, pos, categorias, pos +1, categorias.length-pos+1);
-        this.categorias = Arrays.copyOf(this.categorias, this.categorias.length-1);
+        System.arraycopy(categories, pos, categories, pos +1, categories.length-pos+1);
+        this.categories = Arrays.copyOf(this.categories, this.categories.length-1);
     }
 
-    public Director[] getDirectores() {
-        return directores;
+    public Director[] getdirectors() {
+        return directors;
     }
 
-    public void setDirectores(Director[] directores) {
-        this.directores = directores;
+    public void setdirectors(Director[] directors) {
+        this.directors = directors;
     }
     
-    public void addDirectores(Director  nuevoDirectores ){
+    public void adddirectors(Director  newdirectors ){
     	
-        this.directores = Arrays.copyOf(this.directores, this.directores.length+1);
-        this.directores[this.directores.length-1] = nuevoDirectores;
+        this.directors = Arrays.copyOf(this.directors, this.directors.length+1);
+        this.directors[this.directors.length-1] = newdirectors;
     }
 
-    public void deleteDirectores(int pos) {
-        System.arraycopy(directores, pos, directores, pos +1, directores.length-pos+1);
-        this.directores = Arrays.copyOf(this.directores, this.directores.length-1);
+    public void deletedirectors(int pos) {
+        System.arraycopy(directors, pos, directors, pos +1, directors.length-pos+1);
+        this.directors = Arrays.copyOf(this.directors, this.directors.length-1);
     }
 
-    public String getIdiomaOriginal() {
-        return idiomaOriginal;
+    public String getoriginalLanguage() {
+        return originalLanguage;
     }
 
-    public void setIdiomaOriginal(String idiomaOriginal) {
-        this.idiomaOriginal = idiomaOriginal;
+    public void setoriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
     public Subtitulos[] getSubtitulos() {
-        return subtitulos;
+        return Subtitulos;
     }
 
-    public void setSubtitulos(Subtitulos[] subtitulos) {
-        this.subtitulos = subtitulos;
+    public void setSubtitulos(Subtitulos[] Subtitulos) {
+        this.Subtitulos = Subtitulos;
     }
     
-    public void addSubtitulos(Subtitulos  nuevoSubtitulos ){
+    public void addSubtitulos(Subtitulos  newSubtitulos ){
     	
-        this.subtitulos = Arrays.copyOf(this.subtitulos, this.subtitulos.length+1);
-        this.subtitulos[this.subtitulos.length-1] = nuevoSubtitulos;
+        this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length+1);
+        this.Subtitulos[this.Subtitulos.length-1] = newSubtitulos;
     }
 
     public void deleteSubtitulos(int pos) {
-        System.arraycopy(subtitulos, pos, subtitulos, pos +1, subtitulos.length-pos+1);
-        this.subtitulos = Arrays.copyOf(this.subtitulos, this.subtitulos.length-1);
+        System.arraycopy(Subtitulos, pos, Subtitulos, pos +1, Subtitulos.length-pos+1);
+        this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length-1);
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String gettitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void settitle(String title) {
+        this.title = title;
     }
 
-    public int getVisualizaciones() {
-        return visualizaciones;
+    public int getviews() {
+        return views;
     }
 
-    public void setVisualizaciones(int visualizaciones) {
-        this.visualizaciones = visualizaciones;
+    public void setviews(int views) {
+        this.views = views;
     }
 
 	@Override
@@ -148,9 +148,5 @@ public class Audiovisual implements Comparable<Audiovisual> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-    
-    
-    
-    
-
+   
 }
