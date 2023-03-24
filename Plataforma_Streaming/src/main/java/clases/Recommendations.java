@@ -95,7 +95,7 @@ public class Recommendations implements Comparable <Recommendations>
 	 * Assigns the value of the username attribute
 	 * @param name New username to assign
 	 * */
-    public void setNombreUsuario(String username)
+    public void setUsernsme(String username)
     {
         this.username = username;
     }
