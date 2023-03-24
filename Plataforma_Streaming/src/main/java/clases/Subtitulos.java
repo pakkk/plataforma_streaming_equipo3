@@ -1,3 +1,4 @@
+package clases;
 /**
  * Clase que representa la categoria a la que pertenece un objeto audiovisual
  * @author Silvia Mesa
