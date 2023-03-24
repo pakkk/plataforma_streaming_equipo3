@@ -1,3 +1,4 @@
+package clases;
 /**
  * This is class of Actores
  * @author Miguel
