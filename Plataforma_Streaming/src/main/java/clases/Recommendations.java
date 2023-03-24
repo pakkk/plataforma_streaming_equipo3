@@ -4,23 +4,25 @@ package clases;
  *
  * @author alvar
  */
-public class Recomendaciones implements Comparable <Recomendaciones> {
+public class Recommendations implements Comparable <Recommendations> 
+{
 	/**
 	 *Username
 	 * */
-	private String nombreUsuario;
+	private String username;
 	/**
 	 *Ratings
 	 * */
-	private int valoraciones;
+	private int ratings;
 	/**
 	 *Comment
 	 * */
-	private String comentario;
+	private String comment;
 	/**
 	 * Parameterized constructor
 	 * */
-	public Recomendaciones() {
+	public Recommendations() 
+	{
 		
 	}
 	/**
@@ -29,47 +31,52 @@ public class Recomendaciones implements Comparable <Recomendaciones> {
 	 * @param Ratings 
 	 * @param Comment 
 	 * */
-    public Recomendaciones(String username,int valoraciones, String comentario) {
+    public Recommendations(String username,int ratings, String comment) 
+    {
     	
-    	if(!(valoraciones>10 || valoraciones<0)) {
-    		this.valoraciones= valoraciones;
+    	if(!(ratings>10 || ratings<0)) {
+    		this.ratings= ratings;
     	
     	}else {
-    		this.valoraciones= 5;
+    		this.ratings= 5;
     	}
         
-    	nombreUsuario=username;
-        this.comentario=comentario;
+    	this.username=username;
+        this.comment=comment;
     }
     /**
 	 *Returns the value of the ratings attribute
 	 * @return Ratings of the object
 	 * */
-    public int getValoraciones(){
-        return valoraciones;
+    public int getRatings()
+    {
+        return this.ratings;
     }
 
     /**
 	 *Returns the value of the comment attribute
 	 * @return Comment of the object
 	 * */
-    public String getComentario() {
-		return comentario;
+    public String getComment() 
+    {
+		return this.comment;
 	}
     /**
 	 * Assigns the value of the comment attribute
 	 * @param comment New comment to assign
 	 * */
-    public void setComentario(String comentario) {
-		this.comentario = comentario;
+    public void setComment(String comment) 
+    {
+		this.comment = comment;
 	}
     /**
 	 * Assigns the value of the ratings attribute
 	 * @param ratings New ratings to assign
 	 * */
-    public boolean setValoraciones(int valoraciones) {
-    	if(!(valoraciones>10 || valoraciones<0)) {
-    		this.valoraciones= valoraciones;
+    public boolean setRatings(int ratings) 
+    {
+    	if(!(ratings>10 || ratings<0)) {
+    		this.ratings= ratings;
     		return true;
     	}else {
     		return false;
@@ -80,23 +87,26 @@ public class Recomendaciones implements Comparable <Recomendaciones> {
 	 *Returns the value of the username attribute
 	 * @return Username of the object
 	 * */
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsername() 
+    {
+        return this.username;
     }
     /**
 	 * Assigns the value of the username attribute
 	 * @param name New username to assign
 	 * */
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombreUsuario(String username)
+    {
+        this.username = username;
     }
     /**
 	 * Returns a string as a representation of the object
 	 * @return String representing the object
 	 * */
     @Override
-    public String toString() {
-        return "Recomendaciones{" + "nombreUsuario=" + nombreUsuario + ", valoraciones=" + valoraciones + ", comentario=" + comentario + '}';
+    public String toString()
+    {
+        return "Recommendations{" + "Username=" + this.username + ", ratings=" + this.ratings + ", comment=" + this.comment + '}';
     }
     /**
 	 * Compare between two Ratings
@@ -106,9 +116,10 @@ public class Recomendaciones implements Comparable <Recomendaciones> {
 	 * 
 	 * */
     @Override
-    public int compareTo(Recomendaciones o) {
-    	Recomendaciones e=(Recomendaciones)o;
-		return valoraciones-o.valoraciones;
+    public int compareTo(Recommendations o) 
+    {
+    	Recommendations e=(Recommendations)o;
+		return this.ratings-e.ratings;
 	}
     
     

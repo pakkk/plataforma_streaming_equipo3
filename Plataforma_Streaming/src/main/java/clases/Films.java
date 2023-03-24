@@ -1,38 +1,43 @@
 package clases;
 
-public class Peliculas extends Audiovisual {
+public class Films extends Audiovisual 
+{
 	/**
 	 *Duration the movie
 	 * */
-	private int duracionMinutos;
+	private int durationMinutes;
 	/**
 	 * Parameterized constructor
 	 * @param Duration Minutes
 	 * */
-	public Peliculas(int duracionMinutos){
-		this.duracionMinutos=duracionMinutos;
+	public Films(int durationMinutes)
+	{
+		this.durationMinutes=durationMinutes;
 	}
 	/**
 	 *Returns the value of the durationMinutes attribute
 	 * @return Ratings of the object
 	 * */
-	public int getDuracionMinutos() {
-		return duracionMinutos;
+	public int getDurationMinutes()
+	{
+		return this.durationMinutes;
 	}
 	 /**
 	 * Assigns the value of the durationMinutes attribute
 	 * @param ratings New ratings to assign
 	 * */
-	public void setDuracionMinutos(int duracionMinutos) {
-		this.duracionMinutos=duracionMinutos;
+	public void setDurationMinutes(int durationMinutes)
+	{
+		this.durationMinutes=durationMinutes;
 	}
 	/**
 	 * Returns a string as a representation of the object
 	 * @return String representing the object
 	 * */
 	@Override
-	public String toString() {
-		return "La pelicula "+titulo+"dura "+duracionMinutos;
+	public String toString() 
+	{
+		return super.toString()+" has a duration of "+this.durationMinutes;
 	}
 	
 	
