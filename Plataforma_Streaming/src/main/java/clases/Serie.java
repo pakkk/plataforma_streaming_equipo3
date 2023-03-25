@@ -1,7 +1,8 @@
 package clases;
 
 /**
- * This is the class for Series
+ * This is the class for Series. It extends the Audiovisual class and implements the Comparable interface.
+ * 
  * @author Miguel
  */
 public class Serie extends Audiovisual implements Comparable<Audiovisual> {
@@ -36,13 +37,22 @@ public class Serie extends Audiovisual implements Comparable<Audiovisual> {
         this.episodes = episodes;
     }
 
-    // override the toString method to return a string representation of the object
+    /**
+     * Returns a string representation of the Serie object.
+     * 
+     * @return a string representation of the object
+     */
     @Override
     public String toString() {
         return super.toString(); // call the toString method of the superclass
     }
 
-    // implement the compareTo method of the Comparable interface to compare two Audiovisual objects
+    /**
+     * Compares two Audiovisual objects. This method is required to implement the Comparable interface.
+     * 
+     * @param o the other Audiovisual object to compare to
+     * @return an integer representing the comparison result
+     */
     @Override
     public int compareTo(Audiovisual o) {
         return super.compareTo(o); // call the compareTo method of the superclass
