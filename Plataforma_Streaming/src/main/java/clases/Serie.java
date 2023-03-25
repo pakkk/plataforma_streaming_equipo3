@@ -8,8 +8,8 @@ package clases;
 public class Serie extends Audiovisual implements Comparable<Audiovisual> {
 
     // instance variables
-    int episodes; // number of episodes in the series
-    int seasons; // number of seasons in the series
+    private int episodes; // number of episodes in the series
+    private int seasons; // number of seasons in the series
 
     // constructor
     public Serie(int episodes, int seasons, String title, String originalLanguage, Actor[] cast, Director[] directors, Category[] categories, int yearOfCreation, int views, Subtitles[] subtitles) {
