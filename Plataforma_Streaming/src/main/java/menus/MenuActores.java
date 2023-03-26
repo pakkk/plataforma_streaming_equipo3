@@ -22,8 +22,8 @@ public class MenuActores {
 			int age = Integer.valueOf(sc.nextLine());
 			System.out.print("Introduzca la nacionalidad: ");
 			String nationality= sc.nextLine();
-			Actores actor = new Actores(name, lastname, gender, age, nationality);
-			a.addActoresDeReparto(actor);
+			Actor actor = new Actor(name, lastname, gender, age, nationality);
+			a.addsupportingActores(actor);
 			return true;
 		}catch(NumberFormatException e) {
 			return false;
@@ -32,7 +32,7 @@ public class MenuActores {
 	
 	static void displayActores(Audiovisual a) {
 		
-		Actores actores[] = a.getActoresDeReparto();
+		Actor actores[] = a.getsupportingActores();
 		
 		System.out.println("--------------------");
 		System.out.println("Lista de actores: ");
@@ -43,7 +43,7 @@ public class MenuActores {
 		
 	}
 	
-	static Actores selectActor(Audiovisual a) {
+	static Actor selectActor(Audiovisual a) {
 		
 		displayActores(a);
 		
@@ -52,17 +52,12 @@ public class MenuActores {
 		int opcion;
 		try (Scanner sc = new Scanner(System.in)){
 			opcion = sc.nextInt();
-			return a.getActoresDeReparto()[opcion];
+			return a.getsupportingActores()[opcion];
 		} catch (InputMismatchException e) {
 			return null;
 		}
 	}
 	
-	static void modifyActor(Actores a) {
-		
-		System.out.println("--------------------");
-		
-		
-	}
+	
 	
 }

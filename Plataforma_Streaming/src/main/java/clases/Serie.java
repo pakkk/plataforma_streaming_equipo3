@@ -6,7 +6,6 @@ package clases;
  * @author Miguel
  */
 public class Serie extends Audiovisual implements Comparable<Audiovisual> {
-	
 
     // instance variables
     private int episodes; // number of episodes in the series

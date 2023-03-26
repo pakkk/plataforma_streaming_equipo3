@@ -111,6 +111,7 @@ public class MenuDirector
 			atributo = scanner.nextInt();
 			switch (atributo)
 			{
+			
 			case 1:
 			{
 				System.out.println("dime el nuevo nombre");
