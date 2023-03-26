@@ -14,7 +14,7 @@ public class Serie extends Audiovisual implements Comparable<Audiovisual> {
 
 	public Serie(String title, String originalLanguage, Actor[] supportingActores, Director[] directors,
 			Categoria[] categories, int yearOfCreation, int views, clases.Subtitulos[] subtitles,int episodes ,int seasons) {
-		super(title, originalLanguage, supportingActores, directors, categories, yearOfCreation, views, subtitles);
+		super(title, originalLanguage, yearOfCreation, views);
 		
 		 this.episodes = episodes;
 	     this.seasons = seasons;
