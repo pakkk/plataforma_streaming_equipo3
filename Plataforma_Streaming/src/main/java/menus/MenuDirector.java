@@ -118,7 +118,8 @@ public class MenuDirector
 				a.setName(newText);
 				break;
 			}
-			case 2: 
+			case 2:
+				
 			{
 				System.out.println("dime el nuevo nombre");
 				String newText = scanner.nextLine();

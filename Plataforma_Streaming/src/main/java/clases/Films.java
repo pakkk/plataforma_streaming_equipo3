@@ -6,6 +6,7 @@ public class Films extends Audiovisual
 	 *Duration the movie
 	 * */
 	private int durationMinutes;
+	
 	/**
 	 * Parameterized constructor
 	 * @param Duration Minutes

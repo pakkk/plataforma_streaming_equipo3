@@ -6,25 +6,19 @@ package clases;
  * @author Miguel
  */
 public class Serie extends Audiovisual implements Comparable<Audiovisual> {
+	
 
     // instance variables
     private int episodes; // number of episodes in the series
     private int seasons; // number of seasons in the series
     
 
-	public Serie(String title, String originalLanguage, Actor[] supportingActores, Director[] directors,
-			Categoria[] categories, int yearOfCreation, int views, clases.Subtitulos[] subtitles,int episodes ,int seasons) {
+	public Serie(String title, String originalLanguage, int yearOfCreation, int views,int episodes ,int seasons) {
 		super(title, originalLanguage, yearOfCreation, views);
-		
-		 this.episodes = episodes;
-	     this.seasons = seasons;
+		this.episodes = episodes;
+	    this.seasons = seasons;
 		
 	}
-	 public Serie() {
-			this(null, null, null, null, null, 0, 0, null, 0, 0);
-			
-		}
-
     // getter and setter methods for the instance variables
     public int getSeasons() {
         return seasons;

@@ -126,6 +126,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
         this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length-1);
     }
 
+    
     public String gettitle() {
         return title;
     }
@@ -140,6 +141,9 @@ public class Audiovisual implements Comparable<Audiovisual> {
 
     public void setviews(int views) {
         this.views = views;
+    }
+    public void addviews() {
+    	views++;
     }
 
 	@Override
