@@ -20,30 +20,21 @@ public class Audiovisual implements Comparable<Audiovisual> {
 
     
     
-    public Audiovisual(String title, String originalLanguage, Actor supportingActores[], Director[] directors, Categoria[] categories, int yearOfCreation, int views, clases.Subtitulos[] subtitles) {
+    public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
     	
-    	Subtitulos = new Subtitulos[1];
-    	categories = new Categoria[1];
-    	directors = new Director[1];
-    	supportingActores = new Actor[1];
+    	Subtitulos = new Subtitulos[0];
+    	categories = new Categoria[0];
+    	directors = new Director[0];
+    	supportingActores = new Actor[0];
     	
     	
         this.title = title;
         this.originalLanguage = originalLanguage;
-        this.supportingActores = supportingActores;
-        this.directors = directors;
-        this.categories = categories;
         this.yearOfCreation = yearOfCreation;
         this.views = views;
-        this.Subtitulos = subtitles;
+       
     }
-    public Audiovisual() {
-    	
-    	this(null, null, null, null, null, 0, 0, null);
-    	
-    }
-
-
+    
     public Actor[] getsupportingActores() {
         return supportingActores;
     }
@@ -107,7 +98,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
         System.arraycopy(directors, pos, directors, pos +1, directors.length-pos+1);
         this.directors = Arrays.copyOf(this.directors, this.directors.length-1);
     }
-
+ 
     public String getoriginalLanguage() {
         return originalLanguage;
     }
