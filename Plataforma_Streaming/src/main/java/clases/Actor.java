@@ -11,10 +11,6 @@ public class Actor implements Comparable<Actor> {
     private int age;
     private String nationality;
     
-    //This is the default constructor of the class
-    public Actor() {
-    }
-    
     /**
 	 * Parameterized constructor
 	 * @param name Actor's first name
