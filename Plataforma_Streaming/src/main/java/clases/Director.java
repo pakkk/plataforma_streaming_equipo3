@@ -46,6 +46,7 @@ public class Director  implements Comparable <Director>{
     /**
      * Assigns the value of the variable name
      * @param name new name
+     * @return 
      * 
      * */
     public void setName(String name) {
