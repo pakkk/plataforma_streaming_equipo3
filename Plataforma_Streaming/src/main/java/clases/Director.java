@@ -1,3 +1,4 @@
+package clases;
 /**
  * This is the class Director
  * @author Alvaro Lopez 
@@ -6,7 +7,7 @@
 public class Director  implements Comparable <Director>{
     private String name;
     private String lastname;
-    private String sex;
+    private String gender;
     private int age;
     private String nationality;
 
@@ -20,14 +21,14 @@ public class Director  implements Comparable <Director>{
      * parameterized constructor
      * @param name Director name
      * @param lastname Last name of the director
-     * @param sex Director's sex
+     * @param gender Director's gender
      * @param age Director's age
      * @param nationality Nationality of the director
      * */
-    public Director(String name, String lastname, String sex, int age, String nationality) {
+    public Director(String name, String lastname, String gender, int age, String nationality) {
         this.name = name;
         this.lastname = lastname;
-        this.sex = sex;
+        this.gender = gender;
         this.age = age;
         this.nationality = nationality;
        
@@ -70,21 +71,21 @@ public class Director  implements Comparable <Director>{
     }
 
     /**
-     * Returns the value of the sex variable
-     * @return value sex attribute
+     * Returns the value of the gender variable
+     * @return value gender attribute
      * 
      * */
-    public String getSex() {
-        return sex;
+    public String getgender() {
+        return gender;
     }
     
     /**
-	 * Assigns the value of the variable Sex
-     * @param sex new sex
+	 * Assigns the value of the variable gender
+     * @param gender new gender
      * 
      * */
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setgender(String gender) {
+        this.gender = gender;
     }
 
     /**
@@ -130,7 +131,7 @@ public class Director  implements Comparable <Director>{
      * */
     @Override
     public String toString() {
-        return "Actores{" + "Nombre= " + name + ", apellido= " + lastname + ", sexo= " + sex + ", edad= " + age + ", nacionalidad= " + nationality + '}';
+        return "Actores{" + "Nombre= " + name + ", lastname= " + lastname + ", gender= " + gender + ", edad= " + age + ", nationality= " + nationality + '}';
     }
     
     /**
