@@ -1,19 +1,23 @@
 package menus;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import clases.Director;
 import clases.Audiovisual;
-import clases.Serie;
+import clases.Director;
 
-public class MenuDirector
-{
-	
-static boolean addDirector(Audiovisual a) {
-		
-		try (Scanner sc = new Scanner(System.in)){
+public class MenuDirector {
+	/**
+	 * Compara entre dos categorias
+	 * 
+	 * @param a Categoria con la se quiere comprobar
+	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si
+	 *         este nombre es menor que el nombre de o; y un valor superior a 0 si
+	 *         este nombre es mayor que el nombre de o.
+	 */
+	public Audiovisual addDirector(Audiovisual a) {
+
+		try (Scanner sc = new Scanner(System.in)) {
 
 			System.out.println("--------------------");
 			System.out.print("Introduzca el nombre: ");
@@ -25,67 +29,193 @@ static boolean addDirector(Audiovisual a) {
 			System.out.print("Introduzca la edad: ");
 			int age = Integer.valueOf(sc.nextLine());
 			System.out.print("Introduzca la nacionalidad: ");
-			String nationality= sc.nextLine();
+			String nationality = sc.nextLine();
 			Director director = new Director(name, lastname, gender, age, nationality);
-			a.addDirectores(director);
-			return true;
-		}catch(NumberFormatException e) {
-			return false;
-		}
-	}
-	
-	static void displayDirectores(Audiovisual a) {
-		
-		Director Directores[] = a.getDirectores();
-		
-		System.out.println("--------------------");
-		System.out.println("Lista de Directores: ");
-		
-		for(int i = 0; i < Directores.length; i++) {
-			System.out.println(i+1 + ".- " + Directores[i].getName() + " " + Directores[i].getLastname());
-		}
-		
-	}
-	
-	static Director selectDirector(Audiovisual a) {
-		
-		displayDirectores(a);
-		
-		System.out.println("--------------------");
-		System.out.print("Introduzca el Director (su numero) que quiera eliminar: ");
-		int opcion;
-		try (Scanner sc = new Scanner(System.in)){
-			opcion = sc.nextInt();
-			return a.getDirectores()[opcion-1];
-		} catch (InputMismatchException e) {
+			a.adddirectors(director);
+			return a;
+		} catch (NumberFormatException e) {
 			return null;
 		}
 	}
-	
-	static void modifyDirector(Director a) {
-		
+
+	/**
+	 * Compara entre dos categorias
+	 * 
+	 * @param o Categoria con la se quiere comprobar
+	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si
+	 *         este nombre es menor que el nombre de o; y un valor superior a 0 si
+	 *         este nombre es mayor que el nombre de o.
+	 */
+	public void displayDirectores(Audiovisual a) {
+
+		Director Directores[] = a.getdirectors();
+
 		System.out.println("--------------------");
-		System.out.println(" Te muestro las posibles modificaciones"+
-		"1.- lastname"+
-		"2.- name"+
-		"2.- sex"+
-		"3.- age"+
-		"4.- nationality");
-		
-		int menu;
-		
-		try(Scanner scanner = new  Scanner (System.in)) {
-			menu=scanner.nextInt();
-		}catch (InputMismatchException ex) {
-			menu=0;
+		System.out.println("Lista de Directores: ");
+
+		for (int i = 0; i < Directores.length; i++) {
+			System.out.println(i + 1 + ".- " + Directores[i].getName() + " " + Directores[i].getLastname());
 		}
-		
-		switch(menu) {
-		case 1:{
-			
-		}
+
+	}
+
+	/**
+	 * Compara entre dos categorias
+	 * 
+	 * @param o Categoria con la se quiere comprobar
+	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si
+	 *         este nombre es menor que el nombre de o; y un valor superior a 0 si
+	 *         este nombre es mayor que el nombre de o.
+	 */
+	public int selectDirector(Audiovisual a) {
+
+		displayDirectores(a);
+
+		System.out.println("--------------------");
+		System.out.print("Introduzca el Director (su numero) que quiera seleccionar: ");
+		int option;
+		try (Scanner sc = new Scanner(System.in)) {
+			option = sc.nextInt();
+			if ((option > 0) && (option < a.getdirectors().length))
+				return option - 1;
+			else
+				return -1;
+		} catch (InputMismatchException e) {
+			return -1;
 		}
 	}
-	
+
+	/**
+	 * Compara entre dos categorias
+	 * 
+	 * @param o Categoria con la se quiere comprobar
+	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si
+	 *         este nombre es menor que el nombre de o; y un valor superior a 0 si
+	 *         este nombre es mayor que el nombre de o.
+	 */
+	public void modifyDirector(int pos, Audiovisual b) {
+
+		Director a = b.getdirectors()[pos];
+		System.out.println("--------------------");
+		System.out.println(" Te muestro las posibles modificaciones" + "1.- name" + "2.- lastname" + "3.- gender"
+				+ "4.- age" + "5.- nationality");
+
+		int atributo;
+
+		try (Scanner scanner = new Scanner(System.in)) {
+			atributo = scanner.nextInt();
+			switch (atributo) {
+			case 1: {
+				System.out.println("dime el nuevo nombre");
+				String newText = scanner.nextLine();
+				a.setName(newText);
+				break;
+			}
+			case 2: {
+				System.out.println("dime el nuevo nombre");
+				String newText = scanner.nextLine();
+				a.setLastname(newText);
+				break;
+			}
+			case 3: {
+				System.out.println("dime el nuevo nombre");
+				String newText = scanner.nextLine();
+				a.setgender(newText);
+				break;
+			}
+			case 4: {
+				System.out.println("dime el nuevo nombre");
+				int newInt = scanner.nextInt();
+				a.setAge(newInt);
+				break;
+			}
+			case 5: {
+				System.out.println("dime el nuevo nombre");
+				String newText = scanner.nextLine();
+				a.setNationality(newText);
+				break;
+			}
+			}
+		} catch (InputMismatchException ex) {
+
+			System.out.println("error option");
+		}
+	}
+	/**
+	 * Compara entre dos categorias
+	 * 
+	 * @param a Categoria con la se quiere comprobar
+	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si
+	 *         este nombre es menor que el nombre de o; y un valor superior a 0 si
+	 *         este nombre es mayor que el nombre de o.
+	 */
+	public void deleteDirector(Audiovisual a) {
+		int posicion = selectDirector(a);
+		a.deletedirectors(posicion);
+	}
+
+	public void findDirector(Audiovisual a) {
+		System.out.println(" Te muestro las posibles claves de busqueda" + "1.- name" + "2.- lastname" + "3.- gender"
+				+ "4.- age" + "5.- nationality");
+
+		int atributo;
+
+		try (Scanner scanner = new Scanner(System.in)) {
+			atributo = scanner.nextInt();
+			switch (atributo) {
+			case 1: {
+				System.out.println("dime nombre");
+				String newText = scanner.nextLine();
+				for (Director d : a.getdirectors()) {
+					if (d.getName().equals(newText)) {
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 2: {
+				System.out.println("dime apellido");
+				String newText = scanner.nextLine();
+				for (Director d : a.getdirectors()) {
+					if (d.getLastname().equals(newText)) {
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 3: {
+				System.out.println("dime genero");
+				String newText = scanner.nextLine();
+				for (Director d : a.getdirectors()) {
+					if (d.getgender().equals(newText)) {
+						System.out.println(d.toString());
+					}
+				}
+			}
+			case 4: {
+				System.out.println("dime edad");
+				int newText = scanner.nextInt();
+				for (Director d : a.getdirectors()) {
+					if (d.getAge() == (newText)) {
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 5: {
+				System.out.println("dime nacionalidad");
+				String newText = scanner.nextLine();
+				for (Director d : a.getdirectors()) {
+					if (d.getNationality().equals(newText)) {
+						System.out.println(d.toString());
+					}
+				}
+			}
+			}
+		} catch (InputMismatchException ex) {
+
+			System.out.println("error option");
+		}
+	}
 
 }
