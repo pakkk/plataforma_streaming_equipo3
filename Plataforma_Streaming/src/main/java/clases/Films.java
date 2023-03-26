@@ -10,8 +10,9 @@ public class Films extends Audiovisual
 	 * Parameterized constructor
 	 * @param Duration Minutes
 	 * */
-	public Films(int durationMinutes)
+	public Films(String title, String originalLanguage, int yearOfCreation, int views,int durationMinutes)
 	{
+		super(title,originalLanguage,yearOfCreation,views);
 		this.durationMinutes=durationMinutes;
 	}
 	/**
