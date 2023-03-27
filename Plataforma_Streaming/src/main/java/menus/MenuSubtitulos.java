@@ -13,8 +13,8 @@ import java.util.Scanner;
  * @author 1DAM
  */
 public class MenuSubtitulos {
-    private ArrayList<Subtitulos> listaSubtitulos;
-    private Scanner scanner;
+    private final ArrayList<Subtitulos> listaSubtitulos;
+    private final Scanner scanner;
 
     public MenuSubtitulos() {
         listaSubtitulos = new ArrayList<>();
@@ -24,256 +24,214 @@ public class MenuSubtitulos {
     public void mostrarMenu() {
         int opcion = 0;
         do {
-            System.out.println("\n-- MENÚ SUBTÍTULOS --");
-            System.out.println("1. Dar de alta un subtítulo");
-            System.out.println("2. Buscar subtítulos");
-            System.out.println("3. Modificar un subtítulo");
-            System.out.println("4. Borrar un subtítulo");
-            System.out.println("5. Mostrar todos los subtítulos");
-            System.out.println("6. Salir");
+            System.out.println("\n-- SUBTITLES MENU --");
+            System.out.println("1. Add a subtitle");
+            System.out.println("2. Search subtitles");
+            System.out.println("3. Modify a subtitle");
+            System.out.println("4. Delete a subtitle");
+            System.out.println("5. Show all subtitles");
+            System.out.println("6. Exit");
 
             opcion = scanner.nextInt();
 
             switch (opcion) {
-                case 1:
-                    darDeAlta();
-                    break;
-                case 2:
-                    buscar();
-                    break;
-                case 3:
-                    modificar();
-                    break;
-                case 4:
-                    borrar();
-                    break;
-                case 5:
-                    mostrarTodos();
-                    break;
-                case 6:
-                    System.out.println("Saliendo del menú de subtítulos...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Introduce un número del 1 al 6.");
-                    break;
+                case 1 -> addSubtitle();
+                case 2 -> search();
+                case 3 -> modify();
+                case 4 -> delete();
+                case 5 -> showAll();
+                case 6 -> System.out.println("Exiting subtitles menu...");
+                default -> System.out.println("Invalid option. Enter a number from 1 to 6.");
             }
 
         } while (opcion != 6);
     }
 
-    private void darDeAlta() {
-        int idioma;
+    private void addSubtitle() {
+        int language;
 
-        System.out.println("\n-- DAR DE ALTA UN SUBTÍTULO --");
-        System.out.println("Introduce el idioma del subtítulo:");
-        System.out.println("1. Inglés");
-        System.out.println("2. Francés");
-        System.out.println("3. Español");
-        System.out.println("4. Chino");
-        System.out.println("5. No disponible");
+        System.out.println("\n-- ADD A SUBTITLE --");
+        System.out.println("Enter the subtitle language:");
+        System.out.println("1. English");
+        System.out.println("2. French");
+        System.out.println("3. Spanish");
+        System.out.println("4. Chinese");
+        System.out.println("5. Not available");
 
-        idioma = scanner.nextInt();
+        language = scanner.nextInt();
 
-        Subtitulos subtitulo = new Subtitulos();
+        Subtitulos subtitle = new Subtitulos();
 
-        switch (idioma) {
-            case 1:
-                subtitulo.setIdioma(Idioma.INGLES);
-                break;
-            case 2:
-                subtitulo.setIdioma(Idioma.FRANCES);
-                break;
-            case 3:
-                subtitulo.setIdioma(Idioma.ESPAÑOL);
-                break;
-            case 4:
-                subtitulo.setIdioma(Idioma.CHINO);
-                break;
-            case 5:
-                subtitulo.setIdioma(Idioma.NODISPONE);
-                break;
-            default:
-                System.out.println("Opción no válida. Introduce un número del 1 al 5.");
+        switch (language) {
+            case 1 -> subtitle.setIdioma(Idioma.ENGLISH);
+            case 2 -> subtitle.setIdioma(Idioma.FRENCH);
+            case 3 -> subtitle.setIdioma(Idioma.SPANISH);
+            case 4 -> subtitle.setIdioma(Idioma.CHINESE);
+            case 5 -> subtitle.setIdioma(Idioma.NOTAVAILABLE);
+            default -> {
+                System.out.println("Invalid option. Enter a number from 1 to 5.");
                 return;
+            }
         }
 
-        listaSubtitulos.add(subtitulo);
+        listaSubtitulos.add(subtitle);
 
-        System.out.println("Subtítulo añadido correctamente.");
+        System.out.println("Subtitle added successfully.");
     }
 
-    private void buscar() {
-        int opcion;
+    private void search() {
+        int option;
 
         do {
-            System.out.println("\n-- BUSCAR SUBTÍTULOS --");
-            System.out.println("¿Por qué atributo quieres buscar?");
-            System.out.println("1. Idioma");
-            System.out.println("2. Volver al menú principal");
+            System.out.println("\n-- SEARCH SUBTITLES --");
+            System.out.println("Which attribute do you want to search by?");
+            System.out.println("1. Language");
+            System.out.println("2. Return to the main menu");
 
-            opcion = scanner.nextInt();
+            option = scanner.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    buscarPorIdioma();
-                    break;
-                case 2:
-                    break;
-                default:
-                    System.out.println("Opción no válida. Introduce un número del 1 al 2.");
-                    break;
+            switch (option) {
+                case 1 -> searchByLanguage();
+                case 2 -> {
+                }
+                default -> System.out.println("Invalid option. Enter a number from 1 to 2.");
             }
-        } while (opcion != 2);
+        } while (option != 2);
     }
 
-    private void buscarPorIdioma() {
-        int idioma;
+    private void searchByLanguage() {
+        int language;
+        System.out.println("\n-- SEARCH FOR SUBTITLES BY LANGUAGE --");
+        System.out.println("Enter the language you want to search for:");
+        System.out.println("1. English");
+        System.out.println("2. French");
+        System.out.println("3. Spanish");
+        System.out.println("4. Chinese");
+        System.out.println("5. Not available");
 
-        System.out.println("\n-- BUSCAR SUBTÍTULOS POR IDIOMA --");
-        System.out.println("Introduce el idioma que quieres buscar:");
-        System.out.println("1. Inglés");
-        System.out.println("2. Francés");
-        System.out.println("3. Español");
-        System.out.println("4. Chino");
-        System.out.println("5. No disponible");
+        language = scanner.nextInt();
 
-        idioma = scanner.nextInt();
+        Language searchLanguage;
 
-        Idioma idiomaBusqueda;
+        switch (language) {
+            case 1 -> searchLanguage = Language.ENGLISH;
+            case 2 -> searchLanguage = Language.FRENCH;
+            case 3 -> searchLanguage = Language.SPANISH;
+            case 4 -> searchLanguage = Language.CHINESE;
+            case 5 -> searchLanguage = Language.NOTAVAILABLE;
+            default -> {
+                System.out.println("Invalid option. Enter a number between 1 and 5.");
+                return;
+            }
+        }
 
-        switch (idioma) {
+        boolean found = false;
+
+        for (Subtitles subtitle : subtitlesList) {
+            if (subtitle.getLanguage() == searchLanguage) {
+                System.out.println(subtitle.toString());
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No subtitles found for the searched language.");
+        }
+        }
+
+        private void modify() {
+        int option;
+        do {
+            System.out.println("\n-- MODIFY SUBTITLE --");
+            System.out.println("Enter the index of the subtitle you want to modify (starting from 1):");
+            System.out.println("(0 to cancel)");
+
+            option = scanner.nextInt();
+
+            if (option == 0) {
+                return;
+            }
+
+            option--;
+
+            if (option < 0 || option >= subtitlesList.size()) {
+                System.out.println("Invalid index. Enter a number between 1 and " + subtitlesList.size() + ".");
+            }
+
+        } while (option < 0 || option >= subtitlesList.size());
+
+        Subtitles subtitle = subtitlesList.get(option);
+
+        int language;
+
+        System.out.println("\n-- MODIFY SUBTITLE --");
+        System.out.println("Select the new language:");
+        System.out.println("1. English");
+        System.out.println("2. French");
+        System.out.println("3. Spanish");
+        System.out.println("4. Chinese");
+        System.out.println("5. Not available");
+
+        language = scanner.nextInt();
+
+        switch (language) {
             case 1:
-                idiomaBusqueda = Idioma.INGLES;
+                subtitle.setLanguage(Language.ENGLISH);
                 break;
             case 2:
-                idiomaBusqueda = Idioma.FRANCES;
+                subtitle.setLanguage(Language.FRENCH);
                 break;
             case 3:
-                idiomaBusqueda = Idioma.ESPAÑOL;
+                subtitle.setLanguage(Language.SPANISH);
                 break;
             case 4:
-                idiomaBusqueda = Idioma.CHINO;
+                subtitle.setLanguage(Language.CHINESE);
                 break;
             case 5:
-                idiomaBusqueda = Idioma.NODISPONE;
+                subtitle.setLanguage(Language.NOTAVAILABLE);
                 break;
             default:
-                System.out.println("Opción no válida. Introduce un número del 1 al 5.");
+                System.out.println("Invalid option. Enter a number between 1 and 5.");
                 return;
         }
 
-        boolean encontrado = false;
-
-        for (Subtitulos subtitulo : listaSubtitulos) {
-            if (subtitulo.getIdioma() == idiomaBusqueda) {
-                System.out.println(subtitulo.toString());
-                encontrado = true;
-            }
+        System.out.println("Subtitle modified successfully.");
         }
-
-        if (!encontrado) {
-            System.out.println("No se han encontrado subtítulos para el idioma buscado.");
-        }
-    }
-
-    private void modificar() {
-        int opcion;
-
+        private void delete() {
+        int option;
         do {
-            System.out.println("\n-- MODIFICAR SUBTÍTULO --");
-            System.out.println("Introduce el índice del subtítulo que quieres modificar (empezando desde 1):");
-            System.out.println("(0 para cancelar)");
+            System.out.println("\n-- DELETE SUBTITLE --");
+            System.out.println("Enter the index of the subtitle you want to delete (starting from 1):");
+            System.out.println("(0 to cancel)");
 
-            opcion = scanner.nextInt();
+            option = scanner.nextInt();
 
-            if (opcion == 0) {
+            if (option == 0) {
                 return;
             }
 
-            opcion--;
+            option--;
 
-            if (opcion < 0 || opcion >= listaSubtitulos.size()) {
-                System.out.println("Índice no válido. Introduce un número entre 1 y " + listaSubtitulos.size() + ".");
+            if (option < 0 || option >= listaSubtitulos.size()) {
+                System.out.println("Invalid index. Enter a number between 1 and " + listaSubtitulos.size() + ".");
             }
 
-        } while (opcion < 0 || opcion >= listaSubtitulos.size());
+        } while (option < 0 || option >= listaSubtitulos.size());
 
-        Subtitulos subtitulo = listaSubtitulos.get(opcion);
+        listaSubtitulos.remove(option);
 
-        int idioma;
-
-        System.out.println("\n-- MODIFICAR SUBTÍTULO --");
-        System.out.println("Selecciona el nuevo idioma:");
-        System.out.println("1. Inglés");
-        System.out.println("2. Francés");
-        System.out.println("3. Español");
-        System.out.println("4. Chino");
-        System.out.println("5. No disponible");
-
-        idioma = scanner.nextInt();
-
-        switch (idioma) {
-            case 1:
-                subtitulo.setIdioma(Idioma.INGLES);
-                break;
-            case 2:
-                subtitulo.setIdioma(Idioma.FRANCES);
-                break;
-            case 3:
-                subtitulo.setIdioma(Idioma.ESPAÑOL);
-                break;
-            case 4:
-                subtitulo.setIdioma(Idioma.CHINO);
-                break;
-            case 5:
-                subtitulo.setIdioma(Idioma.NODISPONE);
-                break;
-            default:
-                System.out.println("Opción no válida. Introduce un número del 1 al 5.");
-                return;
-        }
-
-        System.out.println("Subtítulo modificado correctamente.");
+        System.out.println("Subtitle deleted successfully.");
     }
 
-    private void borrar() {
-        int opcion;
-
-        do {
-            System.out.println("\n-- BORRAR SUBTÍTULO --");
-            System.out.println("Introduce el índice del subtítulo que quieres borrar (empezando desde 1):");
-            System.out.println("(0 para cancelar)");
-
-            opcion = scanner.nextInt();
-
-            if (opcion == 0) {
-                return;
-            }
-
-            opcion--;
-
-            if (opcion < 0 || opcion >= listaSubtitulos.size()) {
-                System.out.println("Índice no válido. Introduce un número entre 1 y " + listaSubtitulos.size() + ".");
-            }
-
-        } while (opcion < 0 || opcion >= listaSubtitulos.size());
-
-        listaSubtitulos.remove(opcion);
-
-        System.out.println("Subtítulo borrado correctamente.");
-    }
-
-    private void mostrarTodos() {
-        System.out.println("\n-- LISTA DE SUBTÍTULOS --");
+    private void showAll() {
+        System.out.println("\n-- LIST OF SUBTITLES --");
 
         if (listaSubtitulos.isEmpty()) {
-            System.out.println("No hay subtítulos disponibles.");
+            System.out.println("No subtitles available.");
             return;
         }
-
-        for (Subtitulos subtitulo : listaSubtitulos) {
-            System.out.println(subtitulo.toString());
+        for (Subtitulos subtitle : listaSubtitulos) {
+            System.out.println(subtitle.toString());
         }
     }
-
 }
