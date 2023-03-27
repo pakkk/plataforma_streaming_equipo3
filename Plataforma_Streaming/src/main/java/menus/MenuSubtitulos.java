@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author 1DAM
  */
-public class MenuSubtitulos {
+public class MenuSubtitulos extends Subtitles {
     private final ArrayList<Subtitles> listaSubtitulos;
     private final Scanner scanner;
 
@@ -63,11 +63,11 @@ public class MenuSubtitulos {
         Subtitles subtitle = new Subtitles();
 
         switch (language) {
-            case 1 -> subtitle.setIdioma(Idioma.ENGLISH);
-            case 2 -> subtitle.setIdioma(Idioma.FRENCH);
-            case 3 -> subtitle.setIdioma(Idioma.SPANISH);
-            case 4 -> subtitle.setIdioma(Idioma.CHINESE);
-            case 5 -> subtitle.setIdioma(Idioma.NOTAVAILABLE);
+            case 1 -> subtitle.setIdioma(Language.ENGLISH);
+            case 2 -> subtitle.setIdioma(Language.FRENCH);
+            case 3 -> subtitle.setIdioma(Language.SPANISH);
+            case 4 -> subtitle.setIdioma(Language.CHINESE);
+            case 5 -> subtitle.setIdioma(Language.NOTAVAILABLE);
             default -> {
                 System.out.println("Invalid option. Enter a number from 1 to 5.");
                 return;
