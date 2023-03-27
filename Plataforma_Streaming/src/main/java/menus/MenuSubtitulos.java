@@ -128,7 +128,7 @@ public class MenuSubtitulos {
         boolean found = false;
 
         for (Subtitles subtitle : subtitlesList) {
-            if (subtitle.getLanguage() == searchLanguage) {
+            if (subtitle.getSubtitleLanguage() == searchLanguage) {
                 System.out.println(subtitle.toString());
                 found = true;
             }
