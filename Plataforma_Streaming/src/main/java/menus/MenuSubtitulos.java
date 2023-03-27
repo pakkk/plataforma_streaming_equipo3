@@ -175,24 +175,15 @@ public class MenuSubtitulos {
         language = scanner.nextInt();
 
         switch (language) {
-            case 1:
-                subtitle.setLanguage(Language.ENGLISH);
-                break;
-            case 2:
-                subtitle.setLanguage(Language.FRENCH);
-                break;
-            case 3:
-                subtitle.setLanguage(Language.SPANISH);
-                break;
-            case 4:
-                subtitle.setLanguage(Language.CHINESE);
-                break;
-            case 5:
-                subtitle.setLanguage(Language.NOTAVAILABLE);
-                break;
-            default:
+            case 1 -> subtitle.setLanguage(Language.ENGLISH);
+            case 2 -> subtitle.setLanguage(Language.FRENCH);
+            case 3 -> subtitle.setLanguage(Language.SPANISH);
+            case 4 -> subtitle.setLanguage(Language.CHINESE);
+            case 5 -> subtitle.setLanguage(Language.NOTAVAILABLE);
+            default -> {
                 System.out.println("Invalid option. Enter a number between 1 and 5.");
                 return;
+            }
         }
 
         System.out.println("Subtitle modified successfully.");
@@ -226,7 +217,7 @@ public class MenuSubtitulos {
     private void showAll() {
         System.out.println("\n-- LIST OF SUBTITLES --");
 
-        if (listaSubtitles.isEmpty()) {
+        if (listaSubtitulos.isEmpty()) {
             System.out.println("No subtitles available.");
             return;
         }
