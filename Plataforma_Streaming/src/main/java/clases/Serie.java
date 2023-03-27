@@ -54,5 +54,6 @@ public class Serie extends Audiovisual implements Comparable<Audiovisual> {
     @Override
     public int compareTo(Audiovisual o) {
         return super.compareTo(o); // call the compareTo method of the superclass
-    }   
+    }
+    
 }
