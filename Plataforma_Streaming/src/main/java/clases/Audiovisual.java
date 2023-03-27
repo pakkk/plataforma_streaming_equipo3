@@ -14,6 +14,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
     Actor[] supportingActores;
     Director[] directors;
     Categoria[] categories;
+    Recommendations[] recommendations;
     int yearOfCreation;
     int views;
     Subtitles[] Subtitulos;
@@ -26,6 +27,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
     	categories = new Categoria[0];
     	directors = new Director[0];
     	supportingActores = new Actor[0];
+    	recommendations= new Recommendations[0];
     	
     	
         this.title = title;
@@ -152,5 +154,23 @@ public class Audiovisual implements Comparable<Audiovisual> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	 public Recommendations[] recommendations() {
+	        return recommendations;
+	    }
+
+	    public void setRecommendations(Recommendations[] recommendations) {
+	        this.recommendations = recommendations;
+	    }
+	    
+	    public void addRecommendations(Recommendations  nuevarecommendations ){
+	    	
+	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length+1);
+	        this.recommendations[this.recommendations.length-1] = nuevarecommendations;
+	    }
+
+	    public void deleteRecommendations(int pos) {
+	        System.arraycopy(recommendations, pos, recommendations, pos +1, recommendations.length-pos+1);
+	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length-1);
+	    }
    
 }
