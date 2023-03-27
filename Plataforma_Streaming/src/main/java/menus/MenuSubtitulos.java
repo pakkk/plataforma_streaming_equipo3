@@ -4,7 +4,7 @@
  */
 package menus;
 
-import clases.Subtitulos;
+import clases.Subtitles;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author 1DAM
  */
 public class MenuSubtitulos {
-    private final ArrayList<Subtitulos> listaSubtitulos;
+    private final ArrayList<Subtitles> listaSubtitulos;
     private final Scanner scanner;
 
     public MenuSubtitulos() {
@@ -60,7 +60,7 @@ public class MenuSubtitulos {
 
         language = scanner.nextInt();
 
-        Subtitulos subtitle = new Subtitulos();
+        Subtitles subtitle = new Subtitles();
 
         switch (language) {
             case 1 -> subtitle.setIdioma(Idioma.ENGLISH);
@@ -74,7 +74,7 @@ public class MenuSubtitulos {
             }
         }
 
-        listaSubtitulos.add(subtitle);
+        listaSubtitles.add(subtitle);
 
         System.out.println("Subtitle added successfully.");
     }
@@ -212,13 +212,13 @@ public class MenuSubtitulos {
 
             option--;
 
-            if (option < 0 || option >= listaSubtitulos.size()) {
-                System.out.println("Invalid index. Enter a number between 1 and " + listaSubtitulos.size() + ".");
+            if (option < 0 || option >= listaSubtitles.size()) {
+                System.out.println("Invalid index. Enter a number between 1 and " + listaSubtitles.size() + ".");
             }
 
-        } while (option < 0 || option >= listaSubtitulos.size());
+        } while (option < 0 || option >= listaSubtitles.size());
 
-        listaSubtitulos.remove(option);
+        listaSubtitles.remove(option);
 
         System.out.println("Subtitle deleted successfully.");
     }
@@ -226,11 +226,11 @@ public class MenuSubtitulos {
     private void showAll() {
         System.out.println("\n-- LIST OF SUBTITLES --");
 
-        if (listaSubtitulos.isEmpty()) {
+        if (listaSubtitles.isEmpty()) {
             System.out.println("No subtitles available.");
             return;
         }
-        for (Subtitulos subtitle : listaSubtitulos) {
+        for (Subtitles subtitle : listaSubtitles) {
             System.out.println(subtitle.toString());
         }
     }
