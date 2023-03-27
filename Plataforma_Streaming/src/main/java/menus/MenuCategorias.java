@@ -142,7 +142,7 @@ public class MenuCategorias {
 	 * Compara entre dos categorias
 	 * @param a Audiovisual del que se obtiene el array en que se ejerce la busqueda el director
 	 */
-	public void findDirector(Audiovisual a)
+	public void findCategories(Audiovisual a)
 	{
 		System.out.println(" I show you the possible search keys\n"
 				+ "1.Name");
