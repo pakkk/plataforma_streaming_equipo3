@@ -6,7 +6,7 @@ public class Statistics extends Audiovisual{
 	 * Parameterized constructor
 	 * @param Name the Actor
 	 * */
-		public String Actors(String nombreActor) 
+		public void Actors(String nombreActor) 
 		{
 			try(Scanner scanner = new Scanner(System.in);){
 				
@@ -17,10 +17,11 @@ public class Statistics extends Audiovisual{
 						System.out.println(filmOrSeries.toString());
 					}
 				}
+				
 			}catch(InputMismatchException e) {
 			System.out.println("Unregistered actor");
 	}
-		return "";
+		
 		}
 	
 	
