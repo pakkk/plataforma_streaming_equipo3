@@ -19,7 +19,9 @@ public class Audiovisual implements Comparable<Audiovisual> {
     Subtitles[] Subtitulos;
 
     
-    
+    public Audiovisual() {
+    	
+    }
     public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
     	
     	Subtitulos = new Subtitles[0];
