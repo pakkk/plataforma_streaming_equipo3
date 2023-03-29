@@ -7,7 +7,20 @@ import clases.*;
 
 public class MenuActores {
 	
-	static boolean addActor(Audiovisual a) {
+	private Audiovisual a;
+	
+	public MenuActores(Audiovisual a) {
+		this.a = a;
+	}
+	
+	public void startMenu(){
+		
+		
+		
+		
+	}
+	
+	static boolean addActor() {
 		
 		try (Scanner sc = new Scanner(System.in)){
 
@@ -30,7 +43,7 @@ public class MenuActores {
 		}
 	}
 	
-	static void displayActores(Audiovisual a) {
+	static void displayActores() {
 		
 		Actor actores[] = a.getsupportingActores();
 		
@@ -43,7 +56,7 @@ public class MenuActores {
 		
 	}
 	
-	static Actor selectActor(Audiovisual a) {
+	static Actor selectActor() {
 		
 		displayActores(a);
 		
@@ -58,14 +71,15 @@ public class MenuActores {
 		}
 	}
 	
-	public void deleteActor(Audiovisual a)
+	public boolean deleteActor(Audiovisual a)
 	{
 		int posicion = selectActor(a);
 		a.deletesupportingActores(int pos);
+		return true;
 	}
 	
 	
-	public void findActor(Audiovisual a)
+	public void findActor()
 	{
 		System.out.println("Find a director by: " + "1.- name\n" + "2.- lastname\n" + "3.- gender\n"
 				+ "4.- age" + "5.- nationality");
