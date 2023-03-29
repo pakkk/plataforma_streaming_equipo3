@@ -19,7 +19,8 @@ public class ComparaRecomendaciones implements Comparator<Audiovisual>
 	 /**
 		 *Returns a positive number if the left Audiovisual is more bigger that Audiovisual to right.
 		 *So returns a negative number is order is reverse.
-		 *
+		 *@param Audiovisual o1 is a Audivisual type Object.
+		 *.@param Audiovisual o1 is a Audivisual type Object.
 		 * @return int is a indicator to order
 		 * */
 	public int compare(Audiovisual o1, Audiovisual o2)
