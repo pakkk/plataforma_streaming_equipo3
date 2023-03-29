@@ -118,8 +118,8 @@ public class Recommendations implements Comparable <Recommendations>
     @Override
     public int compareTo(Recommendations o) 
     {
-    	Recommendations e=(Recommendations)o;
-		return this.ratings-e.ratings;
+    	
+		return this.ratings-o.ratings;
 	}
     
     
