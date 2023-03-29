@@ -13,11 +13,11 @@ import java.util.Scanner;
  * @author 1DAM
  */
 public class MenuSubtitulos extends Subtitles {
-    private final ArrayList<Subtitles> listaSubtitulos;
+    private final ArrayList<Subtitles> subtitlesList;
     private final Scanner scanner;
 
     public MenuSubtitulos() {
-        listaSubtitulos = new ArrayList<>();
+        subtitlesList = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
 
@@ -74,7 +74,7 @@ public class MenuSubtitulos extends Subtitles {
             }
         }
 
-        listaSubtitles.add(subtitle);
+        subtitlesList.add(subtitle);
 
         System.out.println("Subtitle added successfully.");
     }
@@ -203,13 +203,13 @@ public class MenuSubtitulos extends Subtitles {
 
             option--;
 
-            if (option < 0 || option >= listaSubtitles.size()) {
-                System.out.println("Invalid index. Enter a number between 1 and " + listaSubtitles.size() + ".");
+            if (option < 0 || option >= subtitlesList.size()) {
+                System.out.println("Invalid index. Enter a number between 1 and " + subtitlesList.size() + ".");
             }
 
-        } while (option < 0 || option >= listaSubtitles.size());
+        } while (option < 0 || option >= subtitlesList.size());
 
-        listaSubtitles.remove(option);
+        subtitlesList.remove(option);
 
         System.out.println("Subtitle deleted successfully.");
     }
@@ -217,11 +217,11 @@ public class MenuSubtitulos extends Subtitles {
     private void showAll() {
         System.out.println("\n-- LIST OF SUBTITLES --");
 
-        if (listaSubtitulos.isEmpty()) {
+        if (subtitlesList.isEmpty()) {
             System.out.println("No subtitles available.");
             return;
         }
-        for (Subtitles subtitle : listaSubtitles) {
+        for (Subtitles subtitle : subtitlesList) {
             System.out.println(subtitle.toString());
         }
     }
