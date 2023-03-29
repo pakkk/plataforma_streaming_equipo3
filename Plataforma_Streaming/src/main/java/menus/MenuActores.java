@@ -56,7 +56,7 @@ public class MenuActores {
 		
 	}
 	
-	static Actor selectActor() {
+	static int selectActor() {
 		
 		displayActores(a);
 		
@@ -65,39 +65,51 @@ public class MenuActores {
 		int opcion;
 		try (Scanner sc = new Scanner(System.in)){
 			opcion = sc.nextInt();
-			return a.getsupportingActores()[opcion];
+			return opcion -1;
 		} catch (InputMismatchException e) {
-			return null;
+			return -1;
 		}
 	}
 	
 	public boolean deleteActor(Audiovisual a)
 	{
 		int posicion = selectActor(a);
-		a.deletesupportingActores(int pos);
-		return true;
+		if(posicion > -1) {
+			a.deletesupportingActores(int pos);
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	
 	public void findActor()
 	{
-		System.out.println("Find a director by: " + "1.- name\n" + "2.- lastname\n" + "3.- gender\n"
-				+ "4.- age" + "5.- nationality");
+		System.out.println("Find an actor by: " + "1.- name\n" + "2.- lastname\n" + "3.- gender\n"
+				+ "4.- age\n" + "5.- nationality");
 
 		int atributo;
 
 		try (Scanner scanner = new Scanner(System.in)) 
 		{
 			atributo = scanner.nextInt();
-			switch (atributo) 
-			{
+		} 
+		catch (InputMismatchException ex) 
+		{
+			System.out.println("error option");
+		}
+		
+		Actor[] actors = a.getsupportingActores();
+		switch (atributo) 
+		{
 			case 1: 
 			{
 				System.out.println("dime nombre");
 				String newText = scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Actor act : actors)
 				{
-					if (d.getName().equals(newText))
+					if (act.getName().equals(newText))
 					{
 						System.out.println(d.toString());
 					}
@@ -108,9 +120,9 @@ public class MenuActores {
 			{
 				System.out.println("dime apellido");
 				String newText = scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Actor act : actors)
 				{
-					if (d.getLastname().equals(newText))
+					if (act.getLastname().equals(newText))
 					{
 						System.out.println(d.toString());
 					}
@@ -121,9 +133,9 @@ public class MenuActores {
 			{
 				System.out.println("dime genero");
 				String newText = scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Actor act : actors)
 				{
-					if (d.getgender().equals(newText))
+					if (act.getgender().equals(newText))
 					{
 						System.out.println(d.toString());
 					}
@@ -133,9 +145,9 @@ public class MenuActores {
 			{
 				System.out.println("dime edad");
 				int newText = scanner.nextInt();
-				for (Director d : a.getdirectors())
+				for (Actor act : actors)
 				{
-					if (d.getAge() == (newText)) 
+					if (act.getAge() == (newText)) 
 					{
 						System.out.println(d.toString());
 					}
@@ -146,20 +158,14 @@ public class MenuActores {
 			{
 				System.out.println("dime nacionalidad");
 				String newText = scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Actor act : actors)
 				{
-					if (d.getNationality().equals(newText))
+					if (act.getNationality().equals(newText))
 					{
 						System.out.println(d.toString());
 					}
 				}
 			}
-			}
-		} 
-		catch (InputMismatchException ex) 
-		{
-
-			System.out.println("error option");
 		}
 	}
 	
