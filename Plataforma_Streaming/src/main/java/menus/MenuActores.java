@@ -5,6 +5,26 @@ import java.util.Scanner;
 import clases.*;
 
 public class MenuActores {
+/**<<<<<<< HEAD
+=======
+	**/
+	private Audiovisual a;
+	
+	public MenuActores(Audiovisual a) {
+		this.a = a;
+	}
+	
+	public void startMenu(){
+		
+		
+		
+		
+	}
+	
+	static boolean addActor() {
+		
+		try (Scanner sc = new Scanner(System.in)){
+//>>>>>>> branch 'main' of https://github.com/pakkk/plataforma_streaming_equipo3.git
 
 	Audiovisual audioVisual;
 
@@ -100,7 +120,7 @@ public class MenuActores {
 	}
 <<<<<<< HEAD
 	
-	static void displayActores(Audiovisual a) {
+	static void displayActores() {
 		
 		Actor actores[] = a.getsupportingActores();
 		
@@ -121,7 +141,7 @@ public class MenuActores {
 	}
 <<<<<<< HEAD
 	
-	static Actor selectActor(Audiovisual a) {
+	static int selectActor() {
 		
 		displayActores(a);
 		
@@ -130,6 +150,7 @@ public class MenuActores {
 		int opcion;
 		try (Scanner sc = new Scanner(System.in)){
 			opcion = sc.nextInt();
+<<<<<<< HEAD
 			return a.getsupportingActores()[opcion];
 =======
 
@@ -147,12 +168,26 @@ public class MenuActores {
 			else
 				return -1;
 >>>>>>> 98f169df0c63e43f0a0bc15cc4893fed5aca6f69
+=======
+			return opcion -1;
+>>>>>>> branch 'main' of https://github.com/pakkk/plataforma_streaming_equipo3.git
 		} catch (InputMismatchException e) {
 			return -1;
 		}
 	}
 <<<<<<< HEAD
 	
+	public boolean deleteActor(Audiovisual a)
+	{
+		int posicion = selectActor(a);
+		if(posicion > -1) {
+			a.deletesupportingActores(int pos);
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	
 =======
 
@@ -168,6 +203,7 @@ public class MenuActores {
 	}
 >>>>>>> 98f169df0c63e43f0a0bc15cc4893fed5aca6f69
 	
+<<<<<<< HEAD
 	private boolean modifyActor() {
 		int pos = selectActor();
 		if(pos != -1) {
@@ -345,4 +381,91 @@ public class MenuActores {
 		return cant;
 	}
 
+=======
+	public void findActor()
+	{
+		System.out.println("Find an actor by: " + "1.- name\n" + "2.- lastname\n" + "3.- gender\n"
+				+ "4.- age\n" + "5.- nationality");
+
+		int atributo;
+
+		try (Scanner scanner = new Scanner(System.in)) 
+		{
+			atributo = scanner.nextInt();
+		} 
+		catch (InputMismatchException ex) 
+		{
+			System.out.println("error option");
+		}
+		
+		Actor[] actors = a.getsupportingActores();
+		switch (atributo) 
+		{
+			case 1: 
+			{
+				System.out.println("dime nombre");
+				String newText = scanner.nextLine();
+				for (Actor act : actors)
+				{
+					if (act.getName().equals(newText))
+					{
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 2: 
+			{
+				System.out.println("dime apellido");
+				String newText = scanner.nextLine();
+				for (Actor act : actors)
+				{
+					if (act.getLastname().equals(newText))
+					{
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 3: 
+			{
+				System.out.println("dime genero");
+				String newText = scanner.nextLine();
+				for (Actor act : actors)
+				{
+					if (act.getgender().equals(newText))
+					{
+						System.out.println(d.toString());
+					}
+				}
+			}
+			case 4: 
+			{
+				System.out.println("dime edad");
+				int newText = scanner.nextInt();
+				for (Actor act : actors)
+				{
+					if (act.getAge() == (newText)) 
+					{
+						System.out.println(d.toString());
+					}
+				}
+				break;
+			}
+			case 5:
+			{
+				System.out.println("dime nacionalidad");
+				String newText = scanner.nextLine();
+				for (Actor act : actors)
+				{
+					if (act.getNationality().equals(newText))
+					{
+						System.out.println(d.toString());
+					}
+				}
+			}
+		}
+	}
+	
+>>>>>>> branch 'main' of https://github.com/pakkk/plataforma_streaming_equipo3.git
 }

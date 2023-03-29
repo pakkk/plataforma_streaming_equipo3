@@ -14,18 +14,22 @@ public class Audiovisual implements Comparable<Audiovisual> {
     Actor[] supportingActores;
     Director[] directors;
     Categoria[] categories;
+    Recommendations[] recommendations;
     int yearOfCreation;
     int views;
-    Subtitulos[] Subtitulos;
+    Subtitles[] Subtitulos;
 
     
-    
+    public Audiovisual() {
+    	
+    }
     public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
     	
-    	Subtitulos = new Subtitulos[0];
+    	Subtitulos = new Subtitles[0];
     	categories = new Categoria[0];
     	directors = new Director[0];
     	supportingActores = new Actor[0];
+    	recommendations= new Recommendations[0];
     	
     	
         this.title = title;
@@ -107,15 +111,15 @@ public class Audiovisual implements Comparable<Audiovisual> {
         this.originalLanguage = originalLanguage;
     }
 
-    public Subtitulos[] getSubtitulos() {
+    public Subtitles[] getSubtitulos() {
         return Subtitulos;
     }
 
-    public void setSubtitulos(Subtitulos[] Subtitulos) {
+    public void setSubtitulos(Subtitles[] Subtitulos) {
         this.Subtitulos = Subtitulos;
     }
     
-    public void addSubtitulos(Subtitulos  newSubtitulos ){
+    public void addSubtitulos(Subtitles newSubtitulos ){
     	
         this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length+1);
         this.Subtitulos[this.Subtitulos.length-1] = newSubtitulos;
@@ -152,5 +156,28 @@ public class Audiovisual implements Comparable<Audiovisual> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	 public Recommendations[] recommendations() {
+	        return recommendations;
+	    }
+
+	    public void setRecommendations(Recommendations[] recommendations) {
+	        this.recommendations = recommendations;
+	    }
+	    
+	    public void addRecommendations(Recommendations  nuevarecommendations ){
+	    	
+	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length+1);
+	        this.recommendations[this.recommendations.length-1] = nuevarecommendations;
+	    }
+	    public Recommendations[] getRecommendations()
+	    {
+			return this.recommendations;
+	    	
+	    }
+
+	    public void deleteRecommendations(int pos) {
+	        System.arraycopy(recommendations, pos, recommendations, pos +1, recommendations.length-pos+1);
+	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length-1);
+	    }
    
 }

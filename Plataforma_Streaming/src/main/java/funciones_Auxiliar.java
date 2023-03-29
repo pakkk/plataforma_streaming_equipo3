@@ -9,7 +9,7 @@ public class funciones_Auxiliar {
 		Scanner sc = new Scanner(System.in);
 
 		int menu;
-		System.out.println("Bienvenido a PROGRAM PELIS, soy Pelinetica, la asistente de Program Pelis");
+		System.out.println("Bienvenido a PROGRAM PELIS, soy la asistente de Program Pelis");
 		System.out.println(
 				"Dejame ayudarte en tu esperiencia, ¿Que te apetece gestionar? ¿Una pelicula? Pulsa 1 o ¿Mejor una serie? pulsa2 ");
 		menu = sc.nextInt();

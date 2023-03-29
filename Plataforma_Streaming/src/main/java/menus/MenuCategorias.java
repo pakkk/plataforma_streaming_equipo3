@@ -28,7 +28,7 @@ public class MenuCategorias {
 			a.addcategories(categorie);
 			return a;
 		} 
-		catch (NumberFormatException e) 
+		catch (InputMismatchException e) 
 		{
 			return null;
 		}
@@ -107,14 +107,14 @@ public class MenuCategorias {
 			{
 			case 1:
 			{
-				System.out.println("Enter ne name");
+				System.out.println("Enter new name");
 				String newText = scanner.nextLine();
 				a.setName(newText);
 				break;
 			}
 			case 2: 
 			{
-				System.out.println("dime la nueva descripcion");
+				System.out.println("Enter new description");
 				String newText = scanner.next();
 				a.setDescription(newText);
 				break;
@@ -142,10 +142,11 @@ public class MenuCategorias {
 	 * Compara entre dos categorias
 	 * @param a Audiovisual del que se obtiene el array en que se ejerce la busqueda el director
 	 */
-	public void findDirector(Audiovisual a)
+	public void findCategories(Audiovisual a)
 	{
 		System.out.println(" I show you the possible search keys\n"
-				+ "1.Name");
+				+ "1.Name"
+				+ "2.Description");
 
 		int atributte;
 
@@ -153,18 +154,39 @@ public class MenuCategorias {
 		{
 			atributte = scanner.nextInt();
 			
-			
-			System.out.println("Enter name");
-			String newText = scanner.nextLine();
-			for (Categoria d : a.getcategories())
-			{
-				if (d.getName().equals(newText))
-				{
-					System.out.println(d.toString());
+			switch(atributte) {
+				case 1:{
+					System.out.println("Enter name");
+					String newText = scanner.nextLine();
+					for (Categoria d : a.getcategories())
+					{
+						if (d.getName().equals(newText))
+						{
+							System.out.println(d.toString());
+						}
+					
+					}
+
 				}
-			
+				break;
+				case 2:{
+					System.out.println("Enter description");
+					String newText = scanner.nextLine();
+					for (Categoria d : a.getcategories())
+					{
+						if (d.getDescription().contains(newText))
+						{
+							System.out.println(d.toString());
+						}
+					
+					}
+
+				}
+				break;
 			}
-		} 
+			
+			
+					} 
 		catch (InputMismatchException ex) 
 		{
 
