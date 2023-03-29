@@ -4,7 +4,7 @@
  */
 package menus;
 
-import clases.Subtitles;
+import clases.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -63,11 +63,11 @@ public class MenuSubtitulos extends Subtitles {
         Subtitles subtitle = new Subtitles();
 
         switch (language) {
-            case 1 -> subtitle.setIdioma(Language.ENGLISH);
-            case 2 -> subtitle.setIdioma(Language.FRENCH);
-            case 3 -> subtitle.setIdioma(Language.SPANISH);
-            case 4 -> subtitle.setIdioma(Language.CHINESE);
-            case 5 -> subtitle.setIdioma(Language.NOTAVAILABLE);
+            case 1 -> subtitle.setSubtitleLanguage(Language.ENGLISH);
+            case 2 -> subtitle.setSubtitleLanguage(Language.FRENCH);
+            case 3 -> subtitle.setSubtitleLanguage(Language.SPANISH);
+            case 4 -> subtitle.setSubtitleLanguage(Language.CHINESE);
+            case 5 -> subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
             default -> {
                 System.out.println("Invalid option. Enter a number from 1 to 5.");
                 return;
@@ -175,11 +175,11 @@ public class MenuSubtitulos extends Subtitles {
         language = scanner.nextInt();
 
         switch (language) {
-            case 1 -> subtitle.setLanguage(Language.ENGLISH);
-            case 2 -> subtitle.setLanguage(Language.FRENCH);
-            case 3 -> subtitle.setLanguage(Language.SPANISH);
-            case 4 -> subtitle.setLanguage(Language.CHINESE);
-            case 5 -> subtitle.setLanguage(Language.NOTAVAILABLE);
+            case 1 -> subtitle.setSubtitleLanguage(Language.ENGLISH);
+            case 2 -> subtitle.setSubtitleLanguage(Language.FRENCH);
+            case 3 -> subtitle.setSubtitleLanguage(Language.SPANISH);
+            case 4 -> subtitle.setSubtitleLanguage(Language.CHINESE);
+            case 5 -> subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
             default -> {
                 System.out.println("Invalid option. Enter a number between 1 and 5.");
                 return;

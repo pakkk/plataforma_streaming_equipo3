@@ -3,7 +3,7 @@ package clases;
  * Class representing the category to which an audiovisual object belongs
  * @author Silvia Mesa
  * */
-enum Language {ENGLISH, FRENCH, SPANISH, CHINESE, NOTAVAILABLE}
+
 
 public class Subtitles implements Comparable<Subtitles> {
 	

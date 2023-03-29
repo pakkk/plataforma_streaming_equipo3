@@ -8,6 +8,4 @@ package clases;
  *
  * @author 1DAM
  */
-public class enumLanguage extends Subtitles {
-    enum Language {ENGLISH, FRENCH, SPANISH, CHINESE, NOTAVAILABLE}
-}
+public enum Language {ENGLISH, FRENCH, SPANISH, CHINESE, NOTAVAILABLE}
