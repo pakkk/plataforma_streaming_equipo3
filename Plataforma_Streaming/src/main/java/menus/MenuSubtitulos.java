@@ -4,7 +4,7 @@
  */
 package menus;
 
-import clases.Subtitles;
+import clases.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,12 +12,12 @@ import java.util.Scanner;
  *
  * @author 1DAM
  */
-public class MenuSubtitulos {
-    private final ArrayList<Subtitles> listaSubtitulos;
+public class MenuSubtitulos extends Subtitles {
+    private final ArrayList<Subtitles> subtitlesList;
     private final Scanner scanner;
 
     public MenuSubtitulos() {
-        listaSubtitulos = new ArrayList<>();
+        subtitlesList = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
 
@@ -63,18 +63,18 @@ public class MenuSubtitulos {
         Subtitles subtitle = new Subtitles();
 
         switch (language) {
-            case 1 -> subtitle.setIdioma(Language.ENGLISH);
-            case 2 -> subtitle.setIdioma(Language.FRENCH);
-            case 3 -> subtitle.setIdioma(Language.SPANISH);
-            case 4 -> subtitle.setIdioma(Language.CHINESE);
-            case 5 -> subtitle.setIdioma(Language.NOTAVAILABLE);
+            case 1 -> subtitle.setSubtitleLanguage(Language.ENGLISH);
+            case 2 -> subtitle.setSubtitleLanguage(Language.FRENCH);
+            case 3 -> subtitle.setSubtitleLanguage(Language.SPANISH);
+            case 4 -> subtitle.setSubtitleLanguage(Language.CHINESE);
+            case 5 -> subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
             default -> {
                 System.out.println("Invalid option. Enter a number from 1 to 5.");
                 return;
             }
         }
 
-        listaSubtitles.add(subtitle);
+        subtitlesList.add(subtitle);
 
         System.out.println("Subtitle added successfully.");
     }
@@ -175,11 +175,11 @@ public class MenuSubtitulos {
         language = scanner.nextInt();
 
         switch (language) {
-            case 1 -> subtitle.setLanguage(Language.ENGLISH);
-            case 2 -> subtitle.setLanguage(Language.FRENCH);
-            case 3 -> subtitle.setLanguage(Language.SPANISH);
-            case 4 -> subtitle.setLanguage(Language.CHINESE);
-            case 5 -> subtitle.setLanguage(Language.NOTAVAILABLE);
+            case 1 -> subtitle.setSubtitleLanguage(Language.ENGLISH);
+            case 2 -> subtitle.setSubtitleLanguage(Language.FRENCH);
+            case 3 -> subtitle.setSubtitleLanguage(Language.SPANISH);
+            case 4 -> subtitle.setSubtitleLanguage(Language.CHINESE);
+            case 5 -> subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
             default -> {
                 System.out.println("Invalid option. Enter a number between 1 and 5.");
                 return;
@@ -203,13 +203,13 @@ public class MenuSubtitulos {
 
             option--;
 
-            if (option < 0 || option >= listaSubtitles.size()) {
-                System.out.println("Invalid index. Enter a number between 1 and " + listaSubtitles.size() + ".");
+            if (option < 0 || option >= subtitlesList.size()) {
+                System.out.println("Invalid index. Enter a number between 1 and " + subtitlesList.size() + ".");
             }
 
-        } while (option < 0 || option >= listaSubtitles.size());
+        } while (option < 0 || option >= subtitlesList.size());
 
-        listaSubtitles.remove(option);
+        subtitlesList.remove(option);
 
         System.out.println("Subtitle deleted successfully.");
     }
@@ -217,11 +217,11 @@ public class MenuSubtitulos {
     private void showAll() {
         System.out.println("\n-- LIST OF SUBTITLES --");
 
-        if (listaSubtitulos.isEmpty()) {
+        if (subtitlesList.isEmpty()) {
             System.out.println("No subtitles available.");
             return;
         }
-        for (Subtitles subtitle : listaSubtitles) {
+        for (Subtitles subtitle : subtitlesList) {
             System.out.println(subtitle.toString());
         }
     }
