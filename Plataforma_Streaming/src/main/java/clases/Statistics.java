@@ -72,12 +72,7 @@ public class Statistics {
             }
         }
     }
-    /**
-     * Return true or false if Genders is in the array
-     * @param audioVisuals Arrays class Audiovisual
-     * @param name String Categoria
-     */
-
+    
 
     private boolean isGender (Audiovisual a, String Categorie) {
         Categoria[] act = a.getcategories();
@@ -89,6 +84,41 @@ public class Statistics {
         }
         return false;
     }
+    
+    public void Subtitles (Audiovisual[] audioVisuals) {
+
+        String subtitles = "";
+        boolean stop = true;
+        do {
+            try ( Scanner scanner = new Scanner(System.in);) {
+
+            	subtitles = scanner.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid subtitle");
+                stop = false;
+            }
+        } while (stop);
+
+        for (Audiovisual a : audioVisuals) {
+            if (isSubtitles(a, subtitles)) {
+                System.out.println(a.toString());
+            }
+        }
+    }
+    
+
+    private boolean isSubtitles (Audiovisual a, String LanguajeSubtitle) {
+    	Subtitles[] act = a.getSubtitulos();
+        for (Subtitles subtitles : act) {
+
+            if (subtitles.getSubtitleLanguage().equals(LanguajeSubtitle)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
     
 }
