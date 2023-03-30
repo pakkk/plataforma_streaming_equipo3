@@ -6,19 +6,15 @@ package menus;
 
 import clases.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
- * @author 1DAM
+ * @author Miguel
  */
 public class MenuSubtitulos extends Subtitles {
-    private final ArrayList<Subtitles> subtitlesList;
-    private final Scanner scanner;
 
     public MenuSubtitulos() {
         subtitlesList = new ArrayList<>();
-        scanner = new Scanner(System.in);
     }
 
     public void mostrarMenu() {
@@ -32,7 +28,7 @@ public class MenuSubtitulos extends Subtitles {
             System.out.println("5. Show all subtitles");
             System.out.println("6. Exit");
 
-            opcion = scanner.nextInt();
+            opcion = MyScanner.scanner.nextInt();
 
             switch (opcion) {
                 case 1 -> addSubtitle();
@@ -58,7 +54,7 @@ public class MenuSubtitulos extends Subtitles {
         System.out.println("4. Chinese");
         System.out.println("5. Not available");
 
-        language = scanner.nextInt();
+        language = MyScanner.scanner.nextInt();
 
         Subtitles subtitle = new Subtitles();
 
@@ -88,7 +84,7 @@ public class MenuSubtitulos extends Subtitles {
             System.out.println("1. Language");
             System.out.println("2. Return to the main menu");
 
-            option = scanner.nextInt();
+            option = MyScanner.scanner.nextInt();
 
             switch (option) {
                 case 1 -> searchByLanguage();
@@ -109,7 +105,7 @@ public class MenuSubtitulos extends Subtitles {
         System.out.println("4. Chinese");
         System.out.println("5. Not available");
 
-        language = scanner.nextInt();
+        language = MyScanner.scanner.nextInt();
 
         Language searchLanguage;
 
@@ -146,7 +142,7 @@ public class MenuSubtitulos extends Subtitles {
             System.out.println("Enter the index of the subtitle you want to modify (starting from 1):");
             System.out.println("(0 to cancel)");
 
-            option = scanner.nextInt();
+            option = MyScanner.scanner.nextInt();
 
             if (option == 0) {
                 return;
@@ -172,7 +168,7 @@ public class MenuSubtitulos extends Subtitles {
         System.out.println("4. Chinese");
         System.out.println("5. Not available");
 
-        language = scanner.nextInt();
+        language = MyScanner.scanner.nextInt();
 
         switch (language) {
             case 1 -> subtitle.setSubtitleLanguage(Language.ENGLISH);
@@ -195,7 +191,7 @@ public class MenuSubtitulos extends Subtitles {
             System.out.println("Enter the index of the subtitle you want to delete (starting from 1):");
             System.out.println("(0 to cancel)");
 
-            option = scanner.nextInt();
+            option = MyScanner.scanner.nextInt();
 
             if (option == 0) {
                 return;
