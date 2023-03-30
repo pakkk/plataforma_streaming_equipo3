@@ -4,18 +4,20 @@ import java.util.InputMismatchException;
 import clases.*;
 
 public class MenuRecomendaciones {
-	/**
-	 * add a Recomendacion
-	 * 
-	 * @param to Audiovisual with which you want to check
-	 * @return an Audiovisual with the added Recomendacion
-	 */
+
+    /**
+     * add a Recomendacion
+     *
+     * @param to Audiovisual with which you want to check
+     * @return an Audiovisual with the added Recomendacion
+     */
     Audiovisual a;
 
     public MenuRecomendaciones(Audiovisual a) {
         this.a = a;
     }
-        public void startMenu() {
+
+    public void startMenu() {
         int menu;
         do {
 
@@ -26,9 +28,9 @@ public class MenuRecomendaciones {
             System.out.println("3.- Modify an recommendatios");
             System.out.println("4.- Search an recommendatios");
             System.out.println("5.- Exit");
-            
-            try{
-               
+
+            try {
+
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (InputMismatchException ex) {
                 menu = 0;
@@ -67,7 +69,7 @@ public class MenuRecomendaciones {
                     }
                 }
                 case 5 -> {
-                    
+
                 }
                 default -> {
                     System.out.println("invalid option");
@@ -75,137 +77,128 @@ public class MenuRecomendaciones {
             }
         } while (menu != 5);
     }
-	
-	public boolean addRecommendation()
-	{
 
-		try 
-		{
+    public boolean addRecommendation() {
 
-			System.out.println("--------------------");
-			System.out.print("Enter Recomendacion: ");
-			String name = MyScanner.scanner.nextLine();
-			System.out.println("Enter ratings");
-			int ratings = MyScanner.scanner.nextInt();
-			System.out.println("Enter comment");
-			String comment = MyScanner.scanner.nextLine();
-			
-			
-			Recommendations Recommendations = new Recommendations(name, ratings, comment);
-			this.a.addRecommendations(Recommendations);
-			return true;
-		} 
-		catch (InputMismatchException e) 
-		{
-			return false;
-		}
-	}
+        try {
 
-	/**
-	 * Shows the categories that an Audiovisual has
-	 * 
-	 */
-	public void displayRecommendation() 
-	{
+            System.out.println("--------------------");
+            System.out.print("Enter username: ");
+            String name = MyScanner.scanner.nextLine();
+            System.out.println("Enter ratings");
+            int ratings = MyScanner.scanner.nextInt();
+            System.out.println("Enter comment");
+            String comment = MyScanner.scanner.nextLine();
 
-		Recommendations[] Recommendations = a.getRecommendations();
+            Recommendations Recommendations = new Recommendations(name, ratings, comment);
+            this.a.addRecommendations(Recommendations);
+            return true;
+        } catch (InputMismatchException e) {
+            return false;
+        }
+    }
 
-		System.out.println("--------------------");
-		System.out.println("List the Recommendation: ");
+    /**
+     * Shows the categories that an Audiovisual has
+     *
+     */
+    public void displayRecommendation() {
 
-		for (int i = 0; i < Recommendations.length; i++)
-		{
-			System.out.println(i + 1 + ".- " + Recommendations[i].getComment()+ " " + Recommendations[i].getRatings());
-		}
+        Recommendations[] Recommendations = a.getRecommendations();
 
-	}
+        System.out.println("--------------------");
+        System.out.println("List the Recommendation: ");
 
-	/**
-	 * Select a category from the list
-	 * 
-	 * @return Array position where the category is located
-	 * if it doesn't find it, it returns -1
-	 */
-	public int selectRecommendation()
-	{
+        for (int i = 0; i < Recommendations.length; i++) {
+            System.out.println(i + 1 + ".- " + Recommendations[i].toString());
+        }
 
-		displayRecommendation();
+    }
 
-		System.out.println("--------------------");
-		System.out.print("Enter Recommendations (number) you want to select: ");
-		int option;
-		try 
-		{
-			option = Integer.parseInt(MyScanner.scanner.nextLine());
-			if ((option > 0) && (option < a.getRecommendations().length))
-				return option -1;
-			else
-				return -1;
-		} 
-		catch (NumberFormatException e)
-		{
-			return -1;
-		}
-	}
+    /**
+     * Select a category from the list
+     *
+     * @return Array position where the category is located if it doesn't find
+     * it, it returns -1
+     */
+    public int selectRecommendation() {
 
-	/**
-	 * Compare between two categories
-	 * 
-     * @return 
-	 */
-	public boolean modifyRecommendation() 
-	{
-		int pos=selectRecommendation();
-                if (pos != -1) {
-                    Recommendations Recommendations = this.a.getRecommendations()[pos];
-                    System.out.println("--------------------");
-                    System.out.println("""
+        displayRecommendation();
+
+        System.out.println("--------------------");
+        System.out.print("Enter Recommendations (number) you want to select: ");
+        int option;
+        try {
+            option = Integer.parseInt(MyScanner.scanner.nextLine());
+            if ((option > 0) && (option < a.getRecommendations().length)) {
+                return option - 1;
+            } else {
+                return -1;
+            }
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+
+    /**
+     * Compare between two categories
+     *
+     * @return
+     */
+    public boolean modifyRecommendation() {
+        int pos = selectRecommendation();
+        if (pos != -1) {
+            Recommendations Recommendations = this.a.getRecommendations()[pos];
+            System.out.println("--------------------");
+            System.out.println("""
                                         I show you the possible modifications
                                        1.Name
-                                       2.Description""");
+                                       2.Description
+                                       3.Rating""");
 
-                    int atributte;
+            int atributte;
 
-                    try 
-                    {
-                            atributte = Integer.parseInt(MyScanner.scanner.nextLine());
-                            switch (atributte)
-                            {
-                            case 1 -> 			{
-                                    System.out.println("Enter new name");
-                                    String newText = MyScanner.scanner.nextLine();
-                                    Recommendations.setUsername(newText);
-                                    return true;
-                            }
-                            
-                            case 2 -> 			{
-                                    System.out.println("Enter new Recommendation");
-                                    String newText = MyScanner.scanner.next();
-                                    Recommendations.setComment(newText);
-                                    return true;
-                            }
-                            default->{
-                                return false;
-                            }
-                            }
-                    } 
-                    catch (NumberFormatException ex)
-                    {
-
-
-                            return false;
+            try {
+                atributte = Integer.parseInt(MyScanner.scanner.nextLine());
+                switch (atributte) {
+                    case 1 -> {
+                        System.out.println("Enter new name");
+                        String newText = MyScanner.scanner.nextLine();
+                        Recommendations.setUsername(newText);
+                        return true;
                     }
-                  
-                }else{
-                    return false;
+
+                    case 2 -> {
+                        System.out.println("Enter new description");
+                        String newText = MyScanner.scanner.nextLine();
+                        Recommendations.setComment(newText);
+                        return true;
+                    }
+                    case 3 -> {
+                        System.out.println("Enter new Recommendation");
+                        int newInt = Integer.parseInt(MyScanner.scanner.nextLine());
+                        Recommendations.setRatings(newInt);
+                        return true;
+                    }
+                    default -> {
+                        return false;
+                    }
                 }
+            } catch (NumberFormatException ex) {
+                return false;
             }
-	/**
-	 * Compare between two Recommendation
-	 * 
-        * @return 
-	 */
-	public boolean deleteRecommendation() {
+
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Compare between two Recommendation
+     *
+     * @return
+     */
+    public boolean deleteRecommendation() {
         int posicion = selectRecommendation();
         if (posicion != -1) {
             this.a.deleteRecommendations(posicion);
@@ -215,67 +208,71 @@ public class MenuRecomendaciones {
         }
 
     }
-	/**
-	 * Compare to Recommendations
-     * @return 
-	 */
-	public int findRecommendation()
-	{
-		System.out.println("""
+
+    /**
+     * Compare to Recommendations
+     *
+     * @return
+     */
+    public int findRecommendation() {
+        System.out.println("""
                                     I show you the possible search keys
                                    1.Name
-                                   2.Description""");
+                                   2.Description
+                                   3.Rating""");
 
-		int atributte,cant=0;
+        int atributte, cant = 0;
 
-		try 
-		{
-			atributte = Integer.parseInt(MyScanner.scanner.nextLine());
-			
-			switch(atributte) {
-				case 1 -> {
-					System.out.println("Enter name");
-					String newText = MyScanner.scanner.nextLine();
-					for (Recommendations d : a.getRecommendations())
-					{
-						if (d.getUsername().equals(newText))
-						{
-							System.out.println(d.toString());
-                                                        cant++;
-						}
-					
-					}
+        try {
+            atributte = Integer.parseInt(MyScanner.scanner.nextLine());
 
-				}
-				case 2 -> {
-					System.out.println("Enter Recommendation");
-					String newText = MyScanner.scanner.nextLine();
-					for (Recommendations d : a.getRecommendations())
-					{
-						if (d.getComment().contains(newText))
-						{
-							System.out.println(d.toString());
-                                                        cant++;
-						}
-					
-					}
+            switch (atributte) {
+                case 1 -> {
+                    System.out.println("Enter name");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Recommendations d : a.getRecommendations()) {
+                        if (d.getUsername().equals(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
 
-				}
-                                default->{
-                                    return -1;
-                                }
-			}
-			
-			
-					} 
-		catch (NumberFormatException ex) 
-		{
+                    }
+
+                }
+                case 2 -> {
+                    System.out.println("Enter description");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Recommendations d : a.getRecommendations()) {
+                        if (d.getComment().contains(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+
+                    }
+
+                }
+                case 3 -> {
+                    System.out.println("Enter Rating");
+                    int newInt = Integer.parseInt(MyScanner.scanner.nextLine());
+                    for (Recommendations d : a.getRecommendations()) {
+                        if (d.getRatings() == newInt) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+
+                    }
+
+                }
+                default -> {
                     return -1;
+                }
+            }
 
-                    
-		}
-                return cant;
-	}
+        } catch (NumberFormatException ex) {
+            return -1;
+
+        }
+        return cant;
+    }
 
 }
-
