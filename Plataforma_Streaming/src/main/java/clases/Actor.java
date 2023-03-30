@@ -4,7 +4,8 @@ package clases;
  * @author Miguel
  */
 
-public class Actor implements Comparable<Actor> {
+public class Actor implements Comparable<Actor> 
+{
     private String name;
     private String lastname;
     private String gender;
@@ -19,7 +20,8 @@ public class Actor implements Comparable<Actor> {
 	 * @param age Actor's age
 	 * @param nationality Actor's nationality
 	 * */
-    public Actor(String name, String lastname, String gender, int age, String nationality) {
+    public Actor(String name, String lastname, String gender, int age, String nationality)
+    {
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;
@@ -31,7 +33,8 @@ public class Actor implements Comparable<Actor> {
 	 * Returns the value of the Name attribute
 	 * @return Object's first name
 	 * */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
     
@@ -39,7 +42,8 @@ public class Actor implements Comparable<Actor> {
 	 * Assigns a new value to the name attribute
 	 * @param name New first name to be assigned
 	 * */
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
     
@@ -47,7 +51,8 @@ public class Actor implements Comparable<Actor> {
 	 * Returns the value of the Lastname attribute
 	 * @return Object's last name
 	 * */
-    public String getLastname() {
+    public String getLastname()
+    {
         return lastname;
     }
     
@@ -55,7 +60,8 @@ public class Actor implements Comparable<Actor> {
 	 * Assigns a new value to the lastname attribute
 	 * @param lastname New last name to be assigned
 	 * */
-    public void setLastname(String lastname) {
+    public void setLastname(String lastname)
+    {
         this.lastname = lastname;
     }
     
@@ -63,7 +69,8 @@ public class Actor implements Comparable<Actor> {
 	 * Returns the value of the Gender attribute
 	 * @return Object's gender
 	 * */
-    public String getGender() {
+    public String getGender()
+    {
         return gender;
     }
     
@@ -71,7 +78,8 @@ public class Actor implements Comparable<Actor> {
 	 * Assigns a new value to the gender attribute
 	 * @param gender New gender to be assigned
 	 * */
-    public void setGender(String gender) {
+    public void setGender(String gender)
+    {
         this.gender = gender;
     }
     
@@ -79,7 +87,8 @@ public class Actor implements Comparable<Actor> {
 	 * Returns the value of the Age attribute
 	 * @return Object's age
 	 * */
-    public int getAge() {
+    public int getAge()
+    {
         return age;
     }
     
@@ -87,7 +96,8 @@ public class Actor implements Comparable<Actor> {
 	 * Assigns a new value to the age attribute
 	 * @param age New age to be assigned
 	 * */
-    public void setAge(int age) {
+    public void setAge(int age)
+    {
         this.age = age;
     }
     
@@ -95,7 +105,8 @@ public class Actor implements Comparable<Actor> {
 	 * Returns the value of the Nationality attribute
 	 * @return Object's nationality
 	 * */
-    public String getNationality() {
+    public String getNationality()
+    {
         return nationality;
     }
     
@@ -103,7 +114,8 @@ public class Actor implements Comparable<Actor> {
 	 * Assigns a new value to the nationality attribute
 	 * @param nationality New nationality to be assigned
 	 * */
-    public void setNationality(String nationality) {
+    public void setNationality(String nationality)
+    {
         this.nationality = nationality;
     }
     
@@ -112,7 +124,8 @@ public class Actor implements Comparable<Actor> {
 	 * @return String representing the Actors object
 	 * */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Actors{" + "Name= " + name + ", Lastname= " + lastname + ", Gender= " + gender + ", Age= " + age + ", Nationality= " + nationality + '}';
     }
     
@@ -121,8 +134,8 @@ public class Actor implements Comparable<Actor> {
 	 * @param a Actors object to be compared
 	 * */
     @Override
-    public int compareTo(Actor a) {
+    public int compareTo(Actor a)
+    {
         return this.name.compareTo(a.name);
     }
-    
 }
