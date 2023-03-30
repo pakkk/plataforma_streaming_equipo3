@@ -85,9 +85,14 @@ public class MenuRecomendaciones {
 			System.out.println("--------------------");
 			System.out.print("Enter Recomendacion: ");
 			String name = MyScanner.scanner.nextLine();
+			System.out.println("Enter ratings");
+			int ratings = MyScanner.scanner.nextInt();
+			System.out.println("Enter comment");
+			String comment = MyScanner.scanner.nextLine();
 			
-			Recommendations Recommendations = new Recommendations(name, 0, name);
-			this.a.recommendations();
+			
+			Recommendations Recommendations = new Recommendations(name, ratings, comment);
+			this.a.addRecommendations(Recommendations);
 			return true;
 		} 
 		catch (InputMismatchException e) 
@@ -214,7 +219,7 @@ public class MenuRecomendaciones {
 	 * Compare to Recommendations
      * @return 
 	 */
-	public int findCategories()
+	public int findRecommendation()
 	{
 		System.out.println("""
                                     I show you the possible search keys
