@@ -1,18 +1,30 @@
 package menus;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import clases.Audiovisual;
 import clases.Director;
 import clases.MyScanner;
+/**
+ * 
+ * @author Silvia Mesa.
+ * This class have got as finallity 
+ * The purpose of this class is to manage the actions
+ *  of accessing data from the array of directors that each audiovisual has as an attribute. 
+ *
+ */
 
 public class MenuDirector
 {
-    
-    public void startMenu(Audiovisual a) {
+	/**
+	 * initialize the menu, it is the first stream fork
+	 * 
+	 * @param a Audiovisual with which you want to modifycate
+	 */
+    public void startMenu(Audiovisual a) 
+    {
         int menu;
-        do {
+        do 
+        {
 
             System.out.println("----------------------------------------");
             System.out.println("----MENU ACTORES----");
@@ -22,48 +34,63 @@ public class MenuDirector
             System.out.println("4.- Search an actor");
             System.out.println("5.- Exit");
 
-            try {
+            try 
+            {
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (NumberFormatException e) {
                 menu = 0;
             }
 
-            switch (menu) {
-                case 1 -> {
+            switch (menu) 
+            {
+                case 1 -> 
+                {
                     boolean b = addDirector(a);
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor introducido correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("Actor no introducido");
                     }
                 }
-                case 2 -> {
+                case 2 -> 
+                {
                     boolean b = deleteDirector(a);
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor borrado correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("El actor no pudo ser borrado");
                     }
                 }
-                case 3 -> {
+                case 3 -> 
+                {
 
                     boolean b = modifyDirector(a);
-                    if (b) {
+                    if (b)
+                    {
                         System.out.println("Actor modificado correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("El actor no pudo ser modificado");
                     }
                 }
-                case 4 -> {
+                case 4 -> 
+                {
                     int b = findDirector(a);
-                    if (b == 0) {
+                    if (b == 0) 
+                    {
                         System.out.println("No existen actores que cumplan su condicion");
                     }
                 }
-                case 5 -> {
+                case 5 -> 
+                {
 
                 }
-                default -> {
+                default -> 
+                {
                     System.out.println("Opcion invalida");
                 }
             }
@@ -75,7 +102,7 @@ public class MenuDirector
 	 * add a director
 	 * 
 	 * @param a Audiovisual con la se quiere comprobar
-	 * @return un Audiovisual con el director añadido
+	 * @return true or false depending on whether it has been executed or not
 	 */
 	public boolean addDirector(Audiovisual a)
 	{
@@ -105,10 +132,10 @@ public class MenuDirector
 	}
 
 	/**
-	 * Muestra los directores que tiene un Audiovisual 
-	 * 
-	 * @param a Audiovisual del que extraer la lista
-	 */
+	* Shows the directors who have an Audiovisual
+	*
+	* @param a Audiovisual to extract the list from
+	*/
 	public void displayDirectores(Audiovisual a) 
 	{
 
@@ -125,12 +152,12 @@ public class MenuDirector
 	}
 
 	/**
-	 * Selecciona un director de la lista 
-	 * 
-	 * @param a Audiovisual de la que se quiere seleccionar
-	 * @return posicion del Array donde se encuentra el director
-	 * si no lo encuentra devuelve -1
-	 */
+	* Select a director from the list
+	*
+	* @param a Audiovisual from which you want to select
+	* @return position of the Array where the director is located
+	* if it doesn't find it, it returns -1
+	*/
 	public int selectDirector(Audiovisual a)
 	{
 
@@ -154,10 +181,10 @@ public class MenuDirector
 	}
 
 	/**
-	 * Compara entre dos categorias
-	 * 
-	 * @param b Audiovisual del que obtiene el array.
-	 */
+	* Compare between two categories
+	*
+	* @param b Audiovisual from which gets the array.
+	*/
 	public boolean modifyDirector(Audiovisual b) 
 	{
                 int pos = selectDirector(b);
@@ -212,30 +239,33 @@ public class MenuDirector
                     {
                             return false;
                     }
-                }else{
+                }else
+                {
                     return false;
                 }
 		return true;
 	}
 	/**
-	 * Compara entre dos categorias
-	 * 
-	 * @param a Audiovisual del que se obtiene el array que se elimina el director
-	 */
+	* Compare between two categories
+	*
+	* @param to Audiovisual from which to obtain the array that the director removes
+	*/
 	public boolean deleteDirector(Audiovisual a)
 	{
 		int posicion = selectDirector(a);
-                if (posicion != -1) {
+                if (posicion != -1) 
+                {
                     a.deletedirectors(posicion);
                     return true;
-                } else {
+                } else 
+                {
                     return false;
                 }
 	}
 	/**
-	 * Compara entre dos categorias
-	 * @param a Audiovisual del que se obtiene el array en que se ejerce la busqueda el director
-	 */
+	* Compare between two categories
+	* @param a Audiovisual from which the array in which the director performs the search is obtained
+	*/
 	public int findDirector(Audiovisual a)
 	{
 		System.out.println(" Te muestro las posibles claves de busqueda" + "1.- name" + "2.- lastname" + "3.- gender"
