@@ -132,8 +132,49 @@ public class Statistics {
             }
         }
         return false;
+    }    
+    
+    /**
+     * Prompts the user to enter one or more director names and displays all
+     * Audiovisual objects that have at least one of those directors.
+     *
+     * @param audioVisuals the Audiovisual array to search
+     */
+    private static void searchByDirectors(Audiovisual[] audioVisuals) {
+        String name = "";
+        boolean stop = true;
+        do {
+            try{
+                name = MyScanner.scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid name");
+                stop = false;
+            }
+        } while (stop);
+
+        for (Audiovisual a : audioVisuals) {
+            if (isDirector(a, name)) {
+                System.out.println(a.toString());
+            }
+        }
     }
-    
-    
-    
+
+    /**
+     * This method checks whether the given audiovisual was directed by one or
+     * more of the directors whose names are provided.
+     *
+     * @param a the audiovisual to check
+     * @param directorNames an array of director names to search for
+     * @return true if the audiovisual was directed by at least one of the
+     * directors, false otherwise
+     */
+    private static boolean isDirector(Audiovisual a, String directorNames) {
+        Director[] dir = a.getdirectors();
+        for (Director director : dir) {
+            if (director.getName().equals(directorNames)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
