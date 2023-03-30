@@ -23,7 +23,8 @@ public class MenuDirector
     public void startMenu(Audiovisual a) 
     {
         int menu;
-        do {
+        do 
+        {
 
             System.out.println("----------------------------------------");
             System.out.println("----MENU ACTORES----");
@@ -33,48 +34,63 @@ public class MenuDirector
             System.out.println("4.- Search an actor");
             System.out.println("5.- Exit");
 
-            try {
+            try 
+            {
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (NumberFormatException e) {
                 menu = 0;
             }
 
-            switch (menu) {
-                case 1 -> {
+            switch (menu) 
+            {
+                case 1 -> 
+                {
                     boolean b = addDirector(a);
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor introducido correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("Actor no introducido");
                     }
                 }
-                case 2 -> {
+                case 2 -> 
+                {
                     boolean b = deleteDirector(a);
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor borrado correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("El actor no pudo ser borrado");
                     }
                 }
-                case 3 -> {
+                case 3 -> 
+                {
 
                     boolean b = modifyDirector(a);
-                    if (b) {
+                    if (b)
+                    {
                         System.out.println("Actor modificado correctamente");
-                    } else {
+                    } else 
+                    {
                         System.out.println("El actor no pudo ser modificado");
                     }
                 }
-                case 4 -> {
+                case 4 -> 
+                {
                     int b = findDirector(a);
-                    if (b == 0) {
+                    if (b == 0) 
+                    {
                         System.out.println("No existen actores que cumplan su condicion");
                     }
                 }
-                case 5 -> {
+                case 5 -> 
+                {
 
                 }
-                default -> {
+                default -> 
+                {
                     System.out.println("Opcion invalida");
                 }
             }
@@ -223,7 +239,8 @@ public class MenuDirector
                     {
                             return false;
                     }
-                }else{
+                }else
+                {
                     return false;
                 }
 		return true;
@@ -236,10 +253,12 @@ public class MenuDirector
 	public boolean deleteDirector(Audiovisual a)
 	{
 		int posicion = selectDirector(a);
-                if (posicion != -1) {
+                if (posicion != -1) 
+                {
                     a.deletedirectors(posicion);
                     return true;
-                } else {
+                } else 
+                {
                     return false;
                 }
 	}
