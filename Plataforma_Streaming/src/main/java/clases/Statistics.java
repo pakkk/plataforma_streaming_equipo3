@@ -38,5 +38,39 @@ public class Statistics {
         }
         return false;
     }
+    
+    public void Genders (Audiovisual[] audioVisuals) {
 
+        String gender = "";
+        boolean stop = true;
+        do {
+            try ( Scanner scanner = new Scanner(System.in);) {
+
+            	gender = scanner.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid name");
+                stop = false;
+            }
+        } while (stop);
+
+        for (Audiovisual a : audioVisuals) {
+            if (isGender(a, gender)) {
+                System.out.println(a.toString());
+            }
+        }
+    }
+
+    private boolean isGender (Audiovisual a, String Categorie) {
+        Categoria[] act = a.getcategories();
+        for (Categoria Gender : act) {
+
+            if (Gender.getName().equals(Categorie)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 }
