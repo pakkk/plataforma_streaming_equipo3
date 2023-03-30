@@ -1,7 +1,5 @@
 package menus;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import clases.*;
 
 public class MenuActores {
@@ -108,7 +106,7 @@ public class MenuActores {
         System.out.println("Lista de actores: ");
 
         for (int i = 0; i < actores.length; i++) {
-            System.out.println(i+1 + ".- " + actores[i].getName() + " " + actores[i].getLastname());
+            System.out.println(i + 1 + ".- " + actores[i].getName() + " " + actores[i].getLastname());
         }
 
     }
@@ -162,27 +160,27 @@ public class MenuActores {
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());;
 
                 switch (menu) {
-                    case 1 ->  {
+                    case 1 -> {
                         System.out.print("Introduzca el nuevo nombre: ");
                         String nombre = MyScanner.scanner.nextLine();
                         a.setName(nombre);
                     }
-                    case 2 ->  {
+                    case 2 -> {
                         System.out.print("Introduzca los nuevos apellidos: ");
                         String apellidos = MyScanner.scanner.nextLine();
                         a.setLastname(apellidos);
                     }
-                    case 3 ->  {
+                    case 3 -> {
                         System.out.print("Introduzca el nuevo genero: ");
                         String gender = MyScanner.scanner.nextLine();
                         a.setGender(gender);
                     }
-                    case 4 ->  {
+                    case 4 -> {
                         System.out.print("Introduzca la nueva edad: ");
                         int edad = Integer.parseInt(MyScanner.scanner.nextLine());
                         a.setAge(edad);
                     }
-                    case 5 ->  {
+                    case 5 -> {
                         System.out.print("Introduzca la nueva nacionalidad: ");
                         String nombre = MyScanner.scanner.nextLine();
                         a.setName(nombre);
