@@ -14,9 +14,9 @@ public class Statistics {
         String name = "";
         boolean stop = true;
         do {
-            try ( Scanner scanner = new Scanner(System.in);) {
+            try{
 
-                name = scanner.nextLine();
+                name = MyScanner.scanner.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
