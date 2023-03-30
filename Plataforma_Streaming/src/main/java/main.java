@@ -132,13 +132,16 @@ public class main {
                             
                             try {
                                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
-                                
+                                Statistics st = new Statistics();
                                 switch (menu) {
                                     case 1 -> {
+                                        
                                     }
                                     case 2 -> {
+                                        
                                     }
                                     case 3 -> {
+                                        
                                     }
                                     case 4 -> {
                                     }
