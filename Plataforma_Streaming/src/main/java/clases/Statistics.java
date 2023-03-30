@@ -5,7 +5,10 @@ import java.util.InputMismatchException;
 
 
 public class Statistics {
-
+    /**
+     * Enter by console name the actor and show the films the this actor
+     * @param audioVisuals Arrays class Audiovisual
+     */
     public void Actors(Audiovisual[] audioVisuals) {
 
         String name = "";
@@ -27,6 +30,11 @@ public class Statistics {
             }
         }
     }
+    /**
+     * Return true or false if actor is in the array
+     * @param audioVisuals Arrays class Audiovisual
+     * @param name String name the actor
+     */
 
     private boolean isActor(Audiovisual a, String name) {
         Actor[] act = a.getsupportingActores();
