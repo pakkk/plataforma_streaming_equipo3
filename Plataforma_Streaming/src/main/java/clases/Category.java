@@ -3,7 +3,7 @@ package clases;
  * Clase que representa la categoria a la que pertenece un objeto audiovisual
  * @author Juan Sutil
  * */
-public class Categoria implements Comparable<Categoria>{
+public class Category implements Comparable<Category>{
 	
 	/**
 	 * Nombre de la categoria
@@ -20,7 +20,7 @@ public class Categoria implements Comparable<Categoria>{
 	 * @param name Nombre de la categoria
 	 * @param description Descripcion de la categoria
 	 * */
-	public Categoria(String name, String descripction) {
+	public Category(String name, String descripction) {
 		this.name = name;
 		this.description = descripction;
 	}
@@ -68,11 +68,11 @@ public class Categoria implements Comparable<Categoria>{
 	
 	/**
 	 * Compara entre dos categorias
-	 * @param o Categoria con la se quiere comprobar
+	 * @param o Category con la se quiere comprobar
 	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si este nombre es menor que el nombre de o; y un valor superior a 0 si este nombre es mayor que el nombre de o.
 	 * */
 	@Override
-	public int compareTo(Categoria o) {
+	public int compareTo(Category o) {
 		return this.name.compareTo(o.name);
 	}	
 	

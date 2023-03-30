@@ -15,12 +15,22 @@ import clases.MyScanner;
 
 public class MenuDirector
 {
+	Audiovisual a;
+	
+	
+	
+	public MenuDirector(Audiovisual a) {
+		this.a = a;
+	}
+
+
 	/**
 	 * initialize the menu, it is the first stream fork
 	 * 
 	 * @param a Audiovisual with which you want to modifycate
 	 */
-    public void startMenu(Audiovisual a) 
+	
+    public void startMenu() 
     {
         int menu;
         do 
@@ -45,7 +55,7 @@ public class MenuDirector
             {
                 case 1 -> 
                 {
-                    boolean b = addDirector(a);
+                    boolean b = addDirector();
                     if (b) 
                     {
                         System.out.println("Actor introducido correctamente");
@@ -56,7 +66,7 @@ public class MenuDirector
                 }
                 case 2 -> 
                 {
-                    boolean b = deleteDirector(a);
+                    boolean b = deleteDirector();
                     if (b) 
                     {
                         System.out.println("Actor borrado correctamente");
@@ -68,7 +78,7 @@ public class MenuDirector
                 case 3 -> 
                 {
 
-                    boolean b = modifyDirector(a);
+                    boolean b = modifyDirector();
                     if (b)
                     {
                         System.out.println("Actor modificado correctamente");
@@ -79,7 +89,7 @@ public class MenuDirector
                 }
                 case 4 -> 
                 {
-                    int b = findDirector(a);
+                    int b = findDirector();
                     if (b == 0) 
                     {
                         System.out.println("No existen actores que cumplan su condicion");
@@ -97,14 +107,14 @@ public class MenuDirector
         } while (menu != 5);
     }
     
-    
+
 	/**
 	 * add a director
 	 * 
 	 * @param a Audiovisual con la se quiere comprobar
 	 * @return true or false depending on whether it has been executed or not
 	 */
-	public boolean addDirector(Audiovisual a)
+	public boolean addDirector()
 	{
 
 		try
@@ -136,7 +146,7 @@ public class MenuDirector
 	*
 	* @param a Audiovisual to extract the list from
 	*/
-	public void displayDirectores(Audiovisual a) 
+	public void displayDirectores() 
 	{
 
 		Director Directores[] = a.getdirectors();
@@ -158,10 +168,10 @@ public class MenuDirector
 	* @return position of the Array where the director is located
 	* if it doesn't find it, it returns -1
 	*/
-	public int selectDirector(Audiovisual a)
+	public int selectDirector()
 	{
 
-		displayDirectores(a);
+		displayDirectores();
 
 		System.out.println("--------------------");
 		System.out.print("Introduzca el Director (su numero) que quiera seleccionar: ");
@@ -185,12 +195,12 @@ public class MenuDirector
 	*
 	* @param b Audiovisual from which gets the array.
 	*/
-	public boolean modifyDirector(Audiovisual b) 
+	public boolean modifyDirector() 
 	{
-                int pos = selectDirector(b);
+                int pos = selectDirector();
                 if(pos != -1)
                 {
-                    Director a = b.getdirectors()[pos];
+                    Director a = this.a.getdirectors()[pos];
                     System.out.println("--------------------");
                     System.out.println(" Te muestro las posibles modificaciones" + "1.- name" + "2.- lastname" + "3.- gender"
                                     + "4.- age" + "5.- nationality");
@@ -250,12 +260,12 @@ public class MenuDirector
 	*
 	* @param to Audiovisual from which to obtain the array that the director removes
 	*/
-	public boolean deleteDirector(Audiovisual a)
+	public boolean deleteDirector()
 	{
-		int posicion = selectDirector(a);
+		int posicion = selectDirector();
                 if (posicion != -1) 
                 {
-                    a.deletedirectors(posicion);
+                    this.a.deletedirectors(posicion);
                     return true;
                 } else 
                 {
@@ -266,7 +276,7 @@ public class MenuDirector
 	* Compare between two categories
 	* @param a Audiovisual from which the array in which the director performs the search is obtained
 	*/
-	public int findDirector(Audiovisual a)
+	public int findDirector()
 	{
 		System.out.println(" Te muestro las posibles claves de busqueda" + "1.- name" + "2.- lastname" + "3.- gender"
 				+ "4.- age" + "5.- nationality");
@@ -282,7 +292,7 @@ public class MenuDirector
 			{
 				System.out.println("dime nombre");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Director d : this.a.getdirectors())
 				{
 					if (d.getName().equals(newText))
 					{
@@ -296,7 +306,7 @@ public class MenuDirector
 			{
 				System.out.println("dime apellido");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Director d : this.a.getdirectors())
 				{
 					if (d.getLastname().equals(newText))
 					{
@@ -310,7 +320,7 @@ public class MenuDirector
 			{
 				System.out.println("dime genero");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Director d : this.a.getdirectors())
 				{
 					if (d.getgender().equals(newText))
 					{
@@ -323,7 +333,7 @@ public class MenuDirector
 			{
 				System.out.println("dime edad");
 				int newText = Integer.parseInt(MyScanner.scanner.nextLine());
-				for (Director d : a.getdirectors())
+				for (Director d : this.a.getdirectors())
 				{
 					if (d.getAge() == (newText)) 
 					{
@@ -337,7 +347,7 @@ public class MenuDirector
 			{
 				System.out.println("dime nacionalidad");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : a.getdirectors())
+				for (Director d : this.a.getdirectors())
 				{
 					if (d.getNationality().equals(newText))
 					{
