@@ -8,7 +8,7 @@ import menus.MenuGeneralAudiovisuales;
 public class main2 {
     public static void main(String[] args) {
         Audiovisual actor1 = new Audiovisual("El duende malvado",  "Spain", 2008,  1000);
-        MenuActores m1 = new MenuActores(actor1);
+        MenuCategorias m1 = new MenuCategorias(actor1);
         m1.startMenu();
         
     }
