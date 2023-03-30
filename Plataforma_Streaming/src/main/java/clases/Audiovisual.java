@@ -53,7 +53,8 @@ public class Audiovisual implements Comparable<Audiovisual> {
     }
 
     public void deletesupportingActores(int pos) {
-        System.arraycopy(supportingActores, pos, supportingActores, pos +1, supportingActores.length-pos+1);
+        if(pos < this.supportingActores.length)
+            System.arraycopy(supportingActores, pos+1, supportingActores, pos, supportingActores.length-pos-1);
         this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length-1);
     }
 
@@ -80,7 +81,8 @@ public class Audiovisual implements Comparable<Audiovisual> {
     }
 
     public void deleteCategoria(int pos) {
-        System.arraycopy(categories, pos, categories, pos +1, categories.length-pos+1);
+        if(pos < this.categories.length)
+            System.arraycopy(categories, pos+1, categories, pos, categories.length-pos-1);
         this.categories = Arrays.copyOf(this.categories, this.categories.length-1);
     }
 
@@ -93,13 +95,13 @@ public class Audiovisual implements Comparable<Audiovisual> {
     }
     
     public void adddirectors(Director  newdirectors ){
-    	
         this.directors = Arrays.copyOf(this.directors, this.directors.length+1);
         this.directors[this.directors.length-1] = newdirectors;
     }
 
     public void deletedirectors(int pos) {
-        System.arraycopy(directors, pos, directors, pos +1, directors.length-pos+1);
+        if(pos < this.directors.length)
+            System.arraycopy(directors, pos+1, directors, pos, directors.length-pos-1);
         this.directors = Arrays.copyOf(this.directors, this.directors.length-1);
     }
  
@@ -127,7 +129,8 @@ public class Audiovisual implements Comparable<Audiovisual> {
     
 
     public void deleteSubtitulos(int pos) {
-        System.arraycopy(Subtitulos, pos, Subtitulos, pos +1, Subtitulos.length-pos+1);
+        if(pos < this.Subtitulos.length)
+            System.arraycopy(Subtitulos, pos+1, Subtitulos, pos, Subtitulos.length-pos-1);
         this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length-1);
     }
 
@@ -176,7 +179,8 @@ public class Audiovisual implements Comparable<Audiovisual> {
 	    }
 
 	    public void deleteRecommendations(int pos) {
-	        System.arraycopy(recommendations, pos, recommendations, pos +1, recommendations.length-pos+1);
+                if(pos < this.recommendations.length)
+                    System.arraycopy(recommendations, pos+1, recommendations, pos, recommendations.length-pos-1);
 	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length-1);
 	    }
    
