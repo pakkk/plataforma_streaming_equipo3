@@ -1,7 +1,6 @@
 package menus;
 
-import clases.Audiovisual;
-import clases.Director;
+import clases.*;
 import java.util.Scanner;
 
 /**
@@ -134,17 +133,14 @@ public class MenuStatistics {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter a list of categories separated by commas: ");
     String input = scanner.nextLine();
-    String[] categories = input.split(",");
     boolean found = false;
     for (Audiovisual a : audioVisuals)
     {
-        for (String Categoria : categories)
+        for (Categoria c : a.getcategories())
         {
-            if (a.hasCategoria(Categoria.trim()))
-            {
+            if (input.contains(c.getName())){
                 System.out.println(a.toString());
                 found = true;
-                break;
             }
         }
     }
