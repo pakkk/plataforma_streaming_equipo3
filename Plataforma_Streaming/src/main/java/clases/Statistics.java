@@ -1,23 +1,19 @@
 package clases;
 
+import java.util.*;
 import java.util.InputMismatchException;
 
 
 public class Statistics {
-    /**
-     *Constructor parametrized
-     * Show the representation the object for if enter name the actor 
-     * the programming show the films the this actor
-     * @param audioVisuals Arrays class Audiovisuales
-     */
+
     public void Actors(Audiovisual[] audioVisuals) {
 
-        String nombre = "";
+        String name = "";
         boolean stop = true;
         do {
-            try  {
+            try ( Scanner scanner = new Scanner(System.in);) {
 
-                nombre = MyScanner.scanner.nextLine();
+                name = scanner.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
@@ -26,21 +22,17 @@ public class Statistics {
         } while (stop);
 
         for (Audiovisual a : audioVisuals) {
-            if (isActor(a, nombre)) {
+            if (isActor(a, name)) {
                 System.out.println(a.toString());
             }
         }
     }
-    /**
-     *Constructor parametrized
-     * Method for know if is Actor the one films
-     * @param audioVisuals Arrays class Audiovisuales
-     */
-    private boolean isActor(Audiovisual a, String nombre) {
+
+    private boolean isActor(Audiovisual a, String name) {
         Actor[] act = a.getsupportingActores();
         for (Actor actor : act) {
 
-            if (actor.getName().equals(nombre)) {
+            if (actor.getName().equals(name)) {
                 return true;
             }
         }
