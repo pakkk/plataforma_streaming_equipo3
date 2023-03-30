@@ -75,13 +75,13 @@ public class Statistics {
     /**
      * Return true or false if Genders is in the array
      * @param audioVisuals Arrays class Audiovisual
-     * @param name String Categoria
+     * @param name String Category
      */
 
 
     private boolean isGender (Audiovisual a, String Categorie) {
-        Categoria[] act = a.getcategories();
-        for (Categoria Gender : act) {
+        Category[] act = a.getcategories();
+        for (Category Gender : act) {
 
             if (Gender.getName().equals(Categorie)) {
                 return true;
