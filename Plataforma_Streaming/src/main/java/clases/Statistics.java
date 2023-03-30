@@ -56,9 +56,9 @@ public class Statistics {
         String gender = "";
         boolean stop = true;
         do {
-            try ( Scanner scanner = new Scanner(System.in);) {
+            try { 
 
-            	gender = scanner.nextLine();
+            	gender = MyScanner.scanner.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
@@ -72,12 +72,13 @@ public class Statistics {
             }
         }
     }
-
+    
     /**
-     * Return true or false if Genders is in the array
+     * Return true or false if Gender is in the array
      * @param audioVisuals Arrays class Audiovisual
-     * @param name String Category
+     * @param name String Gender
      */
+
     private boolean isGender (Audiovisual a, String Categorie) {
         Category[] act = a.getcategories();
         for (Category Gender : act) {
@@ -89,14 +90,19 @@ public class Statistics {
         return false;
     }
     
+    /**
+     * Enter by console name the Subtitles and show the films the this Subtitles
+     * @param audioVisuals Arrays class Audiovisual
+     */
+    
     public void Subtitles (Audiovisual[] audioVisuals) {
 
         String subtitles = "";
         boolean stop = true;
         do {
-            try ( Scanner scanner = new Scanner(System.in);) {
+            try  {
 
-            	subtitles = scanner.nextLine();
+            	subtitles = MyScanner.scanner.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid subtitle");
@@ -111,6 +117,11 @@ public class Statistics {
         }
     }
     
+    /**
+     * Return true or false if Subtitles is in the array
+     * @param audioVisuals Arrays class Audiovisual
+     * @param name String Subtitles.
+     */
 
     private boolean isSubtitles (Audiovisual a, String LanguajeSubtitle) {
     	Subtitles[] act = a.getSubtitulos();
@@ -121,5 +132,8 @@ public class Statistics {
             }
         }
         return false;
-    } 
+    }
+    
+    
+    
 }
