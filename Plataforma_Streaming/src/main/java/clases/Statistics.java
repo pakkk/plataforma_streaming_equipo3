@@ -72,17 +72,12 @@ public class Statistics {
             }
         }
     }
-<<<<<<< HEAD
-    
-=======
+
     /**
      * Return true or false if Genders is in the array
      * @param audioVisuals Arrays class Audiovisual
      * @param name String Category
      */
-
->>>>>>> 8bccfde80ea60690d4615cb6428f77e8ea6ace95
-
     private boolean isGender (Audiovisual a, String Categorie) {
         Category[] act = a.getcategories();
         for (Category Gender : act) {
@@ -126,8 +121,5 @@ public class Statistics {
             }
         }
         return false;
-    }
-    
-    
-    
+    } 
 }
