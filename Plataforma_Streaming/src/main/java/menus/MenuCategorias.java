@@ -1,7 +1,7 @@
 package menus;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
+
 
 import clases.*;
 
@@ -28,19 +28,17 @@ public class MenuCategorias {
             System.out.println("3.- Modify an categories");
             System.out.println("4.- Search an categories");
             System.out.println("5.- Exit");
-            Scanner scanner = null;
+            
             try{
-                scanner = new Scanner(System.in);
-                menu = scanner.nextInt();
+               
+                menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (InputMismatchException ex) {
                 menu = 0;
-            }finally{
-                scanner.close();
             }
 
             switch (menu) {
                 case 1 -> {
-                    boolean b = addActor();
+                    boolean b = addCategorias();
                     if (b) {
                         System.out.println("Actor introducido correctamente");
                     } else {
@@ -48,7 +46,7 @@ public class MenuCategorias {
                     }
                 }
                 case 2 -> {
-                    boolean b = deleteActor();
+                    boolean b = deleteCategories();
                     if (b) {
                         System.out.println("Actor borrado correctamente");
                     } else {
@@ -57,7 +55,7 @@ public class MenuCategorias {
                 }
                 case 3 -> {
 
-                    boolean b = modifyActor();
+                    boolean b = modifyCategories();
                     if (b) {
                         System.out.println("Actor modificado correctamente");
                     } else {
@@ -65,7 +63,7 @@ public class MenuCategorias {
                     }
                 }
                 case 4 -> {
-                    int b = findActor();
+                    int b = findCategories();
                     if (b == 0) {
                         System.out.println("No existen actores que cumplan su condicion");
                     }
@@ -79,7 +77,7 @@ public class MenuCategorias {
             }
         } while (menu != 5);
     }
-	public Audiovisual addCategorias()
+	public boolean addCategorias()
 	{
 
 		try 
@@ -89,21 +87,20 @@ public class MenuCategorias {
 			System.out.print("Enter name: ");
 			String name = MyScanner.scanner.nextLine();
 			System.out.print("Enter the description");
-			String description =  MyScanner.scanner.next();
+			String description =  MyScanner.scanner.nextLine();
 			Categoria categorie = new Categoria(name,description);
 			this.a.addcategories(categorie);
-			return this.a;
+			return true;
 		} 
 		catch (InputMismatchException e) 
 		{
-			return null;
+			return false;
 		}
 	}
 
 	/**
 	 * Shows the categories that an Audiovisual has
 	 * 
-	 * @param a Audiovisual del que extraer la lista
 	 */
 	public void displayCategories() 
 	{
@@ -123,7 +120,6 @@ public class MenuCategorias {
 	/**
 	 * Select a category from the list
 	 * 
-	 * @param a Audiovisual from which you want to select
 	 * @return Array position where the category is located
 	 * if it doesn't find it, it returns -1
 	 */
@@ -139,7 +135,7 @@ public class MenuCategorias {
 		{
 			option = Integer.parseInt(MyScanner.scanner.nextLine());
 			if ((option > 0) && (option < a.getcategories().length))
-				return option - 1;
+				return option -1;
 			else
 				return -1;
 		} 
@@ -152,76 +148,89 @@ public class MenuCategorias {
 	/**
 	 * Compare between two categories
 	 * 
-	 * @param pos int position of the array where it is located
-	 * @param b Audiovisual from which gets the array.
+     * @return 
 	 */
-	public void modifyCategories(int pos) 
+	public boolean modifyCategories() 
 	{
-		
-		Categoria a = this.a.getcategories()[pos];
-		System.out.println("--------------------");
-		System.out.println(" I show you the possible modifications\n"
-				+ "1.Name\n"
-				+ "2.Description");
-		
-		int atributte;
+		int pos=selectCategories();
+                if (pos != -1) {
+                    Categoria cat = this.a.getcategories()[pos];
+                    System.out.println("--------------------");
+                    System.out.println("""
+                                        I show you the possible modifications
+                                       1.Name
+                                       2.Description""");
 
-		try 
-		{
-			atributte = Integer.parseInt(MyScanner.scanner.nextLine());
-			switch (atributte)
-			{
-			case 1:
-			{
-				System.out.println("Enter new name");
-				String newText = MyScanner.scanner.nextLine();
-				this.a.setName(newText);
-				break;
-			}
-			case 2: 
-			{
-				System.out.println("Enter new description");
-				String newText = MyScanner.scanner.next();
-				this.a.setDescription(newText);
-				break;
-			}
-			
-			}
-		} 
-		catch (NumberFormatException ex)
-		{
+                    int atributte;
 
-			System.out.println("error option");
-		}
-	}
+                    try 
+                    {
+                            atributte = Integer.parseInt(MyScanner.scanner.nextLine());
+                            switch (atributte)
+                            {
+                            case 1 -> 			{
+                                    System.out.println("Enter new name");
+                                    String newText = MyScanner.scanner.nextLine();
+                                    cat.setName(newText);
+                                    return true;
+                            }
+                            
+                            case 2 -> 			{
+                                    System.out.println("Enter new description");
+                                    String newText = MyScanner.scanner.next();
+                                    cat.setDescription(newText);
+                                    return true;
+                            }
+                            default->{
+                                return false;
+                            }
+                            }
+                    } 
+                    catch (NumberFormatException ex)
+                    {
+
+
+                            return false;
+                    }
+                  
+                }else{
+                    return false;
+                }
+            }
 	/**
 	 * Compare between two categories
 	 * 
-	 * @param a Audiovisual from which the array is obtained from which the category is eliminated
+        * @return 
 	 */
-	public void deleteCategories()
-	{
-		int posicion = selectCategories();
-		a.deleteCategoria(posicion);
-	}
+	public boolean deleteCategories() {
+        int posicion = selectCategories();
+        if (posicion != -1) {
+            this.a.deleteCategoria(posicion);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 	/**
 	 * Compara entre dos categorias
-	 * @param a Audiovisual del que se obtiene el array en que se ejerce la busqueda el director
+     * @return 
 	 */
-	public void findCategories()
+	public int findCategories()
 	{
-		System.out.println(" I show you the possible search keys\n"
-				+ "1.Name"
-				+ "2.Description");
+		System.out.println("""
+                                    I show you the possible search keys
+                                   1.Name
+                                   2.Description""");
 
-		int atributte;
+		int atributte,cant=0;
 
 		try 
 		{
 			atributte = Integer.parseInt(MyScanner.scanner.nextLine());
 			
 			switch(atributte) {
-				case 1:{
+				case 1 -> {
 					System.out.println("Enter name");
 					String newText = MyScanner.scanner.nextLine();
 					for (Categoria d : a.getcategories())
@@ -229,13 +238,13 @@ public class MenuCategorias {
 						if (d.getName().equals(newText))
 						{
 							System.out.println(d.toString());
+                                                        cant++;
 						}
 					
 					}
 
 				}
-				break;
-				case 2:{
+				case 2 -> {
 					System.out.println("Enter description");
 					String newText = MyScanner.scanner.nextLine();
 					for (Categoria d : a.getcategories())
@@ -243,21 +252,26 @@ public class MenuCategorias {
 						if (d.getDescription().contains(newText))
 						{
 							System.out.println(d.toString());
+                                                        cant++;
 						}
 					
 					}
 
 				}
-				break;
+                                default->{
+                                    return -1;
+                                }
 			}
 			
 			
 					} 
 		catch (NumberFormatException ex) 
 		{
+                    return -1;
 
-			System.out.println("error option");
+                    
 		}
+                return cant;
 	}
 
 }
