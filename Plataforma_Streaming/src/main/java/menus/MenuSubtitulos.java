@@ -14,7 +14,7 @@ public class MenuSubtitulos {
         this.a = a;
     }
 
-    public void mostrarMenu() {
+    public void starMenu() {
         int opcion;
         do {
             System.out.println("\n-- SUBTITLES MENU --");
