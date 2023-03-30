@@ -3,8 +3,7 @@ package menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import clases.Audiovisual;
-import clases.Categoria;
+import clases.*;
 
 public class MenuCategorias {
 	/**
@@ -13,20 +12,87 @@ public class MenuCategorias {
 	 * @param to Audiovisual with which you want to check
 	 * @return an Audiovisual with the added category
 	 */
-	public Audiovisual addCategorias(Audiovisual a)
+    Audiovisual a;
+
+    public MenuCategorias(Audiovisual a) {
+        this.a = a;
+    }
+        public void startMenu() {
+        int menu;
+        do {
+
+            System.out.println("----------------------------------------");
+            System.out.println("----MENU CATEGORIES----");
+            System.out.println("1.- Add a new categories");
+            System.out.println("2.- Delete an categories");
+            System.out.println("3.- Modify an categories");
+            System.out.println("4.- Search an categories");
+            System.out.println("5.- Exit");
+            Scanner scanner = null;
+            try{
+                scanner = new Scanner(System.in);
+                menu = scanner.nextInt();
+            } catch (InputMismatchException ex) {
+                menu = 0;
+            }finally{
+                scanner.close();
+            }
+
+            switch (menu) {
+                case 1 -> {
+                    boolean b = addActor();
+                    if (b) {
+                        System.out.println("Actor introducido correctamente");
+                    } else {
+                        System.out.println("Actor no introducido");
+                    }
+                }
+                case 2 -> {
+                    boolean b = deleteActor();
+                    if (b) {
+                        System.out.println("Actor borrado correctamente");
+                    } else {
+                        System.out.println("El actor no pudo ser borrado");
+                    }
+                }
+                case 3 -> {
+
+                    boolean b = modifyActor();
+                    if (b) {
+                        System.out.println("Actor modificado correctamente");
+                    } else {
+                        System.out.println("El actor no pudo ser modificado");
+                    }
+                }
+                case 4 -> {
+                    int b = findActor();
+                    if (b == 0) {
+                        System.out.println("No existen actores que cumplan su condicion");
+                    }
+                }
+                case 5 -> {
+                    
+                }
+                default -> {
+                    System.out.println("Opcion invalida");
+                }
+            }
+        } while (menu != 5);
+    }
+	public Audiovisual addCategorias()
 	{
 
-		try (Scanner sc = new Scanner(System.in))
+		try 
 		{
 
 			System.out.println("--------------------");
 			System.out.print("Enter name: ");
-			String name = sc.nextLine();
+			String name = MyScanner.scanner.nextLine();
 			System.out.print("Enter the description");
-			String description = sc.next();
+			String description =  MyScanner.scanner.next();
 			Categoria categorie = new Categoria(name,description);
-			a.addcategories(categorie);
-			return a;
+			this.a.addcategories(categorie);
+			return this.a;
 		} 
 		catch (InputMismatchException e) 
 		{
@@ -39,7 +105,7 @@ public class MenuCategorias {
 	 * 
 	 * @param a Audiovisual del que extraer la lista
 	 */
-	public void displayCategories(Audiovisual a) 
+	public void displayCategories() 
 	{
 
 		Categoria Categories[] = a.getcategories();
@@ -61,23 +127,23 @@ public class MenuCategorias {
 	 * @return Array position where the category is located
 	 * if it doesn't find it, it returns -1
 	 */
-	public int selectCategories(Audiovisual a)
+	public int selectCategories()
 	{
 
-		displayCategories(a);
+		displayCategories();
 
 		System.out.println("--------------------");
 		System.out.print("Enter categories (number) you want to select: ");
 		int option;
-		try (Scanner sc = new Scanner(System.in))
+		try 
 		{
-			option = sc.nextInt();
+			option = Integer.parseInt(MyScanner.scanner.nextLine());
 			if ((option > 0) && (option < a.getcategories().length))
 				return option - 1;
 			else
 				return -1;
 		} 
-		catch (InputMismatchException e)
+		catch (NumberFormatException e)
 		{
 			return -1;
 		}
@@ -89,10 +155,10 @@ public class MenuCategorias {
 	 * @param pos int position of the array where it is located
 	 * @param b Audiovisual from which gets the array.
 	 */
-	public void modifyCategories(int pos, Audiovisual b) 
+	public void modifyCategories(int pos) 
 	{
 		
-		Categoria a = b.getcategories()[pos];
+		Categoria a = this.a.getcategories()[pos];
 		System.out.println("--------------------");
 		System.out.println(" I show you the possible modifications\n"
 				+ "1.Name\n"
@@ -100,29 +166,29 @@ public class MenuCategorias {
 		
 		int atributte;
 
-		try (Scanner scanner = new Scanner(System.in))
+		try 
 		{
-			atributte = scanner.nextInt();
+			atributte = Integer.parseInt(MyScanner.scanner.nextLine());
 			switch (atributte)
 			{
 			case 1:
 			{
 				System.out.println("Enter new name");
-				String newText = scanner.nextLine();
-				a.setName(newText);
+				String newText = MyScanner.scanner.nextLine();
+				this.a.setName(newText);
 				break;
 			}
 			case 2: 
 			{
 				System.out.println("Enter new description");
-				String newText = scanner.next();
-				a.setDescription(newText);
+				String newText = MyScanner.scanner.next();
+				this.a.setDescription(newText);
 				break;
 			}
 			
 			}
 		} 
-		catch (InputMismatchException ex)
+		catch (NumberFormatException ex)
 		{
 
 			System.out.println("error option");
@@ -133,16 +199,16 @@ public class MenuCategorias {
 	 * 
 	 * @param a Audiovisual from which the array is obtained from which the category is eliminated
 	 */
-	public void deleteCategories(Audiovisual a)
+	public void deleteCategories()
 	{
-		int posicion = selectCategories(a);
+		int posicion = selectCategories();
 		a.deleteCategoria(posicion);
 	}
 	/**
 	 * Compara entre dos categorias
 	 * @param a Audiovisual del que se obtiene el array en que se ejerce la busqueda el director
 	 */
-	public void findCategories(Audiovisual a)
+	public void findCategories()
 	{
 		System.out.println(" I show you the possible search keys\n"
 				+ "1.Name"
@@ -150,14 +216,14 @@ public class MenuCategorias {
 
 		int atributte;
 
-		try (Scanner scanner = new Scanner(System.in)) 
+		try 
 		{
-			atributte = scanner.nextInt();
+			atributte = Integer.parseInt(MyScanner.scanner.nextLine());
 			
 			switch(atributte) {
 				case 1:{
 					System.out.println("Enter name");
-					String newText = scanner.nextLine();
+					String newText = MyScanner.scanner.nextLine();
 					for (Categoria d : a.getcategories())
 					{
 						if (d.getName().equals(newText))
@@ -171,7 +237,7 @@ public class MenuCategorias {
 				break;
 				case 2:{
 					System.out.println("Enter description");
-					String newText = scanner.nextLine();
+					String newText = MyScanner.scanner.nextLine();
 					for (Categoria d : a.getcategories())
 					{
 						if (d.getDescription().contains(newText))
@@ -187,7 +253,7 @@ public class MenuCategorias {
 			
 			
 					} 
-		catch (InputMismatchException ex) 
+		catch (NumberFormatException ex) 
 		{
 
 			System.out.println("error option");
