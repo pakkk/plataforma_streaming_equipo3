@@ -23,11 +23,14 @@ public class MenuActores {
             System.out.println("3.- Modify an actor");
             System.out.println("4.- Search an actor");
             System.out.println("5.- Exit");
-
-            try ( Scanner scanner = new Scanner(System.in)) {
+            Scanner scanner = null;
+            try{
+                scanner = new Scanner(System.in);
                 menu = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 menu = 0;
+            }finally{
+                scanner.close();
             }
 
             switch (menu) {
