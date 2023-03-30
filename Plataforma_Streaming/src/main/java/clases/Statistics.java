@@ -47,6 +47,10 @@ public class Statistics {
         return false;
     }
     
+    /**
+     * Enter by console name the Genders and show the films the this Genders
+     * @param audioVisuals Arrays class Audiovisual
+     */
     public void Genders (Audiovisual[] audioVisuals) {
 
         String gender = "";
@@ -68,6 +72,12 @@ public class Statistics {
             }
         }
     }
+    /**
+     * Return true or false if Genders is in the array
+     * @param audioVisuals Arrays class Audiovisual
+     * @param name String Categoria
+     */
+
 
     private boolean isGender (Audiovisual a, String Categorie) {
         Categoria[] act = a.getcategories();
