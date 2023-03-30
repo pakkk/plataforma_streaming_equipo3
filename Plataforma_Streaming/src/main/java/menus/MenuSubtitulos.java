@@ -20,15 +20,11 @@ public class MenuSubtitulos {
         this.a = a;
     }
 
-<<<<<<< HEAD
-    public void starMenu() {
-=======
     /**
      * Este método muestra el menú y llama a los métodos correspondientes para
      * cada opción.
      */
     public void mostrarMenu() {
->>>>>>> branch 'main' of https://github.com/pakkk/plataforma_streaming_equipo3.git
         int opcion;
         do {
             //Mostrar opciones del menú
