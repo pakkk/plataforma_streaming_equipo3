@@ -88,7 +88,9 @@ public class MenuGeneralAudiovisuales
 			System.out.println("dime un titulo para el audiovisual");
 			String clave = MyScanner.scanner.nextLine();
 			Arrays.sort(dataBase);
-			position = Arrays.binarySearch(dataBase, clave);
+                        Audiovisual v = new Audiovisual();
+                        v.settitle(clave);
+			position = Arrays.binarySearch(dataBase, v);
 			a = dataBase[position];
 
 		} catch (NumberFormatException e) 
