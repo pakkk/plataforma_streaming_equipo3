@@ -115,7 +115,48 @@ public class main {
                         }
                     }
                     case 2 -> {
-                        System.out.println("Estadisticas por hacer");
+                        boolean s1 = true;
+                        while(s1){
+                            
+                            System.out.println("\r\n"
+                                    + "		System.out.println(\"----------------------------------------\");\r\n"
+                                    + "		System.out.println(\"----MENU ESTADISTICAS----\");\r\n"
+                                    + "		System.out.println(\"1.- Numero de audiovisuales\");\r\n"
+                                    + "		System.out.println(\"2.- Buscar audiovisuales por genero\");\r\n"
+                                    + "		System.out.println(\"3.- Buscar audiovisuales por directores\");\r\n"
+                                    + "		System.out.println(\"4.- Buscar audiovisuales por actores\");\r\n"
+                                    + "		System.out.println(\"5.- Buscar audiovisuales por subtitulos\");\r\n"
+                                    + "		System.out.println(\"6.- Mejores recomendaciones\");\r\n"
+                                    + "		System.out.println(\"7.- Peores recomendaciones\");\r\n"
+                                    + "		System.out.println(\"8.- Salir");
+                            
+                            try {
+                                menu = Integer.parseInt(MyScanner.scanner.nextLine());
+                                
+                                switch (menu) {
+                                    case 1 -> {
+                                    }
+                                    case 2 -> {
+                                    }
+                                    case 3 -> {
+                                    }
+                                    case 4 -> {
+                                    }
+                                    case 5 -> {
+                                    }
+                                    case 6 -> {
+                                    }
+                                    case 7 -> {
+                                    }
+                                    case 8 -> {
+                                        s1 = false;
+                                    }
+                                    default -> System.out.println("Opcion incorrecta");
+                                }
+                                
+                            } catch (NumberFormatException e) {
+                            }
+                        }
                     }
                     case 3 -> {
                         System.out.println("Adios");
