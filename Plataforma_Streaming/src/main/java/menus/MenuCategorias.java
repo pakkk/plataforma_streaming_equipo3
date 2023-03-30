@@ -101,7 +101,7 @@ public class MenuCategorias {
                     String name = MyScanner.scanner.nextLine();
                     System.out.print("Enter the description");
                     String description =  MyScanner.scanner.nextLine();
-                    Categoria categorie = new Categoria(name,description);
+                    Category categorie = new Category(name,description);
                     this.a.addcategories(categorie);
                     return true;
             } 
@@ -118,7 +118,7 @@ public class MenuCategorias {
     public void displayCategories() 
     {
 
-            Categoria Categories[] = a.getcategories();
+            Category Categories[] = a.getcategories();
 
             System.out.println("--------------------");
             System.out.println("List the Categories: ");
@@ -171,7 +171,7 @@ public class MenuCategorias {
 
 
 
-        Categoria cat = this.a.getcategories()[pos];
+        Category cat = this.a.getcategories()[pos];
         System.out.println("--------------------");
         System.out.println("""
                             I show you the possible modifications
@@ -249,7 +249,7 @@ public class MenuCategorias {
                         case 1 -> {
                                 System.out.println("Enter name");
                                 String newText = MyScanner.scanner.nextLine();
-                                for (Categoria d : a.getcategories())
+                                for (Category d : a.getcategories())
                                 {
                                         if (d.getName().equals(newText))
                                         {
@@ -263,7 +263,7 @@ public class MenuCategorias {
                         case 2 -> {
                                 System.out.println("Enter description");
                                 String newText = MyScanner.scanner.nextLine();
-                                for (Categoria d : a.getcategories())
+                                for (Category d : a.getcategories())
                                 {
                                         if (d.getDescription().contains(newText))
                                         {

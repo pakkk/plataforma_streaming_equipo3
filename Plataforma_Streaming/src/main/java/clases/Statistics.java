@@ -14,9 +14,9 @@ public class Statistics {
         String name = "";
         boolean stop = true;
         do {
-            try ( Scanner scanner = new Scanner(System.in);) {
+            try{
 
-                name = scanner.nextLine();
+                name = MyScanner.scanner.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
@@ -47,6 +47,10 @@ public class Statistics {
         return false;
     }
     
+    /**
+     * Enter by console name the Genders and show the films the this Genders
+     * @param audioVisuals Arrays class Audiovisual
+     */
     public void Genders (Audiovisual[] audioVisuals) {
 
         String gender = "";
@@ -68,10 +72,16 @@ public class Statistics {
             }
         }
     }
+    /**
+     * Return true or false if Genders is in the array
+     * @param audioVisuals Arrays class Audiovisual
+     * @param name String Category
+     */
+
 
     private boolean isGender (Audiovisual a, String Categorie) {
-        Categoria[] act = a.getcategories();
-        for (Categoria Gender : act) {
+        Category[] act = a.getcategories();
+        for (Category Gender : act) {
 
             if (Gender.getName().equals(Categorie)) {
                 return true;

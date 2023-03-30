@@ -133,7 +133,7 @@ public class MenuStatistics {
     boolean found = false;
     for (Audiovisual a : audioVisuals)
     {
-        for (Categoria c : a.getcategories())
+        for (Category c : a.getcategories())
         {
             if (input.contains(c.getName())){
                 System.out.println(a.toString());

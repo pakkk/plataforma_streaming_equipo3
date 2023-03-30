@@ -13,7 +13,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
     String originalLanguage;
     Actor[] supportingActores;
     Director[] directors;
-    Categoria[] categories;
+    Category[] categories;
     Recommendations[] recommendations;
     int yearOfCreation;
     int views;
@@ -26,7 +26,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
     public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
     	
     	Subtitulos = new Subtitles[0];
-    	categories = new Categoria[0];
+    	categories = new Category[0];
     	directors = new Director[0];
     	supportingActores = new Actor[0];
     	recommendations= new Recommendations[0];
@@ -66,15 +66,15 @@ public class Audiovisual implements Comparable<Audiovisual> {
         this.yearOfCreation = yearOfCreation;
     }
     
-    public Categoria[] getcategories() {
+    public Category[] getcategories() {
         return categories;
     }
 
-    public void setcategories(Categoria[] categories) {
+    public void setcategories(Category[] categories) {
         this.categories = categories;
     }
     
-    public void addcategories(Categoria  nuevacategories ){
+    public void addcategories(Category  nuevacategories ){
     	
         this.categories = Arrays.copyOf(this.categories, this.categories.length+1);
         this.categories[this.categories.length-1] = nuevacategories;

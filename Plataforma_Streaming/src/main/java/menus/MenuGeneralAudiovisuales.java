@@ -10,7 +10,7 @@ import clases.*;
 public class MenuGeneralAudiovisuales
 {
 
-	 private Audiovisual[] dataBase;
+	private Audiovisual[] dataBase;
 	 	/**
 		 * asigna un valor para la base de datos
 		 * 
@@ -34,41 +34,41 @@ public class MenuGeneralAudiovisuales
 	public void addAudiovisual() 
 	{
 
-		try (Scanner scanner = new Scanner(System.in)) 
+		try
 		{
 			System.out.println("1:- Modificar Pelicula" + "\n" + "2:-Modificar Serie");
-			int menu = scanner.nextInt();
+			int menu = Integer.parseInt(MyScanner.scanner.nextLine());
 
 			if (menu == 1)
 			{
 				System.out.println("dime un titulo para el audiovisual");
-				String title = scanner.nextLine();
+				String title = MyScanner.scanner.nextLine();
 				System.out.println("dime un lenguage para el audiovisual");
-				String originalLanguage = scanner.nextLine();
+				String originalLanguage = MyScanner.scanner.nextLine();
 				System.out.println("dime una año para el audiovisual");
-				int yearOfCreation = scanner.nextInt();
+				int yearOfCreation = Integer.parseInt(MyScanner.scanner.nextLine());
 				int views = 0;
 				System.out.println("dime una duracion para el audiovisual");
-				int duration = scanner.nextInt();
+				int duration = Integer.parseInt(MyScanner.scanner.nextLine());
 				dataBase = Arrays.copyOf(dataBase, dataBase.length + 1);
 				dataBase[dataBase.length - 1] = new Films(title, originalLanguage, yearOfCreation, views, duration);
 			} else if (menu == 2)
 			{
 				System.out.println("dime un titulo para el audiovisual");
-				String title = scanner.nextLine();
+				String title = MyScanner.scanner.nextLine();
 				System.out.println("dime un lenguage para el audiovisual");
-				String originalLanguage = scanner.nextLine();
+				String originalLanguage = MyScanner.scanner.nextLine();
 				System.out.println("dime una año para el audiovisual");
-				int yearOfCreation = scanner.nextInt();
+				int yearOfCreation = Integer.parseInt(MyScanner.scanner.nextLine());
 				int views = 0;
 				System.out.println("dime las temporadas para el audiovisual");
-				int episodes = scanner.nextInt();
+				int episodes = Integer.parseInt(MyScanner.scanner.nextLine());
 				System.out.println("dime los episodios para el audiovisual");
-				int season = scanner.nextInt();
+				int season = Integer.parseInt(MyScanner.scanner.nextLine());
 				dataBase = Arrays.copyOf(dataBase, dataBase.length + 1);
 				dataBase[dataBase.length - 1] = new Serie(title, originalLanguage, yearOfCreation, views, episodes,season);
 			}
-		} catch (InputMismatchException e) 
+		} catch (NumberFormatException e) 
 		{
 			System.out.println(" no se ha podido crear");
 		}
@@ -82,16 +82,16 @@ public class MenuGeneralAudiovisuales
 		Audiovisual a = null;
 		int position = 0;
 
-		try (Scanner escanner = new Scanner(System.in)) 
+		try
 		{
 
 			System.out.println("dime un titulo para el audiovisual");
-			String clave = escanner.nextLine();
+			String clave = MyScanner.scanner.nextLine();
 			Arrays.sort(dataBase);
 			position = Arrays.binarySearch(dataBase, clave);
 			a = dataBase[position];
 
-		} catch (InputMismatchException e) 
+		} catch (NumberFormatException e) 
 		{
 			System.out.println(" no se ha podido crear");
 		}
@@ -103,10 +103,10 @@ public class MenuGeneralAudiovisuales
 	public void modifyAudiovisual() 
 	{
 		
-		try(Scanner scanner=new Scanner (System.in))
+		try
 		{
 			System.out.println("1:- Modificar Pelicula"+"\n"+"2:-Modificar Serie");
-			int menu=scanner.nextInt();
+			int menu = Integer.parseInt(MyScanner.scanner.nextLine());
 			if(menu==1) 
 			{
 				System.out.println("1:-modificar titulo ");
@@ -114,7 +114,7 @@ public class MenuGeneralAudiovisuales
 				System.out.println("3:-añadir año ");
 				System.out.println("4:- Añadir visita");
 				System.out.println("5:-Añadir duracion");
-				int option=scanner.nextInt();
+				int option=Integer.parseInt(MyScanner.scanner.nextLine());
 				Films a=(Films)findAudiovisual();
 				switch(option) 
 				{
@@ -163,7 +163,7 @@ public class MenuGeneralAudiovisuales
 					System.out.println("4:- Añadir visita");
 					System.out.println("5:-Añadir temporada");
 					System.out.println("5:-Añadir capitulos");
-					int option=scanner.nextInt();
+					int option=Integer.parseInt(MyScanner.scanner.nextLine());
 					Serie a=(Serie)findAudiovisual();
 					switch(option)
 					{
@@ -197,7 +197,7 @@ public class MenuGeneralAudiovisuales
 					case 5:
 					{
 						System.out.println("dime el nuevo valor de temporadas");
-						int temporadas = scanner.nextInt();
+						int temporadas = Integer.parseInt(MyScanner.scanner.nextLine());
 						a.setEpisodes(temporadas);
 						break;
 					}
@@ -205,7 +205,7 @@ public class MenuGeneralAudiovisuales
 					{
 					
 						System.out.println("dime el nuevo valor de capitulos");
-						int capitulos = scanner.nextInt();
+						int capitulos = Integer.parseInt(MyScanner.scanner.nextLine());
 						a.setSeasons(capitulos);
 						break;
 					}			
@@ -214,7 +214,7 @@ public class MenuGeneralAudiovisuales
 		
 		}
 		}
-		catch (InputMismatchException e)
+		catch (NumberFormatException e)
 		{
 			System.out.println(" no se ha podido crear");
 	}	
