@@ -23,14 +23,11 @@ public class MenuActores {
             System.out.println("3.- Modify an actor");
             System.out.println("4.- Search an actor");
             System.out.println("5.- Exit");
-            Scanner scanner = null;
-            try{
-                scanner = new Scanner(System.in);
-                menu = scanner.nextInt();
-            } catch (InputMismatchException ex) {
+
+            try {
+                menu = Integer.parseInt(MyScanner.scanner.nextLine());
+            } catch (NumberFormatException e) {
                 menu = 0;
-            }finally{
-                scanner.close();
             }
 
             switch (menu) {
@@ -66,7 +63,7 @@ public class MenuActores {
                     }
                 }
                 case 5 -> {
-                    
+
                 }
                 default -> {
                     System.out.println("Opcion invalida");
@@ -77,19 +74,23 @@ public class MenuActores {
 
     private boolean addActor() {
 
-        try ( Scanner sc = new Scanner(System.in)) {
+        try {
             System.out.println("--------------------");
             System.out.print("Introduzca el nombre: ");
-            String name = sc.nextLine();
+            String name = MyScanner.scanner.nextLine();
+            MyScanner.scanner.reset();
             System.out.print("Introduzca los apellidos: ");
-            String lastname = sc.nextLine();
+            String lastname = MyScanner.scanner.nextLine();
+            MyScanner.scanner.reset();
             System.out.print("Introduzca el genero: ");
-            String gender = sc.nextLine();
+            String gender = MyScanner.scanner.nextLine();
+            MyScanner.scanner.reset();
             System.out.print("Introduzca la edad: ");
-            int age = Integer.parseInt(sc.nextLine());
+            int age = Integer.parseInt(MyScanner.scanner.nextLine());
+            MyScanner.scanner.reset();
             System.out.print("Introduzca la nacionalidad: ");
-
-            String nationality = sc.nextLine();
+            String nationality = MyScanner.scanner.nextLine();
+            MyScanner.scanner.reset();
             Actor actor = new Actor(name, lastname, gender, age, nationality);
             this.audioVisual.addsupportingActores(actor);
 
@@ -107,7 +108,7 @@ public class MenuActores {
         System.out.println("Lista de actores: ");
 
         for (int i = 0; i < actores.length; i++) {
-            System.out.println(i + ".- " + actores[i].getName() + " " + actores[i].getLastname());
+            System.out.println(i+1 + ".- " + actores[i].getName() + " " + actores[i].getLastname());
         }
 
     }
@@ -119,14 +120,14 @@ public class MenuActores {
         System.out.println("--------------------");
         System.out.print("Introduzca el actor (su numero): ");
         int option;
-        try ( Scanner sc = new Scanner(System.in)) {
-            option = sc.nextInt();
-            if ((option > 0) && (option < this.audioVisual.getdirectors().length)) {
+        try {
+            option = Integer.parseInt(MyScanner.scanner.nextLine());
+            if ((option > 0) && (option <= this.audioVisual.getsupportingActores().length)) {
                 return option - 1;
             } else {
                 return -1;
             }
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
             return -1;
         }
     }
@@ -157,67 +158,43 @@ public class MenuActores {
 
             int menu;
 
-            try ( Scanner scanner = new Scanner(System.in)) {
-                menu = scanner.nextInt();
-            } catch (InputMismatchException ex) {
+            try {
+                menu = Integer.parseInt(MyScanner.scanner.nextLine());;
+
+                switch (menu) {
+                    case 1 ->  {
+                        System.out.print("Introduzca el nuevo nombre: ");
+                        String nombre = MyScanner.scanner.nextLine();
+                        a.setName(nombre);
+                    }
+                    case 2 ->  {
+                        System.out.print("Introduzca los nuevos apellidos: ");
+                        String apellidos = MyScanner.scanner.nextLine();
+                        a.setLastname(apellidos);
+                    }
+                    case 3 ->  {
+                        System.out.print("Introduzca el nuevo genero: ");
+                        String gender = MyScanner.scanner.nextLine();
+                        a.setGender(gender);
+                    }
+                    case 4 ->  {
+                        System.out.print("Introduzca la nueva edad: ");
+                        int edad = Integer.parseInt(MyScanner.scanner.nextLine());
+                        a.setAge(edad);
+                    }
+                    case 5 ->  {
+                        System.out.print("Introduzca la nueva nacionalidad: ");
+                        String nombre = MyScanner.scanner.nextLine();
+                        a.setName(nombre);
+                    }
+                    default -> {
+                        return false;
+                    }
+                }
+            } catch (NumberFormatException ex) {
                 return false;
             }
 
-            switch (menu) {
-                case 1: {
-                    System.out.print("Introduzca el nuevo nombre: ");
-                    try ( Scanner scanner = new Scanner(System.in)) {
-                        String nombre = scanner.nextLine();
-                        a.setName(nombre);
-                    } catch (InputMismatchException e) {
-                        return false;
-                    }
-                    break;
-                }
-                case 2: {
-                    System.out.print("Introduzca los nuevos apellidos: ");
-                    try ( Scanner scanner = new Scanner(System.in)) {
-                        String apellidos = scanner.nextLine();
-                        a.setLastname(apellidos);
-                    } catch (InputMismatchException e) {
-                        return false;
-                    }
-                    break;
-                }
-                case 3: {
-                    System.out.print("Introduzca el nuevo genero: ");
-                    try ( Scanner scanner = new Scanner(System.in)) {
-                        String gender = scanner.nextLine();
-                        a.setGender(gender);
-                    } catch (InputMismatchException e) {
-                        return false;
-                    }
-                    break;
-                }
-                case 4: {
-                    System.out.print("Introduzca la nueva edad: ");
-                    try ( Scanner scanner = new Scanner(System.in)) {
-                        int edad = scanner.nextInt();
-                        a.setAge(edad);
-                    } catch (InputMismatchException e) {
-                        return false;
-                    }
-                    break;
-                }
-                case 5: {
-                    System.out.print("Introduzca la nueva nacionalidad: ");
-                    try ( Scanner scanner = new Scanner(System.in)) {
-                        String nombre = scanner.nextLine();
-                        a.setName(nombre);
-                    } catch (InputMismatchException e) {
-                        return false;
-                    }
-                    break;
-                }
-                default: {
-                    return false;
-                }
-            }
             return true;
         } else {
             return false;
@@ -231,95 +208,72 @@ public class MenuActores {
 
         int atributo, cant = 0;
 
-        try ( Scanner scanner = new Scanner(System.in)) {
-            atributo = scanner.nextInt();
-        } catch (InputMismatchException ex) {
+        try {
+            atributo = Integer.parseInt(MyScanner.scanner.nextLine());
+            switch (atributo) {
+                case 1: {
+                    System.out.println("dime nombre");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Actor d : audioVisual.getsupportingActores()) {
+                        if (d.getName().equals(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+                    }
+                    break;
+                }
+                case 2: {
+                    System.out.println("dime apellido");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Actor d : audioVisual.getsupportingActores()) {
+                        if (d.getLastname().equals(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+                    }
+                    break;
+                }
+                case 3: {
+                    System.out.println("dime genero");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Actor d : audioVisual.getsupportingActores()) {
+                        if (d.getGender().equals(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+                    }
+                    break;
+                }
+                case 4: {
+                    System.out.println("dime edad");
+                    int newAge = Integer.parseInt(MyScanner.scanner.nextLine());
+                    for (Actor d : audioVisual.getsupportingActores()) {
+                        if (d.getAge() == (newAge)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+                    }
+                    break;
+                }
+                case 5: {
+                    System.out.println("dime nacionalidad");
+                    String newText = MyScanner.scanner.nextLine();
+                    for (Actor d : audioVisual.getsupportingActores()) {
+                        if (d.getNationality().equals(newText)) {
+                            System.out.println(d.toString());
+                            cant++;
+                        }
+                    }
+                    break;
+                }
+                default: {
+                    return -1;
+                }
+            }
+        } catch (NumberFormatException ex) {
             return -1;
         }
 
-        switch (atributo) {
-            case 1: {
-                System.out.println("dime nombre");
-                String newText = "";
-                try ( Scanner scanner = new Scanner(System.in)) {
-                    newText = scanner.nextLine();
-                } catch (InputMismatchException ex) {
-                    return -1;
-                }
-                for (Actor d : audioVisual.getsupportingActores()) {
-                    if (d.getName().equals(newText)) {
-                        System.out.println(d.toString());
-                        cant++;
-                    }
-                }
-                break;
-            }
-            case 2: {
-                System.out.println("dime apellido");
-                String newText = "";
-                try ( Scanner scanner = new Scanner(System.in)) {
-                    newText = scanner.nextLine();
-                } catch (InputMismatchException ex) {
-                    return -1;
-                }
-                for (Actor d : audioVisual.getsupportingActores()) {
-                    if (d.getLastname().equals(newText)) {
-                        System.out.println(d.toString());
-                        cant++;
-                    }
-                }
-                break;
-            }
-            case 3: {
-                System.out.println("dime genero");
-                String newText = "";
-                try ( Scanner scanner = new Scanner(System.in)) {
-                    newText = scanner.nextLine();
-                } catch (InputMismatchException ex) {
-                    return -1;
-                }
-                for (Actor d : audioVisual.getsupportingActores()) {
-                    if (d.getGender().equals(newText)) {
-                        System.out.println(d.toString());
-                        cant++;
-                    }
-                }
-            }
-            case 4: {
-                System.out.println("dime edad");
-                int newAge;
-                try ( Scanner scanner = new Scanner(System.in)) {
-                    newAge = scanner.nextInt();
-                } catch (InputMismatchException ex) {
-                    return -1;
-                }
-                for (Actor d : audioVisual.getsupportingActores()) {
-                    if (d.getAge() == (newAge)) {
-                        System.out.println(d.toString());
-                        cant++;
-                    }
-                }
-                break;
-            }
-            case 5: {
-                System.out.println("dime nacionalidad");
-                String newText = "";
-                try ( Scanner scanner = new Scanner(System.in)) {
-                    newText = scanner.nextLine();
-                } catch (InputMismatchException ex) {
-                    return -1;
-                }
-                for (Actor d : audioVisual.getsupportingActores()) {
-                    if (d.getNationality().equals(newText)) {
-                        System.out.println(d.toString());
-                        cant++;
-                    }
-                }
-            }
-            default: {
-                return -1;
-            }
-        }
         return cant;
     }
 }
