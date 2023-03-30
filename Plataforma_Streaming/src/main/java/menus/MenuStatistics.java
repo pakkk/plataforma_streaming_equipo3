@@ -6,14 +6,14 @@ import java.util.Scanner;
 
 /**
  * This class provides a menu for displaying statistics on a collection of Audiovisual objects.
- * Users can choose to view all audiovisuals or filter by director.
+ * Users can choose to view all audiovisuals or filter by director or category.
  * 
  * @author Miguel
  */
 public class MenuStatistics {
     
     /**
-     * The main method of the class. Initializes the Audiovisual array and displays the menu until the user chooses to exit.
+     * Initializes the Audiovisual array and displays the menu until the user chooses to exit.
      * 
      * @param args the command line arguments (not used)
      */
@@ -26,14 +26,16 @@ public class MenuStatistics {
             System.out.println("Welcome to the statistics menu:");
             System.out.println("1. Show all audiovisuals.");
             System.out.println("2. Show audiovisuals by director.");
-            System.out.println("3. Exit.");
+            System.out.println("3. Show audiovisuals by category.");
+            System.out.println("4. Exit.");
             
             // Get the user's choice and execute the corresponding method
             int option = readOption();
             switch (option) {
                 case 1 -> showAllAudioVisuals(audioVisuals);
                 case 2 -> searchAudioVisualsByDirectors(audioVisuals);
-                case 3 -> {
+                case 3 -> searchAudioVisualsByCategory(audioVisuals);
+                case 4 -> {
                     System.out.println("Goodbye!");
                     exit = true;
                 }
@@ -90,7 +92,7 @@ public class MenuStatistics {
      * @param audioVisuals the Audiovisual array to search
      */
     private static void searchAudioVisualsByDirectors(Audiovisual[] audioVisuals) {
-        boolean stop = true;
+        boolean stop;
         do {
             try (Scanner scanner = new Scanner(System.in)) {
                 System.out.print("Enter the name of one or more directors separated by commas: ");
@@ -125,5 +127,29 @@ public class MenuStatistics {
             }
         }
         return false;
+    }
+    
+    private static void searchAudioVisualsByCategory(Audiovisual[] audioVisuals)
+    {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter a list of categories separated by commas: ");
+    String input = scanner.nextLine();
+    String[] categories = input.split(",");
+    boolean found = false;
+    for (Audiovisual a : audioVisuals)
+    {
+        for (String Categoria : categories)
+        {
+            if (a.hasCategoria(Categoria.trim()))
+            {
+                System.out.println(a.toString());
+                found = true;
+                break;
+            }
+        }
+    }
+    if (!found){
+        System.out.println("No audiovisuals found with the specified categories.");
+    }
     }
 }
