@@ -1,8 +1,6 @@
 package menus;
 
-import clases.Audiovisual;
-import clases.Director;
-import java.util.Scanner;
+import clases.*;
 
 /**
  * This class provides a menu for displaying statistics on a collection of Audiovisual objects.
@@ -63,9 +61,8 @@ public class MenuStatistics {
         int option = 0;
         do {
             try {
-                Scanner scanner = new Scanner(System.in);
                 System.out.print("Enter an option: ");
-                option = scanner.nextInt();
+                option = MyScanner.scanner.nextInt();
                 valid = true;
             } catch (Exception e) {
                 System.out.println("Invalid option.");
@@ -94,9 +91,9 @@ public class MenuStatistics {
     private static void searchAudioVisualsByDirectors(Audiovisual[] audioVisuals) {
         boolean stop;
         do {
-            try (Scanner scanner = new Scanner(System.in)) {
+            try {
                 System.out.print("Enter the name of one or more directors separated by commas: ");
-                String directors = scanner.nextLine();
+                String directors = MyScanner.scanner.nextLine();
                 String[] directorNames = directors.split(",");
                 for (Audiovisual a : audioVisuals) {
                     if (isDirector(a, directorNames)) {
@@ -131,20 +128,16 @@ public class MenuStatistics {
     
     private static void searchAudioVisualsByCategory(Audiovisual[] audioVisuals)
     {
-    Scanner scanner = new Scanner(System.in);
     System.out.print("Enter a list of categories separated by commas: ");
-    String input = scanner.nextLine();
-    String[] categories = input.split(",");
+    String input = MyScanner.scanner.nextLine();
     boolean found = false;
     for (Audiovisual a : audioVisuals)
     {
-        for (String Categoria : categories)
+        for (Categoria c : a.getcategories())
         {
-            if (a.hasCategoria(Categoria.trim()))
-            {
+            if (input.contains(c.getName())){
                 System.out.println(a.toString());
                 found = true;
-                break;
             }
         }
     }
