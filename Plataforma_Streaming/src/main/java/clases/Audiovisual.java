@@ -153,7 +153,7 @@ public class Audiovisual implements Comparable<Audiovisual> {
     public void addviews() {
     	views++;
     }
-
+    
 	@Override
 	public int compareTo(Audiovisual o) {
 		// TODO Auto-generated method stub
@@ -183,5 +183,14 @@ public class Audiovisual implements Comparable<Audiovisual> {
                     System.arraycopy(recommendations, pos+1, recommendations, pos, recommendations.length-pos-1);
 	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length-1);
 	    }
+
+    @Override
+    public String toString() {
+        return "Audiovisual{" + "title=" + title + ", originalLanguage=" + originalLanguage + ", yearOfCreation=" + yearOfCreation + ", views=" + views + '}';
+    }
+
+    
+            
+            
    
 }

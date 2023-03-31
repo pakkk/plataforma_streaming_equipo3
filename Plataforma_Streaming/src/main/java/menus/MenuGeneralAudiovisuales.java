@@ -36,7 +36,7 @@ public class MenuGeneralAudiovisuales
 
 		try
 		{
-			System.out.println("1:- Modificar Pelicula" + "\n" + "2:-Modificar Serie");
+			System.out.println("1:- Nueva Pelicula" + "\n" + "2:-Nueva Serie");
 			int menu = Integer.parseInt(MyScanner.scanner.nextLine());
 
 			if (menu == 1)
@@ -91,7 +91,10 @@ public class MenuGeneralAudiovisuales
                         Audiovisual v = new Audiovisual();
                         v.settitle(clave);
 			position = Arrays.binarySearch(dataBase, v);
-			a = dataBase[position];
+                        if(position>= 0)
+                            a = dataBase[position];
+                        else
+                            a = null;
 
 		} catch (NumberFormatException e) 
 		{
@@ -228,8 +231,12 @@ public class MenuGeneralAudiovisuales
 	{
 		Arrays.sort(dataBase);
 		int  clave=Arrays.binarySearch(dataBase,findAudiovisual());
-		System.arraycopy(dataBase, clave, dataBase, clave+1, dataBase.length-clave);
-		dataBase=Arrays.copyOf(dataBase, dataBase.length-1);
+                if(clave >=0 && clave < dataBase.length){
+                    if(clave != dataBase.length-1)
+                        System.arraycopy(dataBase, clave+1, dataBase, clave, dataBase.length-clave-1);
+                    dataBase=Arrays.copyOf(dataBase, dataBase.length-1);
+                }
+		
 		
 	}
 }

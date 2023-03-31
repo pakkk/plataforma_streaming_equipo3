@@ -78,7 +78,8 @@ public class main {
                             case 3 -> {
                                 devuelto = mga.findAudiovisual();
                                 System.out.println("-------------------------------------------------------------");
-                                System.out.println(devuelto.toString());
+                                if(devuelto != null)
+                                    System.out.println(devuelto.toString());
                             }
                             case 4 -> {
 
