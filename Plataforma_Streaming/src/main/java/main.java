@@ -1,12 +1,38 @@
 
 import clases.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import menus.*;
 
 public class main {
 
+    public static void write(Audiovisual[] a) {
+
+        try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("audiovisuals.dat"))) {
+            out.writeObject(a);
+        } catch (IOException e) {
+        }
+
+    }
+    
+    public static Audiovisual[] load(){
+        Audiovisual[] a = null;
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("audiovisuals.dat"))){
+            a = (Audiovisual[]) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            a = new Audiovisual[0];
+            System.out.println("Error maquinote");
+        }
+        return a;
+    }
+    
+
     public static void main(String[] args) {
 
-        Audiovisual[] dataBase = new Audiovisual[0];
+        Audiovisual[] dataBase = load();
         MenuGeneralAudiovisuales mga = new MenuGeneralAudiovisuales(dataBase);
         Audiovisual devuelto = null;
         boolean seguir = true;
@@ -150,7 +176,7 @@ public class main {
                                     System.out.println("Existen " + dataBase.length + " audiovisuales distintos en nuestra plataforma;");
                                 }
                                 case 2 -> {
-
+                                    st.Genders(dataBase);
                                 }
                                 case 3 -> {
 
@@ -184,5 +210,6 @@ public class main {
 
         }
         MyScanner.scanner.close();
+        write(dataBase);
     }
 }
