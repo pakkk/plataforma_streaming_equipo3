@@ -8,8 +8,10 @@ import java.util.Arrays;
  * @author Alvaro Lopez Montero 
  */
 
-public class Audiovisual implements Comparable<Audiovisual>, Serializable {
+public class Audiovisual implements Comparable<Audiovisual>, Serializable
+{
 
+	
     String title;
     String originalLanguage;
     Actor[] supportingActores;
@@ -20,10 +22,17 @@ public class Audiovisual implements Comparable<Audiovisual>, Serializable {
     int views;
     Subtitles[] Subtitulos;
 
-    
-    public Audiovisual() {
+    /**
+     * Unparametrized constructor to this class
+     */
+    public Audiovisual()
+    {
     	
     }
+    
+    /**
+     *Parametrized constructor to this  class
+     */
     public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
     	
     	Subtitulos = new Subtitles[0];
@@ -40,26 +49,46 @@ public class Audiovisual implements Comparable<Audiovisual>, Serializable {
        
     }
     
-    public Actor[] getsupportingActores() {
+    /**
+     * getsupportingActores
+     * @return Actor[] array to actors
+     */
+    public Actor[] getsupportingActores() 
+    {
         return supportingActores;
     }
-
-    public void setsupportingActores(Actor[] supportingActores) {
+    /**
+     * stsupportingActores
+     *@param Actor[] supportingActores array to actors
+     */
+    public void setsupportingActores(Actor[] supportingActores) 
+    {
         this.supportingActores = supportingActores;
     }
-    
-    public void addsupportingActores(Actor newActor){
+    /**
+     * addsupportingActores
+     *@param Actor actor added to the collection
+	 *
+     */
+    public void addsupportingActores(Actor newActor)
+    {
         this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length+1);
         this.supportingActores[this.supportingActores.length-1] = newActor;
     }
-
-    public void deletesupportingActores(int pos) {
+    /**
+     * deletesupportingActores
+     *@param int pos position to array to delete
+	 *
+     */
+    public void deletesupportingActores(int pos)
+    {
         if(pos < this.supportingActores.length)
             System.arraycopy(supportingActores, pos+1, supportingActores, pos, supportingActores.length-pos-1);
         this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length-1);
     }
-
-    public int getyearOfCreation() {
+    
+    public int getyearOfCreation()
+    {
         return yearOfCreation;
     }
 

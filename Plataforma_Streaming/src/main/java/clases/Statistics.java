@@ -38,6 +38,7 @@ public class Statistics {
      * Return true or false if actor is in the array
      * @param audioVisuals Arrays class Audiovisual
      * @param name String name the actor
+     * @return boolean true or false
      */
 
     private boolean isActor(Audiovisual a, String name) {
