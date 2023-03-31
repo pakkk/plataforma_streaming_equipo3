@@ -182,11 +182,13 @@ public class main {
                                     st.Genders(dataBase);
                                 }
                                 case 3 -> {
-                                    st.
+                                    st.searchByDirectors(dataBase);
                                 }
                                 case 4 -> {
+                                    st.Actors(dataBase);
                                 }
                                 case 5 -> {
+                                    st.Subtitles(dataBase);
                                 }
                                 case 6 -> {
                                     Arrays.sort(dataBase, new ComparaRecomendaciones());
