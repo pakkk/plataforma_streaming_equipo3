@@ -1,15 +1,26 @@
 package menus;
 
 import clases.*;
-
+/**
+ * 
+ * @author Juan Sutil
+ */
 public class MenuActores {
-
+    /**
+     * Audiovisual to modify
+     */
     Audiovisual audioVisual;
-
+    /**
+     * Parametriced constructor
+     * @param a audiovisual to modify
+     */
     public MenuActores(Audiovisual a) {
         this.audioVisual = a;
     }
-
+    
+    /**
+     * Main method, contains all the functionality
+     */
     public void startMenu() {
         int menu;
         do {
@@ -69,7 +80,10 @@ public class MenuActores {
             }
         } while (menu != 5);
     }
-
+    /**
+     * Add a new actor to the audiovisual
+     * @return true if the actor is added
+     */
     private boolean addActor() {
 
         try {
@@ -97,7 +111,10 @@ public class MenuActores {
             return false;
         }
     }
-
+    
+    /**
+     * Display all the actors in audiovisual
+     */
     private void displayActores() {
 
         Actor actores[] = this.audioVisual.getsupportingActores();
@@ -110,7 +127,11 @@ public class MenuActores {
         }
 
     }
-
+    
+    /**
+     * Select an aotor from a list
+     * @return the position of the actor
+     */
     private int selectActor() {
 
         displayActores();
@@ -129,7 +150,10 @@ public class MenuActores {
             return -1;
         }
     }
-
+    /**
+     * Delete an actor
+     * @return true if the actor is deleted
+     */
     public boolean deleteActor() {
         int posicion = selectActor();
         if (posicion != -1) {
@@ -140,7 +164,10 @@ public class MenuActores {
         }
 
     }
-
+    /**
+     * Modify an actor
+     * @return true if the actor is modify
+     */
     private boolean modifyActor() {
         int pos = selectActor();
         if (pos != -1) {
@@ -157,8 +184,7 @@ public class MenuActores {
             int menu;
 
             try {
-                menu = Integer.parseInt(MyScanner.scanner.nextLine());;
-
+                menu = Integer.parseInt(MyScanner.scanner.nextLine());
                 switch (menu) {
                     case 1 -> {
                         System.out.print("Introduzca el nuevo nombre: ");
@@ -199,17 +225,26 @@ public class MenuActores {
         }
 
     }
-
+    /**
+     * Find an actor by a designed param
+     * @return number of actors found, -1 if occurs an error
+     */
     public int findActor() {
-        System.out.println("Campos para buscar: \n" + "1.- name\n" + "2.- lastname\n" + "3.- gender\n" + "4.- age\n"
-                + "5.- nationality\n");
+        System.out.println("""
+                           Campos para buscar: 
+                           1.- name
+                           2.- lastname
+                           3.- gender
+                           4.- age
+                           5.- nationality
+                           """);
 
         int atributo, cant = 0;
 
         try {
             atributo = Integer.parseInt(MyScanner.scanner.nextLine());
             switch (atributo) {
-                case 1: {
+                case 1 ->  {
                     System.out.println("dime nombre");
                     String newText = MyScanner.scanner.nextLine();
                     for (Actor d : audioVisual.getsupportingActores()) {
@@ -218,9 +253,8 @@ public class MenuActores {
                             cant++;
                         }
                     }
-                    break;
                 }
-                case 2: {
+                case 2 ->  {
                     System.out.println("dime apellido");
                     String newText = MyScanner.scanner.nextLine();
                     for (Actor d : audioVisual.getsupportingActores()) {
@@ -229,9 +263,8 @@ public class MenuActores {
                             cant++;
                         }
                     }
-                    break;
                 }
-                case 3: {
+                case 3 ->  {
                     System.out.println("dime genero");
                     String newText = MyScanner.scanner.nextLine();
                     for (Actor d : audioVisual.getsupportingActores()) {
@@ -240,9 +273,8 @@ public class MenuActores {
                             cant++;
                         }
                     }
-                    break;
                 }
-                case 4: {
+                case 4 ->  {
                     System.out.println("dime edad");
                     int newAge = Integer.parseInt(MyScanner.scanner.nextLine());
                     for (Actor d : audioVisual.getsupportingActores()) {
@@ -251,9 +283,8 @@ public class MenuActores {
                             cant++;
                         }
                     }
-                    break;
                 }
-                case 5: {
+                case 5 ->  {
                     System.out.println("dime nacionalidad");
                     String newText = MyScanner.scanner.nextLine();
                     for (Actor d : audioVisual.getsupportingActores()) {
@@ -262,9 +293,8 @@ public class MenuActores {
                             cant++;
                         }
                     }
-                    break;
                 }
-                default: {
+                default -> {
                     return -1;
                 }
             }
