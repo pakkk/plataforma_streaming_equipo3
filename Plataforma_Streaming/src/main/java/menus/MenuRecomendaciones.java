@@ -86,7 +86,7 @@ public class MenuRecomendaciones {
             System.out.print("Enter username: ");
             String name = MyScanner.scanner.nextLine();
             System.out.println("Enter ratings");
-            int ratings = MyScanner.scanner.nextInt();
+            int ratings = Integer.parseInt(MyScanner.scanner.nextLine());
             System.out.println("Enter comment");
             String comment = MyScanner.scanner.nextLine();
 
