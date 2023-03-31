@@ -58,47 +58,60 @@ public class main {
 
                                 System.out.println("----------------------------------------");
                                 System.out.println("----MENU AUDIOVISUAl----");
-                                System.out.println("1.- Actores");
-                                System.out.println("2.- Categoria");
-                                System.out.println("3.- Directores");
-                                System.out.println("4.- Recomendaciones");
-                                System.out.println("5.- Subtitulos");
-                                System.out.println("6.- Salir");
+                                System.out.println("1.- Gestionar Actores");
+                                System.out.println("2.- Gestionar Categoria");
+                                System.out.println("3.- Gestionar Directores");
+                                System.out.println("4.- Gestionar Recomendaciones");
+                                System.out.println("5.- Gestionar Subtitulos");
+                                System.out.println("6.- Modificar atributos");
+                                System.out.println("7.- Salir");
 
-                                menu = Integer.parseInt(MyScanner.scanner.nextLine());
+                                try {
+                                    menu = Integer.parseInt(MyScanner.scanner.nextLine());
+                                } catch (NumberFormatException e) {
+                                    menu = 0;
+                                }
 
                                 switch (menu) {
                                     case 1 -> {
-                                        System.out.println("Sobre que audiovisual quieres hacer esta modificacion");
+                                        System.out.println("----------------------------------------");
+                                        System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuActores ma = new MenuActores(devuelto);
                                         ma.startMenu();
                                     }
                                     case 2 -> {
-                                        System.out.println("Sobre que audiovisual quieres hacer esta modificacion");
+                                        System.out.println("----------------------------------------");
+                                        System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuCategorias mc = new MenuCategorias(devuelto);
                                         mc.startMenu();
                                     }
                                     case 3 -> {
-                                        System.out.println("Sobre que audiovisual quieres hacer esta modificacion");
+                                        System.out.println("----------------------------------------");
+                                        System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuDirector md = new MenuDirector(devuelto);
                                         md.startMenu();
                                     }
                                     case 4 -> {
-                                        System.out.println("Sobre que audiovisual quieres hacer esta modificacion");
+                                        System.out.println("----------------------------------------");
+                                        System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuRecomendaciones mrc = new MenuRecomendaciones(devuelto);
                                         mrc.startMenu();
                                     }
                                     case 5 -> {
-                                        System.out.println("Sobre que audiovisual quieres hacer esta modificacion");
+                                        System.out.println("----------------------------------------");
+                                        System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuSubtitulos ms = new MenuSubtitulos(devuelto);
                                         ms.mostrarMenu();
                                     }
                                     case 6 -> {
+                                        mga.modifyAudiovisual();
+                                    }
+                                    case 7 -> {
                                         s1 = false;
                                     }
                                     default -> {
