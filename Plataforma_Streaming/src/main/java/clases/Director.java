@@ -1,10 +1,13 @@
 package clases;
+
+import java.io.Serializable;
+
 /**
  * This is the class Director
  * @author Alvaro Lopez 
  */
 
-public class Director  implements Comparable <Director>{
+public class Director  implements Comparable <Director>, Serializable{
     private String name;
     private String lastname;
     private String gender;

@@ -9,22 +9,29 @@ import java.util.Arrays;
 import menus.*;
 import comparadores.*;
 
-public class main {
+public class main 
+{
 
-    public static void write(Audiovisual[] a) {
+    public static void write(Audiovisual[] a)
+    {
 
-        try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("audiovisuals.dat"))) {
+        try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("audiovisuals.dat"))) 
+        {
             out.writeObject(a);
-        } catch (IOException e) {
+        } catch (IOException e) 
+        {
         }
 
     }
     
-    public static Audiovisual[] load(){
+    public static Audiovisual[] load()
+    {
         Audiovisual[] a = null;
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("audiovisuals.dat"))){
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("audiovisuals.dat")))
+        {
             a = (Audiovisual[]) in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) 
+        {
             a = new Audiovisual[0];
             System.out.println("Error maquinote");
         }
@@ -32,15 +39,17 @@ public class main {
     }
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
-        Audiovisual[] dataBase = load();
+        Audiovisual[] dataBase= load();
         MenuGeneralAudiovisuales mga = new MenuGeneralAudiovisuales(dataBase);
         Audiovisual devuelto = null;
         boolean seguir = true;
         int menu;
         System.out.println("Hola bienvenid@ a nuestra plataforma, ya sabes que estamos en PELIS PLUS.Dejanos ayudarte a mejorar tu esperiencia con nosotros. Te mostramos el menú principal");
-        while (seguir) {
+        while (seguir) 
+        {
 
             System.out.println("----------------------------------------");
             System.out.println("----MENU GENERAL----");
@@ -48,15 +57,19 @@ public class main {
             System.out.println("2.- Obtener datos estadisticos sobre nuestra filmoteca");
             System.out.println("3.- salir y apagar");
 
-            try {
+            try
+            {
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (NumberFormatException e) {
                 menu = 0;
             }
-            switch (menu) {
-                case 1 -> {
+            switch (menu) 
+            {
+                case 1 -> 
+                {
                     boolean s1 = true;
-                    while (s1) {
+                    while (s1) 
+                    {
                         System.out.println("----------------------------------------");
                         System.out.println("----MENU AUDIOVISUALES----");
                         System.out.println("1.- Dar de alta Pelicula o serie");
@@ -176,32 +189,38 @@ public class main {
                             Statistics st = new Statistics();
                             switch (menu) {
                                 case 1 -> {
-                                    System.out.println("Existen " + dataBase.length + " audiovisuales distintos en nuestra plataforma;");
+                                    System.out.println("Existen " + mga.getDataBase().length + " audiovisuales distintos en nuestra plataforma;");
                                 }
                                 case 2 -> {
-                                    st.Genders(dataBase);
+                                    st.Genders(mga.getDataBase());
                                 }
                                 case 3 -> {
-                                    st.searchByDirectors(dataBase);
+                                    st.searchByDirectors(mga.getDataBase());
                                 }
                                 case 4 -> {
-                                    st.Actors(dataBase);
+                                    st.Actors(mga.getDataBase());
                                 }
                                 case 5 -> {
-                                    st.Subtitles(dataBase);
+                                    st.Subtitles(mga.getDataBase());
                                 }
                                 case 6 -> {
-                                    Arrays.sort(dataBase, new ComparaRecomendaciones());
+                                    Arrays.sort(mga.getDataBase(), new ComparaRecomendaciones());
                                     System.out.println("Los audiovisuales con mejores recomendaciones son: ");
-                                    for(int i = 0; i < 10; i++){
-                                        System.out.println( (i+1) + ".- " + dataBase[i].toString());
+                                    int n = mga.getDataBase().length;
+                                    if(n>10)
+                                    	n=10;
+                                    for(int i = 0; i < n; i++){
+                                        System.out.println( (i+1) + ".- " + mga.getDataBase()[i].toString());
                                     }
                                 }
                                 case 7 -> {
-                                    Arrays.sort(dataBase, new ComparaRecomendaciones());
+                                    Arrays.sort(mga.getDataBase(), new ComparaRecomendaciones());
                                     System.out.println("Los audiovisuales con peores recomendaciones son: ");
-                                    for(int i = 1; i <= 10; i++){
-                                        System.out.println( i + ".- " + dataBase[dataBase.length-i].toString());
+                                    int n = mga.getDataBase().length;
+                                    if(n>10)
+                                    	n=10;
+                                    for(int i = 1; i <= n; i++){
+                                        System.out.println( i + ".- " + mga.getDataBase()[mga.getDataBase().length-i].toString());
                                     }
                                 }
                                 case 8 -> {
@@ -225,6 +244,6 @@ public class main {
 
         }
         MyScanner.scanner.close();
-        write(dataBase);
+        write(mga.getDataBase());
     }
 }

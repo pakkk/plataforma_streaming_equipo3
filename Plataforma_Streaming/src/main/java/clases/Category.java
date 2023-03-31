@@ -1,9 +1,12 @@
 package clases;
+
+import java.io.Serializable;
+
 /**
  * Class Category from an audioVisual
  * @author Juan Sutil
  * */
-public class Category implements Comparable<Category>{
+public class Category implements Comparable<Category>, Serializable{
 	
 	/**
 	 * Name of the category

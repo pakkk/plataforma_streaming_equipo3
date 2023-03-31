@@ -1,11 +1,14 @@
 package clases;
+
+import java.io.Serializable;
+
 /**
  * Class representing the category to which an audiovisual object belongs
  * @author Silvia Mesa
  * */
 
 
-public class Subtitles implements Comparable<Subtitles> {
+public class Subtitles implements Comparable<Subtitles>, Serializable {
 	
 	/**
 	 * Subtitle language, represented as a set of translations

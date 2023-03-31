@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Arrays;
  * @author Alvaro Lopez Montero 
  */
 
-public class Audiovisual implements Comparable<Audiovisual> {
+public class Audiovisual implements Comparable<Audiovisual>, Serializable {
 
     String title;
     String originalLanguage;

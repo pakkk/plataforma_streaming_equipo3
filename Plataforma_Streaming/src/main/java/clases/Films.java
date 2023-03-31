@@ -1,6 +1,8 @@
 package clases;
 
-public class Films extends Audiovisual 
+import java.io.Serializable;
+
+public class Films extends Audiovisual implements Serializable
 {
 	/**
 	 *Duration the movie

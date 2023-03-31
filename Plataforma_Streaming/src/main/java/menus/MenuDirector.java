@@ -37,11 +37,11 @@ public class MenuDirector
         {
 
             System.out.println("----------------------------------------");
-            System.out.println("----MENU ACTORES----");
-            System.out.println("1.- Add a new actor");
-            System.out.println("2.- Delete an actor");
-            System.out.println("3.- Modify an actor");
-            System.out.println("4.- Search an actor");
+            System.out.println("----MENU DIRECTOR----");
+            System.out.println("1.- Add a new director");
+            System.out.println("2.- Delete an director");
+            System.out.println("3.- Modify an director");
+            System.out.println("4.- Search an director");
             System.out.println("5.- Exit");
 
             try 
@@ -58,10 +58,10 @@ public class MenuDirector
                     boolean b = addDirector();
                     if (b) 
                     {
-                        System.out.println("Actor introducido correctamente");
+                        System.out.println("Director introducido correctamente");
                     } else 
                     {
-                        System.out.println("Actor no introducido");
+                        System.out.println("Director no introducido");
                     }
                 }
                 case 2 -> 
@@ -69,10 +69,10 @@ public class MenuDirector
                     boolean b = deleteDirector();
                     if (b) 
                     {
-                        System.out.println("Actor borrado correctamente");
+                        System.out.println("Director borrado correctamente");
                     } else 
                     {
-                        System.out.println("El actor no pudo ser borrado");
+                        System.out.println("El director no pudo ser borrado");
                     }
                 }
                 case 3 -> 
@@ -81,10 +81,10 @@ public class MenuDirector
                     boolean b = modifyDirector();
                     if (b)
                     {
-                        System.out.println("Actor modificado correctamente");
+                        System.out.println("Director modificado correctamente");
                     } else 
                     {
-                        System.out.println("El actor no pudo ser modificado");
+                        System.out.println("El director no pudo ser modificado");
                     }
                 }
                 case 4 -> 
@@ -92,7 +92,7 @@ public class MenuDirector
                     int b = findDirector();
                     if (b == 0) 
                     {
-                        System.out.println("No existen actores que cumplan su condicion");
+                        System.out.println("No existen directores que cumplan su condicion");
                     }
                 }
                 case 5 -> 

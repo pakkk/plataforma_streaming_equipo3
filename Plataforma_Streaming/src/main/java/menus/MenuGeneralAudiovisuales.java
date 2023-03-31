@@ -80,17 +80,17 @@ public class MenuGeneralAudiovisuales
 	public Audiovisual findAudiovisual()
 	{
 		Audiovisual a = null;
-		int position = 0;
+		int position = -1;
 
 		try
 		{
 
 			System.out.println("dime un titulo para el audiovisual");
 			String clave = MyScanner.scanner.nextLine();
-			Arrays.sort(dataBase);
-                        Audiovisual v = new Audiovisual();
-                        v.settitle(clave);
-			position = Arrays.binarySearch(dataBase, v);
+                        for(int i = 0; i < dataBase.length; i++){
+                            if(dataBase[i].gettitle().equals(clave))
+                                position = i;
+                        }
                         if(position>= 0)
                             a = dataBase[position];
                         else
@@ -126,21 +126,21 @@ public class MenuGeneralAudiovisuales
 				case 1:
 				{
 					System.out.println("dime el nuevo titulo");
-					String title = null;
+					String title = MyScanner.scanner.nextLine();
 					a.settitle(title);
 					break;
 				}
 				case 2:
 				{
 					System.out.println("dime el nuevo lenguage");
-					String lenguage = null;
+					String lenguage = MyScanner.scanner.nextLine();
 					a.settitle(lenguage);
 					break;
 				}
 				case 3:
 				{
 					System.out.println("dime el nuevo año");
-					int anio=0;
+					int anio=Integer.parseInt(MyScanner.scanner.nextLine());
 					a.setyearOfCreation(anio);
 					break;
 				}
@@ -153,7 +153,7 @@ public class MenuGeneralAudiovisuales
 				case 5:
 				{
 					System.out.println("dime el nuevo valor de duracion");
-					int duration = 0;
+					int duration = Integer.parseInt(MyScanner.scanner.nextLine());;
 					a.setDurationMinutes(duration);	
 					break;
 				}
@@ -175,21 +175,21 @@ public class MenuGeneralAudiovisuales
 					case 1:
 					{
 						System.out.println("dime el nuevo titulo");
-						String title = null;
+						String title = MyScanner.scanner.nextLine();
 						a.settitle(title);
 						break;
 					}
 					case 2:
 					{
 						System.out.println("dime el nuevo lenguage");
-						String lenguage = null;
+						String lenguage = MyScanner.scanner.nextLine();
 						a.settitle(lenguage);
 						break;
 					}
 					case 3:
 					{
 						System.out.println("dime el nuevo año");
-						int anio=0;
+						int anio=Integer.parseInt(MyScanner.scanner.nextLine());;
 						a.setyearOfCreation(anio);
 						break;
 					}

@@ -1,10 +1,12 @@
 package clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alvar
  */
-public class Recommendations implements Comparable <Recommendations> 
+public class Recommendations implements Comparable <Recommendations> , Serializable
 {
 	/**
 	 *Username

@@ -1,10 +1,12 @@
 package clases;
 
+import java.io.Serializable;
+
 /**
  * This is the class for Series. It extends the Audiovisual class and implements the Comparable interface.
  * @author Miguel
  */
-public class Serie extends Audiovisual implements Comparable<Audiovisual>
+public class Serie extends Audiovisual implements Comparable<Audiovisual>, Serializable
 {
 
     // instance variables

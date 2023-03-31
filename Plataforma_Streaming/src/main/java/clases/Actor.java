@@ -1,10 +1,13 @@
 package clases;
+
+import java.io.Serializable;
+
 /**
  * This is the Actors class
  * @author Miguel
  */
 
-public class Actor implements Comparable<Actor> 
+public class Actor implements Comparable<Actor>, Serializable
 {
     private String name;
     private String lastname;
