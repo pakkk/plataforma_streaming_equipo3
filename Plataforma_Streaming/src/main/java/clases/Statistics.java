@@ -1,5 +1,12 @@
 package clases;
 
+/**
+ * This is the Actors class
+ * @author Alvaro Marmol
+ * @author Alvaro Lopez
+ * @author Miguel
+ */
+
 import java.util.InputMismatchException;
 
 
