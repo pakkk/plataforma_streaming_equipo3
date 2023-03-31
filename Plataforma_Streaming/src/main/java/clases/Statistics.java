@@ -1,6 +1,5 @@
 package clases;
 
-import java.util.*;
 import java.util.InputMismatchException;
 
 
@@ -15,12 +14,10 @@ public class Statistics {
         boolean stop = true;
         do {
             try{
-
                 name = MyScanner.scanner.nextLine();
-
+                stop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
-                stop = false;
             }
         } while (stop);
 
@@ -57,12 +54,10 @@ public class Statistics {
         boolean stop = true;
         do {
             try { 
-
             	gender = MyScanner.scanner.nextLine();
-
+                stop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
-                stop = false;
             }
         } while (stop);
 
@@ -101,15 +96,13 @@ public class Statistics {
         boolean stop = true;
         do {
             try  {
-
             	subtitles = MyScanner.scanner.nextLine();
-
+                stop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid subtitle");
-                stop = false;
             }
         } while (stop);
-
+        
         for (Audiovisual a : audioVisuals) {
             if (isSubtitles(a, subtitles)) {
                 System.out.println(a.toString());
@@ -146,9 +139,9 @@ public class Statistics {
         do {
             try{
                 name = MyScanner.scanner.nextLine();
+                stop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid name");
-                stop = false;
             }
         } while (stop);
 
