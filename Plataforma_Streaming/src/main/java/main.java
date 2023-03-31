@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
 import menus.*;
+import comparadores.*;
 
 public class main {
 
@@ -180,15 +182,25 @@ public class main {
                                     st.Genders(dataBase);
                                 }
                                 case 3 -> {
-
+                                    st.
                                 }
                                 case 4 -> {
                                 }
                                 case 5 -> {
                                 }
                                 case 6 -> {
+                                    Arrays.sort(dataBase, new ComparaRecomendaciones());
+                                    System.out.println("Los audiovisuales con mejores recomendaciones son: ");
+                                    for(int i = 0; i < 10; i++){
+                                        System.out.println( (i+1) + ".- " + dataBase[i].toString());
+                                    }
                                 }
                                 case 7 -> {
+                                    Arrays.sort(dataBase, new ComparaRecomendaciones());
+                                    System.out.println("Los audiovisuales con peores recomendaciones son: ");
+                                    for(int i = 1; i <= 10; i++){
+                                        System.out.println( i + ".- " + dataBase[dataBase.length-i].toString());
+                                    }
                                 }
                                 case 8 -> {
                                     s1 = false;

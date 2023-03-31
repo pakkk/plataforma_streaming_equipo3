@@ -140,7 +140,7 @@ public class Statistics {
      *
      * @param audioVisuals the Audiovisual array to search
      */
-    private static void searchByDirectors(Audiovisual[] audioVisuals) {
+    public static void searchByDirectors(Audiovisual[] audioVisuals) {
         String name = "";
         boolean stop = true;
         do {
