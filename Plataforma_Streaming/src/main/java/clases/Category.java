@@ -20,9 +20,9 @@ public class Category implements Comparable<Category>{
 	 * @param name Name of the category
 	 * @param description Descriptionde of the category
 	 * */
-	public Category(String name, String descripction) {
+	public Category(String name, String description) {
 		this.name = name;
-		this.description = descripction;
+		this.description = description;
 	}
 	
 	/**
