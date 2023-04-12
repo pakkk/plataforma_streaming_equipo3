@@ -156,7 +156,7 @@ public class MenuDirector
 
 		for (int i = 0; i < Directores.length; i++)
 		{
-			System.out.println(i + 1 + ".- " + Directores[i].getName() + " " + Directores[i].getLastname());
+			System.out.println(i + 1 + ".- " + Directores[i].getName() + " " + Directores[i].getLastName());
 		}
 
 	}
@@ -223,13 +223,13 @@ public class MenuDirector
                             {
                                     System.out.println("dime el nuevo nombre");
                                     String newText = MyScanner.scanner.nextLine();
-                                    a.setLastname(newText);
+                                    a.setLastName(newText);
                             }
                             case 3 ->                             
                             {
                                     System.out.println("dime el nuevo nombre");
                                     String newText = MyScanner.scanner.nextLine();
-                                    a.setgender(newText);
+                                    a.setGender(newText);
                             }
                             case 4 ->                             
                             {
@@ -308,7 +308,7 @@ public class MenuDirector
 				String newText = MyScanner.scanner.nextLine();
 				for (Director d : this.a.getdirectors())
 				{
-					if (d.getLastname().equals(newText))
+					if (d.getLastName().equals(newText))
 					{
 						System.out.println(d.toString());
                                                 cant++;
@@ -322,7 +322,7 @@ public class MenuDirector
 				String newText = MyScanner.scanner.nextLine();
 				for (Director d : this.a.getdirectors())
 				{
-					if (d.getgender().equals(newText))
+					if (d.getGender().equals(newText))
 					{
 						System.out.println(d.toString());
                                                 cant++;

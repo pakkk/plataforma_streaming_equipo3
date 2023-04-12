@@ -4,38 +4,55 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * This is the class Director
+ * This is the class Audiovisual
  * @author Alvaro Lopez Montero 
  */
 
 public class Audiovisual implements Comparable<Audiovisual>, Serializable
 {
 
-	
-    String title;
-    String originalLanguage;
-    Actor[] supportingActores;
-    Director[] directors;
-    Category[] categories;
-    Recommendations[] recommendations;
-    int yearOfCreation;
-    int views;
-    Subtitles[] Subtitulos;
+	//Title of the audiovisual
+    private String title;
+    //Original language of the audiovisual
+    private String originalLanguage;
+    //Actors that work in the audiovisual
+    private Actor[] supportingActores;
+    //Directors that work in the audiovisual
+    private Director[] directors;
+    //Categories that is found in the audiovisual
+    private Category[] categories;
+    //Recommendation that is found in the audiovisual
+    private Recommendations[] recommendations;
+    //Year where the audiovisual was created
+    private int yearOfCreation;
+    //Views that have the audiovisual
+    private int views;
+    //Subtitles that have the audiovisual
+    private Subtitles[] subtitles;
 
     /**
-     * Unparametrized constructor to this class
+     * Default constructor
      */
     public Audiovisual()
     {
-    	
+    	this.subtitles = new Subtitles[0];
+    	this.categories = new Category[0];
+    	this.directors = new Director[0];
+    	this.supportingActores = new Actor[0];
+    	this.recommendations= new Recommendations[0];
+        this.title = "Without title";
+        this.originalLanguage = "English";
+        this.yearOfCreation = 2019;
+        this.views = 0;
     }
     
     /**
      *Parametrized constructor to this  class
      */
-    public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) {
+    public Audiovisual(String title, String originalLanguage, int yearOfCreation, int views) 
+    {
     	
-    	Subtitulos = new Subtitles[0];
+    	subtitles = new Subtitles[0];
     	categories = new Category[0];
     	directors = new Director[0];
     	supportingActores = new Actor[0];
@@ -53,9 +70,9 @@ public class Audiovisual implements Comparable<Audiovisual>, Serializable
      * getsupportingActores
      * @return Actor[] array to actors
      */
-    public Actor[] getsupportingActores() 
+    public Actor[] getSupportingActores() 
     {
-        return supportingActores;
+        return this.supportingActores;
     }
     /**
      * stsupportingActores
@@ -89,103 +106,121 @@ public class Audiovisual implements Comparable<Audiovisual>, Serializable
     
     public int getyearOfCreation()
     {
-        return yearOfCreation;
+        return this.yearOfCreation;
     }
 
-    public void setyearOfCreation(int yearOfCreation) {
+    public void setyearOfCreation(int yearOfCreation) 
+    {
         this.yearOfCreation = yearOfCreation;
     }
     
-    public Category[] getcategories() {
-        return categories;
+    public Category[] getcategories() 
+    {
+        return this.categories;
     }
 
-    public void setcategories(Category[] categories) {
+    public void setcategories(Category[] categories) 
+    {
         this.categories = categories;
     }
     
-    public void addcategories(Category  nuevacategories ){
+    public void addcategories(Category  nuevacategories )
+    {
     	
         this.categories = Arrays.copyOf(this.categories, this.categories.length+1);
         this.categories[this.categories.length-1] = nuevacategories;
     }
 
-    public void deleteCategoria(int pos) {
+    public void deleteCategoria(int pos) 
+    {
         if(pos < this.categories.length)
             System.arraycopy(categories, pos+1, categories, pos, categories.length-pos-1);
         this.categories = Arrays.copyOf(this.categories, this.categories.length-1);
     }
 
-    public Director[] getdirectors() {
-        return directors;
+    public Director[] getdirectors() 
+    {
+        return this.directors;
     }
 
-    public void setdirectors(Director[] directors) {
+    public void setdirectors(Director[] directors) 
+    {
         this.directors = directors;
     }
     
-    public void adddirectors(Director  newdirectors ){
+    public void adddirectors(Director  newdirectors )
+    {
         this.directors = Arrays.copyOf(this.directors, this.directors.length+1);
         this.directors[this.directors.length-1] = newdirectors;
     }
 
-    public void deletedirectors(int pos) {
+    public void deletedirectors(int pos) 
+    {
         if(pos < this.directors.length)
             System.arraycopy(directors, pos+1, directors, pos, directors.length-pos-1);
         this.directors = Arrays.copyOf(this.directors, this.directors.length-1);
     }
  
-    public String getoriginalLanguage() {
-        return originalLanguage;
+    public String getoriginalLanguage() 
+    {
+        return this.originalLanguage;
     }
 
-    public void setoriginalLanguage(String originalLanguage) {
+    public void setoriginalLanguage(String originalLanguage) 
+    {
         this.originalLanguage = originalLanguage;
     }
 
-    public Subtitles[] getSubtitulos() {
-        return Subtitulos;
+    public Subtitles[] getSubtitles() 
+    {
+        return this.subtitles;
     }
 
-    public void setSubtitulos(Subtitles[] Subtitulos) {
-        this.Subtitulos = Subtitulos;
+    public void setSubtitles(Subtitles[] Subtitles) {
+        this.subtitles = Subtitles;
     }
     
-    public void addSubtitulos(Subtitles newSubtitulos ){
+    public void addSubtitles(Subtitles newSubtitles ){
     	
-        this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length+1);
-        this.Subtitulos[this.Subtitulos.length-1] = newSubtitulos;
+        this.subtitles = Arrays.copyOf(this.subtitles, this.subtitles.length+1);
+        this.subtitles[this.subtitles.length-1] = newSubtitles;
     }
     
 
-    public void deleteSubtitulos(int pos) {
-        if(pos < this.Subtitulos.length)
-            System.arraycopy(Subtitulos, pos+1, Subtitulos, pos, Subtitulos.length-pos-1);
-        this.Subtitulos = Arrays.copyOf(this.Subtitulos, this.Subtitulos.length-1);
+    public void deleteSubtitles(int pos) {
+        if(pos < this.subtitles.length)
+            System.arraycopy(subtitles, pos+1, subtitles, pos, subtitles.length-pos-1);
+        this.subtitles = Arrays.copyOf(this.subtitles, this.subtitles.length-1);
     }
 
     
-    public String gettitle() {
-        return title;
+    public String gettitle() 
+    {
+        return this.title;
     }
 
-    public void settitle(String title) {
+    public void settitle(String title) 
+    {
         this.title = title;
     }
 
-    public int getviews() {
-        return views;
+    public int getviews() 
+    {
+        return this.views;
     }
 
-    public void setviews(int views) {
+    public void setviews(int views) 
+    {
         this.views = views;
     }
-    public void addviews() {
+    public void addviews() 
+    {
     	views++;
     }
     
 	@Override
-	public int compareTo(Audiovisual o) {
+	public int compareTo(Audiovisual o) 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}

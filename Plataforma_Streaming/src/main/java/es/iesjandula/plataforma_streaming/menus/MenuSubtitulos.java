@@ -135,7 +135,7 @@ public class MenuSubtitulos {
             }
 
             // Agregar el subtítulo a la película actual y regresar true
-            this.a.addSubtitulos(subtitle);
+            this.a.addSubtitles(subtitle);
             return true;
         } catch (NumberFormatException e) {
             // Si el usuario ingresa algo que no es un número, regresa false
@@ -188,7 +188,7 @@ public class MenuSubtitulos {
             boolean found = false;
 
             // Se recorre la lista de subtítulos y se busca aquellos que coincidan con el idioma seleccionado.
-            for (Subtitles subtitle : this.a.getSubtitulos()) {
+            for (Subtitles subtitle : this.a.getSubtitles()) {
                 if (subtitle.getSubtitleLanguage() == searchLanguage) {
                     System.out.println(subtitle.toString());
                     found = true;
@@ -217,7 +217,7 @@ public class MenuSubtitulos {
         System.out.println("Enter the index of the subtitle you want to modify:");
 
         // Se imprime la lista de subtítulos existentes para que el usuario pueda seleccionar uno.
-        for (Subtitles s : this.a.getSubtitulos()) {
+        for (Subtitles s : this.a.getSubtitles()) {
             System.out.println(s.toString());
         }
 
@@ -225,11 +225,11 @@ public class MenuSubtitulos {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
 
             // Si el índice seleccionado por el usuario no es válido, se devuelve false.
-            if (option < 0 || option > this.a.getSubtitulos().length) {
+            if (option < 0 || option > this.a.getSubtitles().length) {
                 return false;
             } else {
                 Subtitles subtitle;
-                subtitle = this.a.getSubtitulos()[option - 1];
+                subtitle = this.a.getSubtitles()[option - 1];
                 int language;
 
                 System.out.println("\n-- MODIFY SUBTITLE --");
@@ -276,14 +276,14 @@ public class MenuSubtitulos {
         int option;
         System.out.println("\n-- DELETE SUBTITLE --");
         System.out.println("Enter the index of the subtitle you want to delete:");
-        for (Subtitles s : this.a.getSubtitulos()) {
+        for (Subtitles s : this.a.getSubtitles()) {
             System.out.println(s.toString());
         }
 
         try {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
-            if (option > 0 && option <= this.a.getSubtitulos().length) { // Verifica que el índice esté dentro de los límites de la lista de subtítulos
-                this.a.deleteSubtitulos(option - 1); // Elimina el subtítulo en la posición especificada por el usuario. Resta 1 porque los índices de la lista empiezan en 0.
+            if (option > 0 && option <= this.a.getSubtitles().length) { // Verifica que el índice esté dentro de los límites de la lista de subtítulos
+                this.a.deleteSubtitles(option - 1); // Elimina el subtítulo en la posición especificada por el usuario. Resta 1 porque los índices de la lista empiezan en 0.
                 System.out.println("Subtitle deleted successfully.");
                 return true;
             } else {

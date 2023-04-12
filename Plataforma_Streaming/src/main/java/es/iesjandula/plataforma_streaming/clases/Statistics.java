@@ -1,7 +1,7 @@
 package es.iesjandula.plataforma_streaming.clases;
 
 /**
- * This is the Actors class
+ * This class save the statistics of the system
  * @author Alvaro Marmol
  * @author Alvaro Lopez
  * @author Miguel
@@ -42,7 +42,7 @@ public class Statistics {
      */
 
     private boolean isActor(Audiovisual a, String name) {
-        Actor[] act = a.getsupportingActores();
+        Actor[] act = a.getSupportingActores();
         for (Actor actor : act) {
 
             if (actor.getName().equals(name)) {
@@ -125,7 +125,7 @@ public class Statistics {
      */
 
     private boolean isSubtitles (Audiovisual a, String LanguajeSubtitle) {
-    	Subtitles[] act = a.getSubtitulos();
+    	Subtitles[] act = a.getSubtitles();
         for (Subtitles subtitles : act) {
 
             if (subtitles.getSubtitleLanguage().equals(LanguajeSubtitle)){

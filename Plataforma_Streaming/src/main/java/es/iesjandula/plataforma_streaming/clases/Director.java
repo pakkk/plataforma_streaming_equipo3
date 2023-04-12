@@ -76,7 +76,7 @@ public class Director  implements Comparable <Director>, Serializable
      * @return value Attribute lastName
      * 
      * */
-    public String getlastName() 
+    public String getLastName() 
     {
         return this.lastName;
     }
@@ -173,7 +173,7 @@ public class Director  implements Comparable <Director>, Serializable
         int result = this.name.compareTo(o.getName());
         if(result == 0)
         {
-        	result = this.lastName.compareTo(o.getlastName());
+        	result = this.lastName.compareTo(o.getLastName());
         }
         return result;
         
