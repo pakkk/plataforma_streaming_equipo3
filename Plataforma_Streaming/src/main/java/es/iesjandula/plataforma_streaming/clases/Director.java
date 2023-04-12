@@ -12,7 +12,7 @@ public class Director  implements Comparable <Director>, Serializable
 	//Name of Director
     private String name;
     //Last Name of Director
-    private String lastname;
+    private String lastName;
     //Gender of Director
     private String gender;
     //Age of Director
@@ -26,7 +26,7 @@ public class Director  implements Comparable <Director>, Serializable
     public Director() 
     {
     	this.name = "Without name";
-        this.lastname = "Without last name";
+        this.lastName = "Without last name";
         this.gender = "Woman";
         this.age = 50;
         this.nationality = "England";
@@ -35,15 +35,15 @@ public class Director  implements Comparable <Director>, Serializable
     /**
      * parameterized constructor
      * @param name Director name
-     * @param lastname Last name of the director
+     * @param lastName Last name of the director
      * @param gender Director's gender
      * @param age Director's age
      * @param nationality Nationality of the director
      * */
-    public Director(String name, String lastname, String gender, int age, String nationality)
+    public Director(String name, String lastName, String gender, int age, String nationality)
     {
         this.name = name;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.nationality = nationality;
@@ -72,23 +72,23 @@ public class Director  implements Comparable <Director>, Serializable
     }
     
     /**
-     * Returns the value of the variable Lastname
-     * @return value Attribute Lastname
+     * Returns the value of the variable lastName
+     * @return value Attribute lastName
      * 
      * */
-    public String getLastname() 
+    public String getlastName() 
     {
-        return this.lastname;
+        return this.lastName;
     }
     
     /**
-     * Assigns the value of the variable lastname
-     * @param lastname new lastname
+     * Assigns the value of the variable lastName
+     * @param lastName new lastName
      * 
      * */
-    public void setLastname(String lastname) 
+    public void setLastName(String lastName) 
     {
-        this.lastname = lastname;
+        this.lastName = lastName;
     }
 
     /**
@@ -96,7 +96,7 @@ public class Director  implements Comparable <Director>, Serializable
      * @return value gender attribute
      * 
      * */
-    public String getgender() 
+    public String getGender() 
     {
         return this.gender;
     }
@@ -106,7 +106,7 @@ public class Director  implements Comparable <Director>, Serializable
      * @param gender new gender
      * 
      * */
-    public void setgender(String gender) 
+    public void setGender(String gender) 
     {
         this.gender = gender;
     }
@@ -157,8 +157,9 @@ public class Director  implements Comparable <Director>, Serializable
      * 
      * */
     @Override
-    public String toString() {
-        return "Director{" + "Name= " + this.name + ", last name= " + this.lastname + ", gender= " + this.gender + ", age= " + this.age + ", nationality= " + this.nationality + '}';
+    public String toString() 
+    {
+        return "Director{" + "Name= " + this.name + ", last name= " + this.lastName + ", gender= " + this.gender + ", age= " + this.age + ", nationality= " + this.nationality + '}';
     }
     
     /**
@@ -166,11 +167,15 @@ public class Director  implements Comparable <Director>, Serializable
 	 * @param or Director with which you want to check
 	 * @return if the value is 0 the two Directors are equal; a value less than 0 if this name is less than the name of o; and a value greater than 0 if this name is greater than the name of o.
 	 * */
-	
     @Override
     public int compareTo(Director o) 
     {
-        return 0;
+        int result = this.name.compareTo(o.getName());
+        if(result == 0)
+        {
+        	result = this.lastName.compareTo(o.getlastName());
+        }
+        return result;
         
     }
 }
