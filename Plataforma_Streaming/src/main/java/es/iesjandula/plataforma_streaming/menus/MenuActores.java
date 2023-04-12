@@ -117,7 +117,7 @@ public class MenuActores {
      */
     private void displayActores() {
 
-        Actor actores[] = this.audioVisual.getsupportingActores();
+        Actor actores[] = this.audioVisual.getSupportingActores();
 
         System.out.println("--------------------");
         System.out.println("Lista de actores: ");
@@ -141,7 +141,7 @@ public class MenuActores {
         int option;
         try {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
-            if ((option > 0) && (option <= this.audioVisual.getsupportingActores().length)) {
+            if ((option > 0) && (option <= this.audioVisual.getSupportingActores().length)) {
                 return option - 1;
             } else {
                 return -1;
@@ -171,7 +171,7 @@ public class MenuActores {
     private boolean modifyActor() {
         int pos = selectActor();
         if (pos != -1) {
-            Actor a = this.audioVisual.getsupportingActores()[pos];
+            Actor a = this.audioVisual.getSupportingActores()[pos];
             System.out.println("--------------------");
             System.out.println("""
                                             Campos a modificar: 
@@ -247,7 +247,7 @@ public class MenuActores {
                 case 1 ->  {
                     System.out.println("dime nombre");
                     String newText = MyScanner.scanner.nextLine();
-                    for (Actor d : audioVisual.getsupportingActores()) {
+                    for (Actor d : audioVisual.getSupportingActores()) {
                         if (d.getName().equals(newText)) {
                             System.out.println(d.toString());
                             cant++;
@@ -257,7 +257,7 @@ public class MenuActores {
                 case 2 ->  {
                     System.out.println("dime apellido");
                     String newText = MyScanner.scanner.nextLine();
-                    for (Actor d : audioVisual.getsupportingActores()) {
+                    for (Actor d : audioVisual.getSupportingActores()) {
                         if (d.getLastName().equals(newText)) {
                             System.out.println(d.toString());
                             cant++;
@@ -267,7 +267,7 @@ public class MenuActores {
                 case 3 ->  {
                     System.out.println("dime genero");
                     String newText = MyScanner.scanner.nextLine();
-                    for (Actor d : audioVisual.getsupportingActores()) {
+                    for (Actor d : audioVisual.getSupportingActores()) {
                         if (d.getGender().equals(newText)) {
                             System.out.println(d.toString());
                             cant++;
@@ -277,7 +277,7 @@ public class MenuActores {
                 case 4 ->  {
                     System.out.println("dime edad");
                     int newAge = Integer.parseInt(MyScanner.scanner.nextLine());
-                    for (Actor d : audioVisual.getsupportingActores()) {
+                    for (Actor d : audioVisual.getSupportingActores()) {
                         if (d.getAge() == (newAge)) {
                             System.out.println(d.toString());
                             cant++;
@@ -287,7 +287,7 @@ public class MenuActores {
                 case 5 ->  {
                     System.out.println("dime nacionalidad");
                     String newText = MyScanner.scanner.nextLine();
-                    for (Actor d : audioVisual.getsupportingActores()) {
+                    for (Actor d : audioVisual.getSupportingActores()) {
                         if (d.getNationality().equals(newText)) {
                             System.out.println(d.toString());
                             cant++;
