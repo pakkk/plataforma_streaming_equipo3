@@ -103,159 +103,242 @@ public class Audiovisual implements Comparable<Audiovisual>, Serializable
             System.arraycopy(supportingActores, pos+1, supportingActores, pos, supportingActores.length-pos-1);
         this.supportingActores = Arrays.copyOf(this.supportingActores, this.supportingActores.length-1);
     }
-    
+    /**
+     * 
+     * @return the year of the audiovisual creation
+     */
     public int getyearOfCreation()
     {
         return this.yearOfCreation;
     }
-
+    /**
+     * 
+     * @param yearOfCreation to update 
+     */
     public void setyearOfCreation(int yearOfCreation) 
     {
         this.yearOfCreation = yearOfCreation;
     }
-    
+    /**
+     * 
+     * @return the categories of the audiovisual
+     */
     public Category[] getcategories() 
     {
         return this.categories;
     }
-
+    /**
+     * 
+     * @param categories to update
+     */
     public void setcategories(Category[] categories) 
     {
         this.categories = categories;
     }
-    
-    public void addcategories(Category  nuevacategories )
+    /**
+     * 
+     * @param nuevacategories to add in the audiovisual 
+     */
+    public void addcategories(Category newCategories )
     {
     	
         this.categories = Arrays.copyOf(this.categories, this.categories.length+1);
-        this.categories[this.categories.length-1] = nuevacategories;
+        this.categories[this.categories.length-1] = newCategories;
     }
-
+    /**
+     * 
+     * @param pos to search the categories to delete
+     */
     public void deleteCategoria(int pos) 
     {
         if(pos < this.categories.length)
             System.arraycopy(categories, pos+1, categories, pos, categories.length-pos-1);
         this.categories = Arrays.copyOf(this.categories, this.categories.length-1);
     }
-
+    /**
+     * 
+     * @return the directors of the audiovisual
+     */
     public Director[] getdirectors() 
     {
         return this.directors;
     }
-
+    /**
+     * 
+     * @param directors to update
+     */
     public void setdirectors(Director[] directors) 
     {
         this.directors = directors;
     }
-    
+    /**
+     * 
+     * @param newdirectors to add in a audiovisual
+     */
     public void adddirectors(Director  newdirectors )
     {
         this.directors = Arrays.copyOf(this.directors, this.directors.length+1);
         this.directors[this.directors.length-1] = newdirectors;
     }
-
+    /**
+     * 
+     * @param pos to delete a director
+     */
     public void deletedirectors(int pos) 
     {
         if(pos < this.directors.length)
             System.arraycopy(directors, pos+1, directors, pos, directors.length-pos-1);
         this.directors = Arrays.copyOf(this.directors, this.directors.length-1);
     }
- 
+    /**
+     * 
+     * @return the original language of the audiovisual
+     */
     public String getoriginalLanguage() 
     {
         return this.originalLanguage;
     }
-
+    /**
+     * 
+     * @param originalLanguage to update
+     */
     public void setoriginalLanguage(String originalLanguage) 
     {
         this.originalLanguage = originalLanguage;
     }
-
+    /**
+     * 
+     * @return the subtitles of the audiovisual
+     */
     public Subtitles[] getSubtitles() 
     {
         return this.subtitles;
     }
-
-    public void setSubtitles(Subtitles[] Subtitles) {
+    /**
+     * 
+     * @param Subtitles to update
+     */
+    public void setSubtitles(Subtitles[] Subtitles) 
+    {
         this.subtitles = Subtitles;
     }
-    
-    public void addSubtitles(Subtitles newSubtitles ){
+    /**
+     * 
+     * @param newSubtitles to add on a audiovisual
+     */
+    public void addSubtitles(Subtitles newSubtitles )
+    {
     	
         this.subtitles = Arrays.copyOf(this.subtitles, this.subtitles.length+1);
         this.subtitles[this.subtitles.length-1] = newSubtitles;
     }
-    
-
-    public void deleteSubtitles(int pos) {
+    /**
+     * 
+     * @param pos to delete a subtitles of a audiovisual
+     */
+    public void deleteSubtitles(int pos) 
+    {
         if(pos < this.subtitles.length)
             System.arraycopy(subtitles, pos+1, subtitles, pos, subtitles.length-pos-1);
         this.subtitles = Arrays.copyOf(this.subtitles, this.subtitles.length-1);
     }
-
-    
-    public String gettitle() 
+    /**
+     * 
+     * @return the title of the audiovisual
+     */
+    public String getTitle() 
     {
         return this.title;
     }
-
-    public void settitle(String title) 
+    /**
+     * 
+     * @param title to update
+     */
+    public void setTitle(String title) 
     {
         this.title = title;
     }
-
-    public int getviews() 
+    /**
+     * 
+     * @return the views of a audiovisual
+     */
+    public int getViews() 
     {
         return this.views;
     }
-
-    public void setviews(int views) 
+    /**
+     * 
+     * @param views to update
+     */
+    public void setViews(int views) 
     {
         this.views = views;
     }
-    public void addviews() 
+    /**
+     * This method add 1 view to the audiovisual
+     */
+    public void addViews() 
     {
-    	views++;
+    	this.views++;
     }
-    
 	@Override
+	/**
+	 * @param o to compare with this audiovisual
+	 * @return the number to compare
+	 */
 	public int compareTo(Audiovisual o) 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int result = this.yearOfCreation-o.getyearOfCreation();
+		if(result == 0)
+		{
+			result = this.title.compareTo(o.getTitle());
+		}
+		return result;
 	}
-	 public Recommendations[] recommendations() {
-	        return recommendations;
-	    }
-
-	    public void setRecommendations(Recommendations[] recommendations) {
-	        this.recommendations = recommendations;
-	    }
-	    
-	    public void addRecommendations(Recommendations  nuevarecommendations ){
-	    	
-	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length+1);
-	        this.recommendations[this.recommendations.length-1] = nuevarecommendations;
-	    }
-	    public Recommendations[] getRecommendations()
+		/**
+		 * 
+		 * @return the recommendation of the audiovisual
+		 */
+		public Recommendations[] getRecommendations()
 	    {
 			return this.recommendations;
 	    	
 	    }
-
-	    public void deleteRecommendations(int pos) {
+	 	/**
+	 	 * 
+	 	 * @param recommendations to update
+	 	 */
+	    public void setRecommendations(Recommendations[] recommendations) 
+	    {
+	        this.recommendations = recommendations;
+	    }
+	    /**
+	     * 
+	     * @param nuevarecommendations to add 
+	     */
+	    public void addRecommendations(Recommendations  nuevarecommendations )
+	    {
+	    	
+	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length+1);
+	        this.recommendations[this.recommendations.length-1] = nuevarecommendations;
+	    }
+	    /**
+	     * 
+	     * @param pos to delete a recommendation 
+	     */
+	    public void deleteRecommendations(int pos) 
+	    {
                 if(pos < this.recommendations.length)
                     System.arraycopy(recommendations, pos+1, recommendations, pos, recommendations.length-pos-1);
 	        this.recommendations = Arrays.copyOf(this.recommendations, this.recommendations.length-1);
 	    }
 
     @Override
-    public String toString() {
+    /**
+     * @return the value of the all attributes
+     */
+    public String toString() 
+    {
         return "Audiovisual{" + "title=" + title + ", originalLanguage=" + originalLanguage + ", yearOfCreation=" + yearOfCreation + ", views=" + views + '}';
     }
-
-    
-            
-            
-   
 }
