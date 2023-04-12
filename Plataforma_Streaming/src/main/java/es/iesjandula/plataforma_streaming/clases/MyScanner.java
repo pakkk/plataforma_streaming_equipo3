@@ -1,4 +1,4 @@
-package clases;
+package es.iesjandula.plataforma_streaming.clases;
 
 import java.util.Scanner;
 
