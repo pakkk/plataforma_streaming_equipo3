@@ -1,13 +1,14 @@
-
-import clases.*;
+package es.iesjandula.plataforma_streaming.launcher;
+import es.iesjandula.plataforma_streaming.launcher.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
-import menus.*;
-import comparadores.*;
+import es.iesjandula.plataforma_streaming.menus.*;
+import es.iesjandula.plataforma_streaming.comparators.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 public class main 
 {

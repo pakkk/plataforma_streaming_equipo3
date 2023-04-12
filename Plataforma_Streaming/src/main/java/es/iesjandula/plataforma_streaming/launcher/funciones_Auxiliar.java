@@ -1,6 +1,7 @@
+package es.iesjandula.plataforma_streaming.launcher;
 import java.util.Arrays;
 import java.util.Scanner;
-import clases.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 public class funciones_Auxiliar {
 
