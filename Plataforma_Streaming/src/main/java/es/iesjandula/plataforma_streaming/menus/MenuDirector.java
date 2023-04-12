@@ -1,9 +1,9 @@
-package menus;
+package es.iesjandula.plataforma_streaming.menus;
 
 
-import clases.Audiovisual;
-import clases.Director;
-import clases.MyScanner;
+import es.iesjandula.plataforma_streaming.clases.Audiovisual;
+import es.iesjandula.plataforma_streaming.clases.Director;
+import es.iesjandula.plataforma_streaming.clases.MyScanner;
 /**
  * 
  * @author Silvia Mesa.

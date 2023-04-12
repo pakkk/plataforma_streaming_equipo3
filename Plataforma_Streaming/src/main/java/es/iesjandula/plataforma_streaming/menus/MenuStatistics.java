@@ -1,6 +1,6 @@
-package menus;
+package es.iesjandula.plataforma_streaming.menus;
 
-import clases.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 /**
  * This class provides a menu for displaying statistics on a collection of

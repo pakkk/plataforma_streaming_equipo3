@@ -1,7 +1,7 @@
-package menus;
+package es.iesjandula.plataforma_streaming.menus;
 
 import java.util.InputMismatchException;
-import clases.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 public class MenuRecomendaciones {
 

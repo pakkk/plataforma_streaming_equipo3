@@ -1,6 +1,6 @@
-package menus;
+package es.iesjandula.plataforma_streaming.menus;
 
-import clases.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 /**
  * Esta clase implementa el menú para las opciones de subtítulos.

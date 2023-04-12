@@ -1,11 +1,9 @@
-package menus;
+package es.iesjandula.plataforma_streaming.menus;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-
-import clases.*;
+import es.iesjandula.plataforma_streaming.clases.*;
 
 public class MenuGeneralAudiovisuales
 {
