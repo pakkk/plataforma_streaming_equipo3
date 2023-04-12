@@ -9,10 +9,15 @@ import java.io.Serializable;
 
 public class Actor implements Comparable<Actor>, Serializable
 {
+	//Name of actor
     private String name;
+    //Last Name of Actor
     private String lastname;
+    //Gender of Actor
     private String gender;
+    //Age of Actor
     private int age;
+    //Nationality of actor
     private String nationality;
     
     /**
@@ -31,14 +36,24 @@ public class Actor implements Comparable<Actor>, Serializable
         this.age = age;
         this.nationality = nationality;
     }
-    
+    /**
+     * Default constructor
+     */
+    public Actor() 
+    {
+    	this.name ="Without name";
+        this.lastname = "Without lastname";
+        this.gender = "MEN";
+        this.age = 20;
+        this.nationality = "Spain";
+    }
     /**
 	 * Returns the value of the Name attribute
 	 * @return Object's first name
 	 * */
     public String getName()
     {
-        return name;
+        return this.name;
     }
     
     /**
@@ -56,7 +71,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * */
     public String getLastname()
     {
-        return lastname;
+        return this.lastname;
     }
     
     /**
@@ -74,7 +89,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * */
     public String getGender()
     {
-        return gender;
+        return this.gender;
     }
     
     /**
@@ -92,7 +107,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * */
     public int getAge()
     {
-        return age;
+        return this.age;
     }
     
     /**
@@ -110,7 +125,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * */
     public String getNationality()
     {
-        return nationality;
+        return this.nationality;
     }
     
     /**
@@ -129,7 +144,7 @@ public class Actor implements Comparable<Actor>, Serializable
     @Override
     public String toString()
     {
-        return "Actors{" + "Name= " + name + ", Lastname= " + lastname + ", Gender= " + gender + ", Age= " + age + ", Nationality= " + nationality + '}';
+        return "Actors{" + "Name= " + this.name + ", Lastname= " + this.lastname + ", Gender= " + this.gender + ", Age= " + this.age + ", Nationality= " + this.nationality + '}';
     }
     
     /**
