@@ -123,7 +123,7 @@ public class MenuActores {
         System.out.println("Lista de actores: ");
 
         for (int i = 0; i < actores.length; i++) {
-            System.out.println(i + 1 + ".- " + actores[i].getName() + " " + actores[i].getLastname());
+            System.out.println(i + 1 + ".- " + actores[i].getName() + " " + actores[i].getLastName());
         }
 
     }
@@ -194,7 +194,7 @@ public class MenuActores {
                     case 2 -> {
                         System.out.print("Introduzca los nuevos apellidos: ");
                         String apellidos = MyScanner.scanner.nextLine();
-                        a.setLastname(apellidos);
+                        a.setLastName(apellidos);
                     }
                     case 3 -> {
                         System.out.print("Introduzca el nuevo genero: ");
@@ -258,7 +258,7 @@ public class MenuActores {
                     System.out.println("dime apellido");
                     String newText = MyScanner.scanner.nextLine();
                     for (Actor d : audioVisual.getsupportingActores()) {
-                        if (d.getLastname().equals(newText)) {
+                        if (d.getLastName().equals(newText)) {
                             System.out.println(d.toString());
                             cant++;
                         }

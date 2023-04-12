@@ -68,7 +68,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * Returns the value of the lastName attribute
 	 * @return Object's last name
 	 * */
-    public String getlastName()
+    public String getLastName()
     {
         return this.lastName;
     }
@@ -77,7 +77,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	 * Assigns a new value to the lastName attribute
 	 * @param lastName New last name to be assigned
 	 * */
-    public void setlastName(String lastName)
+    public void setLastName(String lastName)
     {
         this.lastName = lastName;
     }
@@ -156,7 +156,7 @@ public class Actor implements Comparable<Actor>, Serializable
     	int result = this.name.compareTo(a.getName());
         if(result == 0)
         {
-        	result = this.lastName.compareTo(a.getlastName());
+        	result = this.lastName.compareTo(a.getLastName());
         }
         return age;
     }
