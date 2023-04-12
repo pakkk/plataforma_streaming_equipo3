@@ -1,5 +1,4 @@
 package es.iesjandula.plataforma_streaming.clases;
-
 import java.io.Serializable;
 
 /**
@@ -12,7 +11,7 @@ public class Actor implements Comparable<Actor>, Serializable
 	//Name of actor
     private String name;
     //Last Name of Actor
-    private String lastname;
+    private String lastName;
     //Gender of Actor
     private String gender;
     //Age of Actor
@@ -23,15 +22,15 @@ public class Actor implements Comparable<Actor>, Serializable
     /**
 	 * Parameterized constructor
 	 * @param name Actor's first name
-	 * @param lastname Actor's last name
+	 * @param lastName Actor's last name
 	 * @param gender Actor's gender
 	 * @param age Actor's age
 	 * @param nationality Actor's nationality
 	 * */
-    public Actor(String name, String lastname, String gender, int age, String nationality)
+    public Actor(String name, String lastName, String gender, int age, String nationality)
     {
         this.name = name;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.nationality = nationality;
@@ -42,7 +41,7 @@ public class Actor implements Comparable<Actor>, Serializable
     public Actor() 
     {
     	this.name ="Without name";
-        this.lastname = "Without lastname";
+        this.lastName = "Without lastName";
         this.gender = "MEN";
         this.age = 20;
         this.nationality = "Spain";
@@ -66,21 +65,21 @@ public class Actor implements Comparable<Actor>, Serializable
     }
     
     /**
-	 * Returns the value of the Lastname attribute
+	 * Returns the value of the lastName attribute
 	 * @return Object's last name
 	 * */
-    public String getLastname()
+    public String getlastName()
     {
-        return this.lastname;
+        return this.lastName;
     }
     
     /**
-	 * Assigns a new value to the lastname attribute
-	 * @param lastname New last name to be assigned
+	 * Assigns a new value to the lastName attribute
+	 * @param lastName New last name to be assigned
 	 * */
-    public void setLastname(String lastname)
+    public void setlastName(String lastName)
     {
-        this.lastname = lastname;
+        this.lastName = lastName;
     }
     
     /**
@@ -144,7 +143,7 @@ public class Actor implements Comparable<Actor>, Serializable
     @Override
     public String toString()
     {
-        return "Actors{" + "Name= " + this.name + ", Lastname= " + this.lastname + ", Gender= " + this.gender + ", Age= " + this.age + ", Nationality= " + this.nationality + '}';
+        return "Actors{" + "Name= " + this.name + ", lastName= " + this.lastName + ", Gender= " + this.gender + ", Age= " + this.age + ", Nationality= " + this.nationality + '}';
     }
     
     /**
@@ -154,6 +153,11 @@ public class Actor implements Comparable<Actor>, Serializable
     @Override
     public int compareTo(Actor a)
     {
-        return this.name.compareTo(a.name);
+    	int result = this.name.compareTo(a.getName());
+        if(result == 0)
+        {
+        	result = this.lastName.compareTo(a.getlastName());
+        }
+        return age;
     }
 }
