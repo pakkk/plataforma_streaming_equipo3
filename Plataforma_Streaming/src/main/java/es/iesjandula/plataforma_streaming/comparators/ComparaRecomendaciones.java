@@ -1,9 +1,9 @@
-package comparadores;
+package es.iesjandula.plataforma_streaming.comparators;
 
 import java.util.Comparator;
 
-import clases.Audiovisual;
-import clases.Recommendations;
+import es.iesjandula.plataforma_streaming.clases.Audiovisual;
+import es.iesjandula.plataforma_streaming.clases.Recommendations;
 
 /**
  *
