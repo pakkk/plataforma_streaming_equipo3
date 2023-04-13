@@ -45,7 +45,7 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	 * @return Subtitle language of the object
 	 * */
 	public Language getSubtitleLanguage() {
-		return subtitleLanguage;
+		return this.subtitleLanguage;
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	@Override
 	public String toString() {
 	
-		return "Subtitle Language: " + subtitleLanguage.toString() ;
+		return "Subtitle Language: " + this.subtitleLanguage.toString() ;
 	}
 	
 	/**
@@ -67,6 +67,6 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	 * */
 	@Override
 	public int compareTo(Subtitles s) {
-		return this.subtitleLanguage.compareTo(s.subtitleLanguage);
+		
 	}
 }
