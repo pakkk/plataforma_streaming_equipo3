@@ -86,7 +86,7 @@ public class MenuGeneralAudiovisuales
 			System.out.println("dime un titulo para el audiovisual");
 			String clave = MyScanner.scanner.nextLine();
                         for(int i = 0; i < dataBase.length; i++){
-                            if(dataBase[i].gettitle().equals(clave))
+                            if(dataBase[i].getTitle().equals(clave))
                                 position = i;
                         }
                         if(position>= 0)
@@ -125,14 +125,14 @@ public class MenuGeneralAudiovisuales
 				{
 					System.out.println("dime el nuevo titulo");
 					String title = MyScanner.scanner.nextLine();
-					a.settitle(title);
+					a.setTitle(title);
 					break;
 				}
 				case 2:
 				{
 					System.out.println("dime el nuevo lenguage");
 					String lenguage = MyScanner.scanner.nextLine();
-					a.settitle(lenguage);
+					a.setTitle(lenguage);
 					break;
 				}
 				case 3:
@@ -145,7 +145,7 @@ public class MenuGeneralAudiovisuales
 				case 4:
 				{
 					System.out.println("añadida una visita nueva");
-					a.addviews();
+					a.addViews();
 					break;
 				}
 				case 5:
@@ -174,14 +174,14 @@ public class MenuGeneralAudiovisuales
 					{
 						System.out.println("dime el nuevo titulo");
 						String title = MyScanner.scanner.nextLine();
-						a.settitle(title);
+						a.setTitle(title);
 						break;
 					}
 					case 2:
 					{
 						System.out.println("dime el nuevo lenguage");
 						String lenguage = MyScanner.scanner.nextLine();
-						a.settitle(lenguage);
+						a.setTitle(lenguage);
 						break;
 					}
 					case 3:
@@ -194,7 +194,7 @@ public class MenuGeneralAudiovisuales
 					case 4:
 					{
 						System.out.println("añadida una visita nueva");
-						a.addviews();
+						a.addViews();
 						break;
 					}
 					case 5:
