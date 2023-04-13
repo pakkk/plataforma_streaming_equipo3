@@ -6,16 +6,16 @@ import java.io.Serializable;
  * Class Category from an audioVisual
  * @author Juan Sutil
  * */
-public class Category implements Comparable<Category>, Serializable{
+
+public class Category implements Comparable<Category>, Serializable
+{
 	
-	/**
-	 * Name of the category
-	 * */
+	
+	//Name of the category
 	private String name;
 	
-	/**
-	 * Description of the category
-	 * */
+
+	// Description of the category
 	private String description;
 	
 	/**
@@ -23,16 +23,30 @@ public class Category implements Comparable<Category>, Serializable{
 	 * @param name Name of the category
 	 * @param description Descriptionde of the category
 	 * */
-	public Category(String name, String description) {
+	
+	public Category(String name, String description) 
+	{
 		this.name = name;
 		this.description = description;
 	}
 	
 	/**
+	 * default constructor
+	 * 
+	 */
+	public Category()
+	{
+		this.name = "whitout name";
+		this.description = "whitout description";
+	}
+
+
+	/**
 	 * Asign the value of the new name
 	 * @param name new name
 	 * */
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 	
@@ -40,15 +54,17 @@ public class Category implements Comparable<Category>, Serializable{
 	 * Return the value of the name
 	 * @return the name
 	 * */
-	public String getName() {
-		return name;
+	public String getName() 
+	{
+		return this.name;
 	}
 	
 	/**
 	 * Asign the value of the description
 	 * @param description new description
 	 * */
-	public void setDescription(String description) {
+	public void setDescription(String description) 
+	{
 		this.description = description;
 	}
 	
@@ -56,8 +72,9 @@ public class Category implements Comparable<Category>, Serializable{
 	 * Return the value of description
 	 * @return Description of the object
 	 * */
-	public String getDescription() {
-		return description;
+	public String getDescription()
+	{
+		return this.description;
 	}
 	
 	/**
@@ -65,7 +82,8 @@ public class Category implements Comparable<Category>, Serializable{
 	 * @return String
 	 * */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "[Name: " + name + " ; Description: " + description + "]";
 	}
 	
@@ -75,7 +93,8 @@ public class Category implements Comparable<Category>, Serializable{
 	 * @return el valor 0 si las dos categorias son iguales; un valor menor a 0 si este nombre es menor que el nombre de o; y un valor superior a 0 si este nombre es mayor que el nombre de o.
 	 * */
 	@Override
-	public int compareTo(Category o) {
+	public int compareTo(Category o)
+	{
 		return this.name.compareTo(o.name);
 	}	
 	
