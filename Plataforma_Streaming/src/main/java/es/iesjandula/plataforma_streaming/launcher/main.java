@@ -193,16 +193,16 @@ public class main
                                     System.out.println("Existen " + mga.getDataBase().length + " audiovisuales distintos en nuestra plataforma;");
                                 }
                                 case 2 -> {
-                                    st.Genders(mga.getDataBase());
+                                    st.genders(mga.getDataBase());
                                 }
                                 case 3 -> {
                                     st.searchByDirectors(mga.getDataBase());
                                 }
                                 case 4 -> {
-                                    st.Actors(mga.getDataBase());
+                                    st.actors(mga.getDataBase());
                                 }
                                 case 5 -> {
-                                    st.Subtitles(mga.getDataBase());
+                                    st.subtitles(mga.getDataBase());
                                 }
                                 case 6 -> {
                                     Arrays.sort(mga.getDataBase(), new ComparaRecomendaciones());
