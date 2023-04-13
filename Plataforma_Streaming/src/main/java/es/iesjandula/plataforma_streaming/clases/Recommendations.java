@@ -3,30 +3,31 @@ package es.iesjandula.plataforma_streaming.clases;
 import java.io.Serializable;
 
 /**
- *
- * @author alvar
+ *Class recommendation from audiovisual
+ * @author alvaro
  */
 public class Recommendations implements Comparable <Recommendations> , Serializable
 {
-	/**
-	 *Username
-	 * */
+	
+	//Username
 	private String username;
-	/**
-	 *Ratings
-	 * */
+	
+	//Ratings
 	private int ratings;
-	/**
-	 *Comment
-	 * */
+	
+	//Comment
 	private String comment;
+	
 	/**
-	 * Parameterized constructor
+	 * Default constructor
 	 * */
 	public Recommendations() 
 	{
-		
+		this.username= "whitout username";
+		this.ratings=0;
+		this.comment="whitout comment";
 	}
+	
 	/**
 	 * Parameterized constructor
 	 * @param Username 
@@ -36,13 +37,8 @@ public class Recommendations implements Comparable <Recommendations> , Serializa
     public Recommendations(String username,int ratings, String comment) 
     {
     	
-    	if(!(ratings>10 || ratings<0)) {
-    		this.ratings= ratings;
-    	
-    	}else {
-    		this.ratings= 5;
-    	}
-        
+    	this.ratings= ratings;
+    	this.fixRatings();
     	this.username=username;
         this.comment=comment;
     }
@@ -75,14 +71,10 @@ public class Recommendations implements Comparable <Recommendations> , Serializa
 	 * Assigns the value of the ratings attribute
 	 * @param ratings New ratings to assign
 	 * */
-    public boolean setRatings(int ratings) 
+    public void setRatings(int ratings) 
     {
-    	if(!(ratings>10 || ratings<0)) {
-    		this.ratings= ratings;
-    		return true;
-    	}else {
-    		return false;
-    	}
+    	this.ratings=ratings;
+    	this.fixRatings();
         
     }
     /**
@@ -120,9 +112,29 @@ public class Recommendations implements Comparable <Recommendations> , Serializa
     @Override
     public int compareTo(Recommendations o) 
     {
+    	int result=this.ratings-o.ratings;
+    	if(result==0) 
+    	{
+    		result=this.username.compareTo(o.getUsername());
+    		
+    		if (result==0)
+    		{
+    			result=this.comment.compareTo(o.getComment());
+    		}
+    	}
+    	return result;
+		
+	}        
+    /**
+     * Method to fix rating if the user set his value wrong 
+     * 
+     */
+    private void fixRatings()
+    {
+    	if(!(this.ratings>10 || this.ratings<0))
+    	{
+    		this.ratings= 5;
     	
-		return this.ratings-o.ratings;
-	}
-    
-    
+    	}	
+    }
 }
