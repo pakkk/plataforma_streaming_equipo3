@@ -15,19 +15,29 @@ import es.iesjandula.plataforma_streaming.clases.MyScanner;
 
 public class MenuDirector
 {
-	Audiovisual a;
+	Audiovisual audiovisual;
+	private boolean find;
 	
-	
-	
-	public MenuDirector(Audiovisual a) {
-		this.a = a;
+	/**
+	 * Parametized constructor
+	 * @param audiovisual to save directors
+	 */
+	public MenuDirector(Audiovisual audiovisual) 
+	{
+		this.audiovisual = audiovisual;
+		this.find = false;
+	}
+	/**
+	 * Default constructor
+	 */
+	public MenuDirector()
+	{
+		this.audiovisual = null;
+		this.find = false;
 	}
 
-
 	/**
-	 * initialize the menu, it is the first stream fork
-	 * 
-	 * @param a Audiovisual with which you want to modifycate
+	 * This method contains the menu to add,delete,modify and search a director
 	 */
 	
     public void startMenu() 
@@ -55,53 +65,53 @@ public class MenuDirector
             {
                 case 1 -> 
                 {
-                    boolean b = addDirector();
-                    if (b) 
+                    this.find = this.addDirector();
+                    if (this.find) 
                     {
-                        System.out.println("Director introducido correctamente");
+                        System.out.println("Director insert succesfully");
                     } else 
                     {
-                        System.out.println("Director no introducido");
+                        System.out.println("The director not introduce");
                     }
                 }
                 case 2 -> 
                 {
-                    boolean b = deleteDirector();
-                    if (b) 
+                    this.find = this.deleteDirector();
+                    if (this.find) 
                     {
-                        System.out.println("Director borrado correctamente");
+                        System.out.println("Director deleted succesfully");
                     } else 
                     {
-                        System.out.println("El director no pudo ser borrado");
+                        System.out.println("The director isn't deleted ");
                     }
                 }
                 case 3 -> 
                 {
 
-                    boolean b = modifyDirector();
-                    if (b)
+                    this.find = this.modifyDirector();
+                    if (this.find)
                     {
-                        System.out.println("Director modificado correctamente");
+                        System.out.println("Director modified succesfully");
                     } else 
                     {
-                        System.out.println("El director no pudo ser modificado");
+                        System.out.println("The director isn't modified");
                     }
                 }
                 case 4 -> 
                 {
-                    int b = findDirector();
-                    if (b == 0) 
+                    int searchId = this.findDirector();
+                    if (searchId == 0) 
                     {
-                        System.out.println("No existen directores que cumplan su condicion");
+                        System.out.println("Not existent directors that do the condition");
                     }
                 }
                 case 5 -> 
                 {
-
+                	System.out.println("Exit from the menu");
                 }
                 default -> 
                 {
-                    System.out.println("Opcion invalida");
+                    System.out.println("Wrong option");
                 }
             }
         } while (menu != 5);
@@ -109,9 +119,8 @@ public class MenuDirector
     
 
 	/**
-	 * add a director
 	 * 
-	 * @param a Audiovisual con la se quiere comprobar
+	 * add a director
 	 * @return true or false depending on whether it has been executed or not
 	 */
 	public boolean addDirector()
@@ -121,18 +130,18 @@ public class MenuDirector
 		{
 
 			System.out.println("--------------------");
-			System.out.print("Introduzca el nombre: ");
+			System.out.print("Select the name: ");
 			String name = MyScanner.scanner.nextLine();
-			System.out.print("Introduzca los apellidos: ");
+			System.out.print("Select the last name: ");
 			String lastname = MyScanner.scanner.nextLine();
-			System.out.print("Introduzca el genero: ");
+			System.out.print("Select the gender: ");
 			String gender = MyScanner.scanner.nextLine();
-			System.out.print("Introduzca la edad: ");
+			System.out.print("Select the age: ");
 			int age = Integer.parseInt(MyScanner.scanner.nextLine());
-			System.out.print("Introduzca la nacionalidad: ");
+			System.out.print("Select the nationality: ");
 			String nationality = MyScanner.scanner.nextLine();
 			Director director = new Director(name, lastname, gender, age, nationality);
-			a.adddirectors(director);
+			this.audiovisual.adddirectors(director);
 			return true;
 		} 
 		catch (NumberFormatException e) 
@@ -149,10 +158,10 @@ public class MenuDirector
 	public void displayDirectores() 
 	{
 
-		Director Directores[] = a.getdirectors();
+		Director [] Directores = this.audiovisual.getdirectors();
 
 		System.out.println("--------------------");
-		System.out.println("Lista de Directores: ");
+		System.out.println("List of directors: ");
 
 		for (int i = 0; i < Directores.length; i++)
 		{
@@ -164,22 +173,21 @@ public class MenuDirector
 	/**
 	* Select a director from the list
 	*
-	* @param a Audiovisual from which you want to select
 	* @return position of the Array where the director is located
 	* if it doesn't find it, it returns -1
 	*/
 	public int selectDirector()
 	{
 
-		displayDirectores();
+		this.displayDirectores();
 
 		System.out.println("--------------------");
-		System.out.print("Introduzca el Director (su numero) que quiera seleccionar: ");
+		System.out.print("Introduce the id of the director that will be search: ");
 		int option;
 		try
 		{
 			option = Integer.parseInt(MyScanner.scanner.nextLine());
-			if ((option > 0) && (option <= a.getdirectors().length))
+			if ((option > 0) && (option <= this.audiovisual.getdirectors().length))
 				return option - 1;
 			else
 				return -1;
@@ -193,16 +201,16 @@ public class MenuDirector
 	/**
 	* Compare between two categories
 	*
-	* @param b Audiovisual from which gets the array.
+	* @return a boolean that verify if found the director
 	*/
 	public boolean modifyDirector() 
 	{
                 int pos = selectDirector();
                 if(pos != -1)
                 {
-                    Director a = this.a.getdirectors()[pos];
+                    Director director = this.audiovisual.getdirectors()[pos];
                     System.out.println("--------------------");
-                    System.out.println(" Te muestro las posibles modificaciones" + "1.- name" + "2.- lastname" + "3.- gender"
+                    System.out.println(" Posiible modifications" + "1.- name" + "2.- lastname" + "3.- gender"
                                     + "4.- age" + "5.- nationality");
 
                     int atributo;
@@ -215,33 +223,37 @@ public class MenuDirector
 
                             case 1 ->                             
                             {
-                                    System.out.println("dime el nuevo nombre");
-                                    String newText = MyScanner.scanner.nextLine();
-                                    a.setName(newText);
+                                System.out.println("Select the new name");
+                                String newText = MyScanner.scanner.nextLine();
+                                director.setName(newText);
                             }
                             case 2 ->                             
                             {
-                                    System.out.println("dime el nuevo nombre");
-                                    String newText = MyScanner.scanner.nextLine();
-                                    a.setLastName(newText);
+                                System.out.println("Select the new last name");
+                                String newText = MyScanner.scanner.nextLine();
+                                director.setLastName(newText);
                             }
                             case 3 ->                             
                             {
-                                    System.out.println("dime el nuevo nombre");
-                                    String newText = MyScanner.scanner.nextLine();
-                                    a.setGender(newText);
+                                System.out.println("Select the new gender");
+                                String newText = MyScanner.scanner.nextLine();
+                                director.setGender(newText);
                             }
                             case 4 ->                             
                             {
-                                    System.out.println("dime el nuevo nombre");
-                                    int newInt = Integer.parseInt(MyScanner.scanner.nextLine());
-                                    a.setAge(newInt);
+                                System.out.println("Select the new age");
+                                int newInt = Integer.parseInt(MyScanner.scanner.nextLine());
+                                director.setAge(newInt);
                             }
                             case 5 ->                             
                             {
-                                    System.out.println("dime el nuevo nombre");
-                                    String newText = MyScanner.scanner.nextLine();
-                                    a.setNationality(newText);
+                                System.out.println("Select the new nationality");
+                                String newText = MyScanner.scanner.nextLine();
+                                director.setNationality(newText);
+                            }
+                            default ->
+                            {
+                            	System.out.println("Error selecting option");
                             }
                             }
                     } 
@@ -258,14 +270,14 @@ public class MenuDirector
 	/**
 	* Compare between two categories
 	*
-	* @param to Audiovisual from which to obtain the array that the director removes
+	* @return a boolean that verify if the director is found
 	*/
 	public boolean deleteDirector()
 	{
 		int posicion = selectDirector();
                 if (posicion != -1) 
                 {
-                    this.a.deletedirectors(posicion);
+                    this.audiovisual.deletedirectors(posicion);
                     return true;
                 } else 
                 {
@@ -278,10 +290,11 @@ public class MenuDirector
 	*/
 	public int findDirector()
 	{
-		System.out.println(" Te muestro las posibles claves de busqueda" + "1.- name" + "2.- lastname" + "3.- gender"
+		System.out.println(" Attributes of director to search" + "1.- name" + "2.- lastname" + "3.- gender"
 				+ "4.- age" + "5.- nationality");
 
-		int atributo, cant = 0;
+		int atributo = 0;
+		int cant = 0;
 
 		try
 		{
@@ -290,79 +303,80 @@ public class MenuDirector
 			{
 			case 1: 
 			{
-				System.out.println("dime nombre");
+				System.out.println("Select the name");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : this.a.getdirectors())
+				for (Director d : this.audiovisual.getdirectors())
 				{
 					if (d.getName().equals(newText))
 					{
 						System.out.println(d.toString());
-                                                cant++;
+                        cant++;
 					}
 				}
 				break;
 			}
 			case 2: 
 			{
-				System.out.println("dime apellido");
+				System.out.println("Select the last name");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : this.a.getdirectors())
+				for (Director d : this.audiovisual.getdirectors())
 				{
 					if (d.getLastName().equals(newText))
 					{
 						System.out.println(d.toString());
-                                                cant++;
+                        cant++;
 					}
 				}
 				break;
 			}
 			case 3: 
 			{
-				System.out.println("dime genero");
+				System.out.println("Select the gender");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : this.a.getdirectors())
+				for (Director d : this.audiovisual.getdirectors())
 				{
 					if (d.getGender().equals(newText))
 					{
 						System.out.println(d.toString());
-                                                cant++;
+                        cant++;
 					}
 				}
+				break;
 			}
 			case 4: 
 			{
-				System.out.println("dime edad");
+				System.out.println("Select the age");
 				int newText = Integer.parseInt(MyScanner.scanner.nextLine());
-				for (Director d : this.a.getdirectors())
+				for (Director d : this.audiovisual.getdirectors())
 				{
 					if (d.getAge() == (newText)) 
 					{
 						System.out.println(d.toString());
-                                                cant++;
+                        cant++;
 					}
 				}
 				break;
 			}
 			case 5:
 			{
-				System.out.println("dime nacionalidad");
+				System.out.println("Select the nationality");
 				String newText = MyScanner.scanner.nextLine();
-				for (Director d : this.a.getdirectors())
+				for (Director d : this.audiovisual.getdirectors())
 				{
 					if (d.getNationality().equals(newText))
 					{
 						System.out.println(d.toString());
-                                                cant++;
+                        cant++;
 					}
 				}
-                                break;
+                break;
 			}
-                        default:
-                        {
-                            return -1;
-                        }
+            default:
+            {
+                return -1;
+            }
 			}
-                        return cant;
+            return cant;
 		} 
 		catch (NumberFormatException ex) 
 		{
