@@ -67,6 +67,6 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	 * */
 	@Override
 	public int compareTo(Subtitles s) {
-		
+		return this.subtitleLanguage.compareTo(s.getSubtitleLanguage());
 	}
 }
