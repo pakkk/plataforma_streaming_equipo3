@@ -11,16 +11,16 @@ import es.iesjandula.plataforma_streaming.clases.Language;
  */
 public class MenuSubtitles {
 
-   private Audiovisual a = null;
+   private Audiovisual audiovisual = null;
 
     /**
      * Builder of the class.
      *
      * @param a El audiovisual al que se le van a agregar o eliminar subtítulos.
      */
-    public MenuSubtitles(Audiovisual a) 
+    public MenuSubtitles(Audiovisual audiovisual) 
     {
-        this.a = a;
+        this.audiovisual = audiovisual;
     }
 
     /**
@@ -168,7 +168,7 @@ public class MenuSubtitles {
             }
 
             // Add subtitle to current movie and return true
-            this.a.addSubtitles(subtitle);
+            this.audiovisual.addSubtitles(subtitle);
             return true;
         } 
         catch (NumberFormatException e) 
@@ -232,7 +232,7 @@ public class MenuSubtitles {
             boolean found = false;
 
             // Browse through the list of subtitles and search for those that match the selected language.
-            for (Subtitles subtitle : this.a.getSubtitles()) 
+            for (Subtitles subtitle : this.audiovisual.getSubtitles()) 
             {
                 if (subtitle.getSubtitleLanguage() == searchLanguage) 
                 {
@@ -267,7 +267,7 @@ public class MenuSubtitles {
         System.out.println("Enter the index of the subtitle you want to modify:");
 
         // Print the list of existing subtitles so that the user can select one.
-        for (Subtitles s : this.a.getSubtitles()) 
+        for (Subtitles s : this.audiovisual.getSubtitles()) 
         {
             System.out.println(s.toString());
         }
@@ -277,14 +277,14 @@ public class MenuSubtitles {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
 
             // If the user-selected index is invalid, false is returned.
-            if (option < 0 || option > this.a.getSubtitles().length) 
+            if (option < 0 || option > this.audiovisual.getSubtitles().length) 
             {
                 return false;
             } 
             else 
             {
                 Subtitles subtitle;
-                subtitle = this.a.getSubtitles()[option - 1];
+                subtitle = this.audiovisual.getSubtitles()[option - 1];
                 int language;
 
                 System.out.println("\n-- MODIFY SUBTITLE --");
@@ -346,7 +346,7 @@ public class MenuSubtitles {
         int option;
         System.out.println("\n-- DELETE SUBTITLE --");
         System.out.println("Enter the index of the subtitle you want to delete:");
-        for (Subtitles s : this.a.getSubtitles()) 
+        for (Subtitles s : this.audiovisual.getSubtitles()) 
         {
             System.out.println(s.toString());
         }
@@ -354,9 +354,9 @@ public class MenuSubtitles {
         try 
         {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
-            if (option > 0 && option <= this.a.getSubtitles().length) 
+            if (option > 0 && option <= this.audiovisual.getSubtitles().length) 
             { // Verify that the index is within the limits of the subtitle list
-                this.a.deleteSubtitles(option - 1); // Remove the subtitle at the position specified by the user. Subtract 1 because the indexes in the list start at 0.
+                this.audiovisual.deleteSubtitles(option - 1); // Remove the subtitle at the position specified by the user. Subtract 1 because the indexes in the list start at 0.
                 System.out.println("Subtitle deleted successfully.");
                 return true;
             } 
