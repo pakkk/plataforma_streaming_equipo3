@@ -10,7 +10,6 @@ package es.iesjandula.plataforma_streaming.clases;
  */
 public enum Language {
 	
-
 	ENGLISH, FRENCH, SPANISH, CHINESE, NOTAVAILABLE;
 
 	public static boolean isSpanish(Language language) {
