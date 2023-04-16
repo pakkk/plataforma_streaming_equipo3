@@ -1,16 +1,19 @@
 package es.iesjandula.plataforma_streaming.menus;
 import java.util.InputMismatchException;
-import es.iesjandula.plataforma_streaming.clases.*;
+import es.iesjandula.plataforma_streaming.clases.Audiovisual;
+import es.iesjandula.plataforma_streaming.clases.Category;
+import es.iesjandula.plataforma_streaming.clases.MyScanner;
 /**
  * This is the Menu for Categories.
  * @author AUTOR
  */
-public class MenuCategories {
+public class MenuCategories 
+{
     /**
      * Attribute Audiovisual
      * 
      */
-    Audiovisual a;
+    private Audiovisual audiovisual;
 	
     
     /**
@@ -18,16 +21,19 @@ public class MenuCategories {
      * Run the menu
      * @param a List the Audiovisuales
      */
-    public MenuCategories(Audiovisual a) {
-        this.a = a;
+    public MenuCategories(Audiovisual audiovisual) 
+    {
+        this.audiovisual = audiovisual;
     } 
     /**
      * General menu of Categories
      * Run the menu
      */
-    public void startMenu() {
+    public void startMenu() 
+    {
         int menu;
-        do {
+        do 
+        {
 
             System.out.println("----------------------------------------");
             System.out.println("----MENU CATEGORIES----");
@@ -37,54 +43,70 @@ public class MenuCategories {
             System.out.println("4.- Search an categories");
             System.out.println("5.- Exit");
 
-            try{
+            try
+            {
 
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
-            } catch (InputMismatchException ex) {
+            } catch (InputMismatchException ex) 
+            {
                 menu = 0;
             }
 
-            switch (menu) {
-                case 1 -> {
+            switch (menu) 
+            {
+                case 1 -> 
+                {
                     boolean b = addCategorias();
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor introduced correctly");
-                    } else {
+                    } else 
+                    {
                         System.out.println("Actor not introduced");
                     }
                 }
-                case 2 -> {
+                case 2 -> 
+                {
                     boolean b = deleteCategories();
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor deleted correctly");
-                    } else {
+                    } else 
+                    {
                         System.out.println("Actor not deleted");
                     }
                 }
-                case 3 -> {
+                case 3 -> 
+                {
 
                     boolean b = modifyCategories();
-                    if (b) {
+                    if (b) 
+                    {
                         System.out.println("Actor modified correctly");
-                    } else {
+                    } else 
+                    {
                         System.out.println("Actor not modified");
                     }
                 }
-                case 4 -> {
+                case 4 -> 
+                {
                     int b = findCategories();
-                    if (b == 0) {
+                    if (b == 0) 
+                    {
                         System.out.println("There are no actors who meet your condition");
                     }
                 }
-                case 5 -> {
+                case 5 -> 
+                {
 
                 }
-                default -> {
+                default -> 
+                {
                     System.out.println("Incorrect option");
                 }
             }
         } while (menu != 5);
-        }
+    }
     /**
      * add a Categories
      * 
@@ -102,7 +124,7 @@ public class MenuCategories {
                     System.out.print("Enter the description");
                     String description =  MyScanner.scanner.nextLine();
                     Category categorie = new Category(name,description);
-                    this.a.addcategories(categorie);
+                    this.audiovisual.addcategories(categorie);
                     return true;
             } 
             catch (InputMismatchException e) 
@@ -118,7 +140,7 @@ public class MenuCategories {
     public void displayCategories() 
     {
 
-            Category Categories[] = a.getcategories();
+            Category Categories[] = this.audiovisual.getcategories();
 
             System.out.println("--------------------");
             System.out.println("List the Categories: ");
@@ -147,7 +169,7 @@ public class MenuCategories {
             try 
             {
                     option = Integer.parseInt(MyScanner.scanner.nextLine());
-                    if ((option > 0) && (option <=a.getcategories().length))
+                    if ((option > 0) && (option <=audiovisual.getcategories().length))
                             return option -1;
                     else
                             return -1;
@@ -171,7 +193,7 @@ public class MenuCategories {
 
 
 
-        Category cat = this.a.getcategories()[pos];
+        Category cat = this.audiovisual.getcategories()[pos];
         System.out.println("--------------------");
         System.out.println("""
                             I show you the possible modifications
@@ -208,7 +230,8 @@ public class MenuCategories {
         }
 
         return true;
-        }else{
+        }else
+        {
             return false;
         }
 
@@ -218,12 +241,15 @@ public class MenuCategories {
     * 
     * @return 
     */
-    public boolean deleteCategories() {
+    public boolean deleteCategories() 
+    {
         int posicion = selectCategories();
-        if (posicion != -1) {
-            this.a.deleteCategoria(posicion);
+        if (posicion != -1) 
+        {
+            this.audiovisual.deleteCategoria(posicion);
             return true;
-        } else {
+        } else 
+        {
             return false;
         }
 
@@ -245,11 +271,13 @@ public class MenuCategories {
         {
                 atributte = Integer.parseInt(MyScanner.scanner.nextLine());
 
-                switch(atributte) {
-                        case 1 -> {
+                switch(atributte) 
+                {
+                        case 1 -> 
+                        {
                                 System.out.println("Enter name");
                                 String newText = MyScanner.scanner.nextLine();
-                                for (Category d : a.getcategories())
+                                for (Category d : this.audiovisual.getcategories())
                                 {
                                         if (d.getName().equals(newText))
                                         {
@@ -260,10 +288,11 @@ public class MenuCategories {
                                 }
 
                         }
-                        case 2 -> {
+                        case 2 -> 
+                        {
                                 System.out.println("Enter description");
                                 String newText = MyScanner.scanner.nextLine();
-                                for (Category d : a.getcategories())
+                                for (Category d : this.audiovisual.getcategories())
                                 {
                                         if (d.getDescription().contains(newText))
                                         {
@@ -274,7 +303,8 @@ public class MenuCategories {
                                 }
 
                         }
-                        default->{
+                        default->
+                        {
                             return -1;
                         }
                 }
