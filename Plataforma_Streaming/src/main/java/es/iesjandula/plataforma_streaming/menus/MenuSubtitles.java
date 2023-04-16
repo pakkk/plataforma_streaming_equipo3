@@ -1,5 +1,5 @@
 package es.iesjandula.plataforma_streaming.menus;
-
+ 
 import es.iesjandula.plataforma_streaming.clases.*;
 
 /**
@@ -7,7 +7,7 @@ import es.iesjandula.plataforma_streaming.clases.*;
  *
  * @author Miguel
  */
-public class MenuSubtitulos {
+public class MenuSubtitles {
 
     Audiovisual a = null;
 
@@ -16,7 +16,7 @@ public class MenuSubtitulos {
      *
      * @param a El audiovisual al que se le van a agregar o eliminar subtítulos.
      */
-    public MenuSubtitulos(Audiovisual a) {
+    public MenuSubtitles(Audiovisual a) {
         this.a = a;
     }
 

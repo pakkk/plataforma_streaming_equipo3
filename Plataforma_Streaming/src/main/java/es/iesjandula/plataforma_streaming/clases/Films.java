@@ -3,7 +3,7 @@ package es.iesjandula.plataforma_streaming.clases;
 import java.io.Serializable;
 /**
  * This is the class for Films. It extends the Audiovisual class and implements the Comparable interface.
- * @author AUTOR
+ * @author AUTOR 
  */
 public class Films extends Audiovisual implements Serializable
 {

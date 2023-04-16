@@ -5,7 +5,7 @@ import es.iesjandula.plataforma_streaming.clases.*;
  * This is the Menu for Categories.
  * @author AUTOR
  */
-public class MenuCategorias {
+public class MenuCategories {
     /**
      * Attribute Audiovisual
      * 
@@ -18,9 +18,9 @@ public class MenuCategorias {
      * Run the menu
      * @param a List the Audiovisuales
      */
-    public MenuCategorias(Audiovisual a) {
+    public MenuCategories(Audiovisual a) {
         this.a = a;
-    }
+    } 
     /**
      * General menu of Categories
      * Run the menu

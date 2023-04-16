@@ -127,7 +127,7 @@ public class main
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
-                                        MenuCategorias mc = new MenuCategorias(devuelto);
+                                        MenuCategories mc = new MenuCategories(devuelto);
                                         mc.startMenu();
                                     }
                                     case 3 -> {
@@ -148,7 +148,7 @@ public class main
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
-                                        MenuSubtitulos ms = new MenuSubtitulos(devuelto);
+                                        MenuSubtitles ms = new MenuSubtitles(devuelto);
                                         ms.mostrarMenu();
                                     }
                                     case 6 -> {
