@@ -12,29 +12,49 @@ public class Serie extends Audiovisual implements Comparable<Audiovisual>, Seria
     // instance variables
     private int episodes; // number of episodes in the series
     private int seasons; // number of seasons in the series
-    
+    /**
+     * Parameterized builder
+     * @param title
+     * @param originalLanguage
+     * @param yearOfCreation
+     * @param views
+     * @param episodes
+     * @param seasons 
+     */
     public Serie(String title, String originalLanguage, int yearOfCreation, int views,int episodes ,int seasons)
     {
         super(title, originalLanguage, yearOfCreation, views);
         this.episodes = episodes;
 	this.seasons = seasons;
     }
-    // getter and setter methods for the instance variables
+    /**
+     * Returns the value of the seasons attribute
+     * @return 
+     */
     public int getSeasons()
     {
-        return seasons;
+        return this.seasons;
     }
-
+    /**
+     * Assigns the value of the seasons attribute
+     * @param seasons 
+     */
     public void setSeasons(int seasons)
     {
         this.seasons = seasons;
     }
-
+    /**
+     * Returns the value of the episodes attribute
+     * @return 
+     */
     public int getEpisodes()
     {
-        return episodes;
+        return this.episodes;
     }
-
+/**
+     * Assigns the value of the episodes attribute
+     * @param episodes 
+     */
     public void setEpisodes(int episodes)
     {
         this.episodes = episodes;
