@@ -9,6 +9,7 @@ package es.iesjandula.plataforma_streaming.clases;
  * @author 1DAM
  */
 public enum Language {
+	
 
 	ENGLISH, FRENCH, SPANISH, CHINESE, NOTAVAILABLE;
 

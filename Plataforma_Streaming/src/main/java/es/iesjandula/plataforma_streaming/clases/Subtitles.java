@@ -178,6 +178,7 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	public int compareNotAvailable(Subtitles huespedSubtitle) {
 		if ((Language.isNotAvailable(this.subtitleLanguage))
 				&& (Language.isNotAvailable(huespedSubtitle.subtitleLanguage)))
+			
 
 		{
 			return 0;
