@@ -204,6 +204,7 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 	 */
 	@SuppressWarnings("null")
 	@Override
+
 	public int compareTo(Subtitles huespedSubtitle) {
 
 		int result = (Integer) null;
@@ -222,4 +223,5 @@ public class Subtitles implements Comparable<Subtitles>, Serializable {
 
 		return result;
 	}
+
 }
