@@ -12,7 +12,8 @@ import es.iesjandula.plataforma_streaming.clases.Recommendations;
  *
  */
 
-public class ComparaRecomendaciones implements Comparator<Audiovisual> {
+public class ComparaRecomendaciones implements Comparator<Audiovisual> 
+{
 
     @Override
     /**
@@ -24,18 +25,21 @@ public class ComparaRecomendaciones implements Comparator<Audiovisual> {
      * @return int is a indicator to order
 		 *
      */
-    public int compare(Audiovisual o1, Audiovisual o2) {
+    public int compare(Audiovisual o1, Audiovisual o2) 
+    {
 
         Recommendations[] A = o1.getRecommendations();
         Recommendations[] B = o2.getRecommendations();
         int acumA = 0;
         int acumB = 0;
 
-        for (int i = 0; i < A.length; i++) {
+        for (int i = 0; i < A.length; i++) 
+        {
             acumA += A[i].getRatings();
         }
 
-        for (int i = 0; i < B.length; i++) {
+        for (int i = 0; i < B.length; i++) 
+        {
             acumB += B[i].getRatings();
         }
         
