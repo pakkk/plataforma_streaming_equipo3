@@ -1,45 +1,70 @@
 package es.iesjandula.plataforma_streaming.launcher;
-import es.iesjandula.plataforma_streaming.launcher.*;
+import es.iesjandula.plataforma_streaming.launcher.funciones_Auxiliar;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
-import es.iesjandula.plataforma_streaming.menus.*;
-import es.iesjandula.plataforma_streaming.comparators.*;
-import es.iesjandula.plataforma_streaming.clases.*;
-
-public class main 
+import es.iesjandula.plataforma_streaming.menus.MenuDirector;
+import es.iesjandula.plataforma_streaming.menus.MenuActores;
+import es.iesjandula.plataforma_streaming.menus.MenuCategories;
+import es.iesjandula.plataforma_streaming.menus.MenuRecomendaciones;
+import es.iesjandula.plataforma_streaming.menus.MenuSubtitles;
+import es.iesjandula.plataforma_streaming.menus.MenuGeneralAudiovisuales;
+import es.iesjandula.plataforma_streaming.comparators.ComparaRecomendaciones;
+import es.iesjandula.plataforma_streaming.clases.Audiovisual;
+import es.iesjandula.plataforma_streaming.clases.Statistics;
+import es.iesjandula.plataforma_streaming.clases.MyScanner;
+/**
+ * 
+ * @author Silvia Cofrades Mesa
+ * @author Juan Sutil Mesa
+ * @author Alvaro Marmol Romero
+ * @author Miguel Rios Gutierrez
+ * @author Alvaro Lopez Montero
+ * This class execute the entire project
+ *
+ */
+public class Launcher 
 {
-
-    public static void write(Audiovisual[] a)
+	/**
+	 * 
+	 * @param audiovisual that have the information of the .dat
+	 */
+    public static void write(Audiovisual[] audiovisual)
     {
 
         try ( ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("audiovisuals.dat"))) 
         {
-            out.writeObject(a);
-        } catch (IOException e) 
+            out.writeObject(audiovisual);
+        }catch (IOException e) 
         {
+        	System.out.println(e);
         }
 
     }
-    
+    /**
+     * 
+     * @return the audiovisual that contain the info 
+     */
     public static Audiovisual[] load()
     {
-        Audiovisual[] a = null;
+        Audiovisual[] audiovisual = null;
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("audiovisuals.dat")))
         {
-            a = (Audiovisual[]) in.readObject();
+            audiovisual = (Audiovisual[]) in.readObject();
         } catch (IOException | ClassNotFoundException e) 
         {
-            a = new Audiovisual[0];
-            System.out.println("Error maquinote");
+            audiovisual = new Audiovisual[0];
         }
-        return a;
+        return audiovisual;
     }
     
-
+    /**
+     * 
+     * @param args start the main
+     */
     public static void main(String[] args)
     {
 
@@ -49,6 +74,7 @@ public class main
         boolean seguir = true;
         int menu;
         System.out.println("Hola bienvenid@ a nuestra plataforma, ya sabes que estamos en PELIS PLUS.Dejanos ayudarte a mejorar tu esperiencia con nosotros. Te mostramos el menú principal");
+        //Starts the menu
         while (seguir) 
         {
 
@@ -57,13 +83,14 @@ public class main
             System.out.println("1.- Acciones en Referencia a Pelicula o serie");
             System.out.println("2.- Obtener datos estadisticos sobre nuestra filmoteca");
             System.out.println("3.- salir y apagar");
-
+            //Use the scanner in a try-catch structure
             try
             {
                 menu = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (NumberFormatException e) {
                 menu = 0;
             }
+            //General menu
             switch (menu) 
             {
                 case 1 -> 
@@ -78,26 +105,37 @@ public class main
                         System.out.println("3.- Buscar Pelicula o serie");
                         System.out.println("4.- Modificar Pelicula o serie");
                         System.out.println("5.- Salir");
-
-                        try {
+                        //Use the scanner in a try-catch structure
+                        try 
+                        {
                             menu = Integer.parseInt(MyScanner.scanner.nextLine());
-                        } catch (NumberFormatException e) {
+                        } catch (NumberFormatException e) 
+                        {
                             menu = 0;
                         }
-                        switch (menu) {
-                            case 1 -> {
+                        //Add a film or serie
+                        switch (menu) 
+                        {
+                            case 1 -> 
+                            {
                                 mga.addAudiovisual();
                             }
-                            case 2 -> {
+                            //Delete a film or serie
+                            case 2 -> 
+                            {
                                 mga.deleteAudiovisual();
                             }
-                            case 3 -> {
+                            //Modify a film or serie
+                            case 3 -> 
+                            {
                                 devuelto = mga.findAudiovisual();
                                 System.out.println("-------------------------------------------------------------");
                                 if(devuelto != null)
                                     System.out.println(devuelto.toString());
                             }
-                            case 4 -> {
+                            //Menu inside film and series
+                            case 4 -> 
+                            {
 
                                 System.out.println("----------------------------------------");
                                 System.out.println("----MENU AUDIOVISUAl----");
@@ -108,71 +146,96 @@ public class main
                                 System.out.println("5.- Gestionar Subtitulos");
                                 System.out.println("6.- Modificar atributos");
                                 System.out.println("7.- Salir");
-
-                                try {
+                                //Use the scanner in a try-catch structure
+                                try 
+                                {
                                     menu = Integer.parseInt(MyScanner.scanner.nextLine());
-                                } catch (NumberFormatException e) {
+                                } catch (NumberFormatException e) 
+                                {
                                     menu = 0;
                                 }
-
-                                switch (menu) {
-                                    case 1 -> {
+                               
+                                switch (menu) 
+                                {
+                                	//Menu of actors
+                                    case 1 -> 
+                                    {
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuActores ma = new MenuActores(devuelto);
                                         ma.startMenu();
                                     }
-                                    case 2 -> {
+                                    //Menu of directors
+                                    case 2 -> 
+                                    {
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuCategories mc = new MenuCategories(devuelto);
                                         mc.startMenu();
                                     }
-                                    case 3 -> {
+                                    //Menu of categories
+                                    case 3 -> 
+                                    {
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuDirector md = new MenuDirector(devuelto);
                                         md.startMenu();
                                     }
-                                    case 4 -> {
+                                    //Menu of recommendations
+                                    case 4 -> 
+                                    {
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuRecomendaciones mrc = new MenuRecomendaciones(devuelto);
                                         mrc.startMenu();
                                     }
-                                    case 5 -> {
+                                    //Menu of subtitles
+                                    case 5 -> 
+                                    {
                                         System.out.println("----------------------------------------");
                                         System.out.print("Sobre que audiovisual quieres hacer esta modificacion: ");
                                         devuelto = mga.findAudiovisual();
                                         MenuSubtitles ms = new MenuSubtitles(devuelto);
                                         ms.mostrarMenu();
                                     }
-                                    case 6 -> {
+                                    //Modify a audiovisual
+                                    case 6 -> 
+                                    {
                                         mga.modifyAudiovisual();
                                     }
-                                    case 7 -> {
+                                    //Exit the menu
+                                    case 7 -> 
+                                    {
                                         s1 = false;
                                     }
-                                    default -> {
+                                    //Incorrect option
+                                    default -> 
+                                    {
                                         System.out.println("Opcion Incorrecta");
                                     }
                                 }
                             }
-                            case 5 -> {
+                            //Exit of the program
+                            case 5 -> 
+                            {
                                 s1 = false;
                             }
+                            //Incorrect option
                             default ->
                                 System.out.println("Opcion Incorrecta");
                         }
                     }
                 }
-                case 2 -> {
+                //Menu of statistics
+                case 2 -> 
+                {
                     boolean s1 = true;
-                    while (s1) {
+                    while (s1) 
+                    {
 
                         System.out.println("----------------------------------------");
                         System.out.println("----MENU ESTADISTICAS----");
@@ -184,58 +247,75 @@ public class main
                         System.out.println("6.- Mejores recomendaciones");
                         System.out.println("7.- Peores recomendaciones");
                         System.out.println("8.- Salir");
-
+                        //Use the scanner in a try-catch structure
                         try {
                             menu = Integer.parseInt(MyScanner.scanner.nextLine());
                             Statistics st = new Statistics();
                             switch (menu) {
-                                case 1 -> {
+                            	
+                                case 1 -> 
+                                {
                                     System.out.println("Existen " + mga.getDataBase().length + " audiovisuales distintos en nuestra plataforma;");
                                 }
-                                case 2 -> {
+                                case 2 -> 
+                                {
                                     st.genders(mga.getDataBase());
                                 }
-                                case 3 -> {
+                                case 3 -> 
+                                {
                                     st.searchByDirectors(mga.getDataBase());
                                 }
-                                case 4 -> {
+                                case 4 -> 
+                                {
                                     st.actors(mga.getDataBase());
                                 }
-                                case 5 -> {
+                                case 5 -> 
+                                {
                                     st.subtitles(mga.getDataBase());
                                 }
-                                case 6 -> {
+                                case 6 -> 
+                                {
                                     Arrays.sort(mga.getDataBase(), new ComparaRecomendaciones());
                                     System.out.println("Los audiovisuales con mejores recomendaciones son: ");
                                     int n = mga.getDataBase().length;
                                     if(n>10)
+                                    {
                                     	n=10;
-                                    for(int i = 0; i < n; i++){
+                                    }
+                                    for(int i = 0; i < n; i++)
+                                    {
                                         System.out.println( (i+1) + ".- " + mga.getDataBase()[i].toString());
                                     }
                                 }
-                                case 7 -> {
+                                case 7 -> 
+                                {
                                     Arrays.sort(mga.getDataBase(), new ComparaRecomendaciones());
                                     System.out.println("Los audiovisuales con peores recomendaciones son: ");
                                     int n = mga.getDataBase().length;
                                     if(n>10)
+                                    {
                                     	n=10;
-                                    for(int i = 1; i <= n; i++){
+                                    }
+                                    for(int i = 1; i <= n; i++)
+                                    {
                                         System.out.println( i + ".- " + mga.getDataBase()[mga.getDataBase().length-i].toString());
                                     }
                                 }
-                                case 8 -> {
+                                case 8 -> 
+                                {
                                     s1 = false;
                                 }
                                 default ->
                                     System.out.println("Opcion incorrecta");
                             }
 
-                        } catch (NumberFormatException e) {
+                        } catch (NumberFormatException e)
+                        {
                         }
                     }
                 }
-                case 3 -> {
+                case 3 -> 
+                {
                     System.out.println("Adios");
                     seguir = false;
                 }
