@@ -7,9 +7,7 @@ import java.io.Serializable;
  */
 public class Films extends Audiovisual implements Serializable
 {
-    /**
-     *Duration the movie
-     * */
+   //Duration of the movie
     private int durationMinutes;
 
     
