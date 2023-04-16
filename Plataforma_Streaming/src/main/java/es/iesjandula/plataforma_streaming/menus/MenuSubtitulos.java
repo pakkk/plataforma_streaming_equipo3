@@ -3,7 +3,7 @@ package es.iesjandula.plataforma_streaming.menus;
 import es.iesjandula.plataforma_streaming.clases.*;
 
 /**
- * Esta clase implementa el menú para las opciones de subtítulos.
+ * This class implements the menu for subtitle options.
  *
  * @author Miguel
  */
@@ -12,7 +12,7 @@ public class MenuSubtitulos {
     Audiovisual a = null;
 
     /**
-     * Constructor de la clase.
+     * Builder of the class.
      *
      * @param a El audiovisual al que se le van a agregar o eliminar subtítulos.
      */
@@ -21,13 +21,13 @@ public class MenuSubtitulos {
     }
 
     /**
-     * Este método muestra el menú y llama a los métodos correspondientes para
-     * cada opción.
+     * This method displays the menu and calls the corresponding methods for
+     * each option.
      */
     public void mostrarMenu() {
         int opcion;
         do {
-            //Mostrar opciones del menú
+            //Show Options from the menu
             System.out.println("\n-- SUBTITLES MENU --");
             System.out.println("1. Add a subtitle");
             System.out.println("2. Delete a subtitle");
@@ -36,7 +36,7 @@ public class MenuSubtitulos {
             System.out.println("5. Exit");
 
             try {
-                //Leer la opción del usuario
+                //Read the user option
                 opcion = Integer.parseInt(MyScanner.scanner.nextLine());
             } catch (NumberFormatException e) {
                 opcion = 0;
@@ -44,7 +44,7 @@ public class MenuSubtitulos {
 
             switch (opcion) {
                 case 1 -> {
-                    //Agregar un subtítulo
+                    //Add a subtitle
                     boolean b = addSubtitle();
                     if (b) {
                         System.out.println("Subtitulo introducido correctamente");
@@ -53,7 +53,7 @@ public class MenuSubtitulos {
                     }
                 }
                 case 2 -> {
-                    //Eliminar un subtítulo
+                    //Delete a subtitle
                     boolean b = delete();
                     if (b) {
                         System.out.println("Subtitulo borrado correctamente");
@@ -62,7 +62,7 @@ public class MenuSubtitulos {
                     }
                 }
                 case 3 -> {
-                    //Modificar un subtítulo
+                    //Modify a subtitle
                     boolean b = modify();
                     if (b) {
                         System.out.println("Subtitulo modificado correctamente");
@@ -71,18 +71,18 @@ public class MenuSubtitulos {
                     }
                 }
                 case 4 -> {
-                    //Buscar subtítulos por idioma
+                    //Find subtitles by language
                     boolean b = searchByLanguage();
                     if (!b) {
                         System.out.println("Error en la busqueda");
                     }
                 }
                 case 5 -> {
-                    //Salir del menú de subtítulos
+                    //Exit the subtitle menu
                     System.out.println("Exiting subtitles menu...");
                 }
                 default -> {
-                    //Opción inválida
+                    //Invalid option
                     System.out.println("Invalid option. Enter a number from 1 to 5.");
                 }
             }
@@ -90,14 +90,14 @@ public class MenuSubtitulos {
     }
 
     /**
-     * Añade un subtítulo a la película actual.
+     * Add a subtitle to the current movie.
      *
-     * @return true si el subtítulo se agregó correctamente, false si no.
+     * @return true if the subtitle was added correctly, false if not.
      */
     private boolean addSubtitle() {
         int language;
 
-        // Mostrar opciones de idioma
+        // Show language options
         System.out.println("\n-- ADD A SUBTITLE --");
         System.out.println("Enter the subtitle language:");
         System.out.println("1. English");
@@ -111,7 +111,7 @@ public class MenuSubtitulos {
 
             Subtitles subtitle = new Subtitles();
 
-            // Seleccionar el idioma del subtítulo basado en la entrada del usuario
+             // Select subtitle language based on user input
             switch (language) {
                 case 1 -> {
                     subtitle.setSubtitleLanguage(Language.ENGLISH);
@@ -129,25 +129,25 @@ public class MenuSubtitulos {
                     subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
                 }
                 default -> {
-                    // Si el usuario ingresa un número que no está en el rango de opciones, regresa false
+                    // If the user enters a number that is not in the option range, returns false
                     return false;
                 }
             }
 
-            // Agregar el subtítulo a la película actual y regresar true
+            // Add subtitle to current movie and return true
             this.a.addSubtitles(subtitle);
             return true;
         } catch (NumberFormatException e) {
-            // Si el usuario ingresa algo que no es un número, regresa false
+            // If the user enters something that is not a number, returns false
             return false;
         }
     }
 
     /**
-     * Este método busca subtítulos en función del idioma especificado por el
-     * usuario.
+     * This method looks for subtitles based on the language specified by the
+     * user.
      *
-     * @return true si se encontraron subtítulos, false en caso contrario.
+     * @return true if subtitles were found, false otherwise.
      */
     private boolean searchByLanguage() {
         int language;
@@ -180,14 +180,14 @@ public class MenuSubtitulos {
                     searchLanguage = Language.NOTAVAILABLE;
                 }
                 default -> {
-                    // Si el usuario ingresa un valor inválido, se devuelve false.
+                    // If the user enters an invalid value, false is returned.
                     return false;
                 }
             }
 
             boolean found = false;
 
-            // Se recorre la lista de subtítulos y se busca aquellos que coincidan con el idioma seleccionado.
+            // Browse through the list of subtitles and search for those that match the selected language.
             for (Subtitles subtitle : this.a.getSubtitles()) {
                 if (subtitle.getSubtitleLanguage() == searchLanguage) {
                     System.out.println(subtitle.toString());
@@ -199,16 +199,16 @@ public class MenuSubtitulos {
                 System.out.println("No subtitles found for the searched language.");
             }
         } catch (NumberFormatException e) {
-            // Si el usuario ingresa algo que no es un número entero, se devuelve false.
+            // If the user enters something that is not an integer, false is returned.
             return false;
         }
         return true;
     }
 
     /**
-     * Este método permite modificar un subtítulo existente.
+     * This method allows you to modify an existing subtitle.
      *
-     * @return true si la modificación fue exitosa, false en caso contrario.
+     * @return true if the modification was successful, false otherwise.
      */
     private boolean modify() {
         int option;
@@ -216,7 +216,7 @@ public class MenuSubtitulos {
         System.out.println("\n-- MODIFY SUBTITLE --");
         System.out.println("Enter the index of the subtitle you want to modify:");
 
-        // Se imprime la lista de subtítulos existentes para que el usuario pueda seleccionar uno.
+        // Print the list of existing subtitles so that the user can select one.
         for (Subtitles s : this.a.getSubtitles()) {
             System.out.println(s.toString());
         }
@@ -224,7 +224,7 @@ public class MenuSubtitulos {
         try {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
 
-            // Si el índice seleccionado por el usuario no es válido, se devuelve false.
+            // If the user-selected index is invalid, false is returned.
             if (option < 0 || option > this.a.getSubtitles().length) {
                 return false;
             } else {
@@ -254,7 +254,7 @@ public class MenuSubtitulos {
                     case 5 ->
                         subtitle.setSubtitleLanguage(Language.NOTAVAILABLE);
                     default -> {
-                        // Si el usuario ingresa un valor inválido, se devuelve false.
+                        // If the user enters an invalid value, false is returned.
                         return false;
                     }
                 }
@@ -263,14 +263,14 @@ public class MenuSubtitulos {
             }
 
         } catch (NumberFormatException e) {
-            // Si el usuario ingresa algo que no es un número entero, se devuelve false.
+            // If the user enters something that is not an integer, false is returned.
             return false;
         }
     }
 
     /**
-     * Elimina un subtítulo en función del índice especificado por el usuario.
-     * Retorna `true` si se elimina correctamente, `false` si no.
+     * Removes a subtitle based on the user-specified index.
+     * @return true and it eliminates corrections, false and no.
      */
     private boolean delete() {
         int option;
@@ -282,14 +282,14 @@ public class MenuSubtitulos {
 
         try {
             option = Integer.parseInt(MyScanner.scanner.nextLine());
-            if (option > 0 && option <= this.a.getSubtitles().length) { // Verifica que el índice esté dentro de los límites de la lista de subtítulos
-                this.a.deleteSubtitles(option - 1); // Elimina el subtítulo en la posición especificada por el usuario. Resta 1 porque los índices de la lista empiezan en 0.
+            if (option > 0 && option <= this.a.getSubtitles().length) { // Verify that the index is within the limits of the subtitle list
+                this.a.deleteSubtitles(option - 1); // Remove the subtitle at the position specified by the user. Subtract 1 because the indexes in the list start at 0.
                 System.out.println("Subtitle deleted successfully.");
                 return true;
             } else {
                 return false;
             }
-        } catch (NumberFormatException e) { // Maneja errores si el usuario ingresa un valor que no es un número entero
+        } catch (NumberFormatException e) { // Handles errors if the user enters a value that is not an integer
             return false;
         }
     }

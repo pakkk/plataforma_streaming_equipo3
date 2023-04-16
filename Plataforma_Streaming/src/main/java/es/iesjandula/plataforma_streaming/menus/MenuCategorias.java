@@ -1,6 +1,10 @@
 package es.iesjandula.plataforma_streaming.menus;
 import java.util.InputMismatchException;
 import es.iesjandula.plataforma_streaming.clases.*;
+/**
+ * This is the Menu for Categories.
+ * @author AUTOR
+ */
 public class MenuCategorias {
     /**
      * Attribute Audiovisual
@@ -44,39 +48,39 @@ public class MenuCategorias {
                 case 1 -> {
                     boolean b = addCategorias();
                     if (b) {
-                        System.out.println("Actor introducido correctamente");
+                        System.out.println("Actor introduced correctly");
                     } else {
-                        System.out.println("Actor no introducido");
+                        System.out.println("Actor not introduced");
                     }
                 }
                 case 2 -> {
                     boolean b = deleteCategories();
                     if (b) {
-                        System.out.println("Actor borrado correctamente");
+                        System.out.println("Actor deleted correctly");
                     } else {
-                        System.out.println("El actor no pudo ser borrado");
+                        System.out.println("Actor not deleted");
                     }
                 }
                 case 3 -> {
 
                     boolean b = modifyCategories();
                     if (b) {
-                        System.out.println("Actor modificado correctamente");
+                        System.out.println("Actor modified correctly");
                     } else {
-                        System.out.println("El actor no pudo ser modificado");
+                        System.out.println("Actor not modified");
                     }
                 }
                 case 4 -> {
                     int b = findCategories();
                     if (b == 0) {
-                        System.out.println("No existen actores que cumplan su condicion");
+                        System.out.println("There are no actors who meet your condition");
                     }
                 }
                 case 5 -> {
 
                 }
                 default -> {
-                    System.out.println("Opcion incorrect");
+                    System.out.println("Incorrect option");
                 }
             }
         } while (menu != 5);
@@ -157,7 +161,7 @@ public class MenuCategorias {
     /**
      * boolean modify all atributtes the Categorie
      * 
- * @return 
+     * @return 
      */
     public boolean modifyCategories() 
     {
