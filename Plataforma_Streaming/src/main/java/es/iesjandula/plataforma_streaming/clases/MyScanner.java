@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 /**
  *
- *this class instantiates a scanner
+ * this class instantiates a scanner
+ * 
  * @author Juan Sutil
  */
-public class MyScanner
-{
-    /**
-     * @attribute instantiates a Scanner
-     */
-    static public Scanner scanner = new Scanner(System.in);
-    
+public class MyScanner {
+	/**
+	 * @attribute instantiates a Scanner
+	 */
+	static public Scanner scanner = new Scanner(System.in);
+
 }
