@@ -1,7 +1,9 @@
 package es.iesjandula.plataforma_streaming.menus;
 
-import es.iesjandula.plataforma_streaming.clases.*;
-
+import es.iesjandula.plataforma_streaming.clases.MyScanner;
+import es.iesjandula.plataforma_streaming.clases.Audiovisual;
+import es.iesjandula.plataforma_streaming.clases.Director;
+import es.iesjandula.plataforma_streaming.clases.Category;
 /**
  * This class provides a menu for displaying statistics on a collection of
  * Audiovisual objects. Users can choose to view all audiovisuals or filter by
@@ -11,24 +13,23 @@ import es.iesjandula.plataforma_streaming.clases.*;
  */
 public class MenuStatistics {
 
-    /**
-     * Initializes the Audiovisual array and displays the menu until the user
-     * chooses to exit.
-     *
-     * @param args the command line arguments (not used)
-     */
-    Audiovisual a = null;
-
-    public MenuStatistics(Audiovisual a) {
-        this.a = a;
+    
+    private Audiovisual[] arrayAudiovisuals;
+    
+    boolean exit;
+    
+    public MenuStatistics()
+    {
+    	arrayAudiovisuals = null;
+    	exit = false;
     }
-
-    Audiovisual[] audioVisuals;
-
-    boolean exit = false;
-
-    public void mostrarMenu() {
-        do {
+    /**
+     * Show the menu to show diferent components
+     */
+    public void mostrarMenu() 
+    {
+        do 
+        {
             // Display the menu options
             System.out.println("Welcome to the statistics menu:");
             System.out.println("1. Show all audiovisuals.");
@@ -38,21 +39,23 @@ public class MenuStatistics {
 
             // Get the user's choice and execute the corresponding method
             int option = readOption();
-            switch (option) {
+            switch (option) 
+            {
                 case 1 ->
-                    showAllAudioVisuals(audioVisuals);
+                    showAllAudioVisuals(this.arrayAudiovisuals);
                 case 2 ->
-                    searchAudioVisualsByDirectors(audioVisuals);
+                    searchAudioVisualsByDirectors(this.arrayAudiovisuals);
                 case 3 ->
-                    searchAudioVisualsByCategory(audioVisuals);
-                case 4 -> {
+                    searchAudioVisualsByCategory(this.arrayAudiovisuals);
+                case 4 -> 
+                {
                     System.out.println("Goodbye!");
-                    exit = true;
+                    this.exit = true;
                 }
                 default ->
                     System.out.println("Invalid option.");
             }
-        } while (!exit);
+        } while (!this.exit);
     }
 
     /**
@@ -60,11 +63,14 @@ public class MenuStatistics {
      *
      * @return the user's chosen option as an integer
      */
-    private static int readOption() {
+    private static int readOption() 
+    {
         boolean valid = false;
         int option = 0;
-        do {
-            try {
+        do 
+        {
+            try 
+            {
                 System.out.print("Enter an option: ");
                 option = MyScanner.scanner.nextInt();
                 valid = true;
@@ -93,15 +99,20 @@ public class MenuStatistics {
      *
      * @param audioVisuals the Audiovisual array to search
      */
-    private static void searchAudioVisualsByDirectors(Audiovisual[] audioVisuals) {
+    private static void searchAudioVisualsByDirectors(Audiovisual[] audioVisuals) 
+    {
         boolean stop;
-        do {
-            try {
+        do 
+        {
+            try 
+            {
                 System.out.print("Enter the name of one or more directors separated by commas: ");
                 String directors = MyScanner.scanner.nextLine();
                 String[] directorNames = directors.split(",");
-                for (Audiovisual a : audioVisuals) {
-                    if (isDirector(a, directorNames)) {
+                for (Audiovisual a : audioVisuals) 
+                {
+                    if (isDirector(a, directorNames)) 
+                    {
                         System.out.println(a.toString());
                     }
                 }
@@ -122,29 +133,41 @@ public class MenuStatistics {
      * @return true if the audiovisual was directed by at least one of the
      * directors, false otherwise
      */
-    private static boolean isDirector(Audiovisual a, String[] directorNames) {
+    private static boolean isDirector(Audiovisual a, String[] directorNames) 
+    {
         Director[] directors = a.getdirectors();
-        for (Director director : directors) {
-            for (String name : directorNames) {
-                if (director.getName().equals(name)) {
+        for (Director director : directors) 
+        {
+            for (String name : directorNames) 
+            {
+                if (director.getName().equals(name)) 
+                {
                     return true;
                 }
             }
         }
         return false;
     }
-
-    private static void searchAudioVisualsByCategory(Audiovisual[] audioVisuals) {
+    /**
+     * This method search a audiovisual by his category
+     * @param audioVisuals array to search category
+     */
+    private static void searchAudioVisualsByCategory(Audiovisual[] audioVisuals) 
+    {
         System.out.print("Enter a list of categories separated by commas: ");
         String input = MyScanner.scanner.nextLine();
         boolean found = false;
-        for (Audiovisual a : audioVisuals) {
-            for (Category c : a.getcategories()) {
-                if (input.contains(c.getName())) {
+        for (Audiovisual a : audioVisuals) 
+        {
+            for (Category c : a.getcategories()) 
+            {
+                if (input.contains(c.getName())) 
+                {
                     System.out.println(a.toString());
                     found = true;
                 }
-                if (!found) {
+                if (!found) 
+                {
                     System.out.println("No audiovisuals found with the specified categories.");
                 }
             }
