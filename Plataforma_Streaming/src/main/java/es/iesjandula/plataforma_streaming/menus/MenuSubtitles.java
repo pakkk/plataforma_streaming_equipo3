@@ -57,11 +57,11 @@ public class MenuSubtitles {
                     boolean b = addSubtitle();
                     if (b) 
                     {
-                        System.out.println("Subtitulo introducido correctamente");
+                        System.out.println("Subtitle entered correctly");
                     } 
                     else 
                     {
-                        System.out.println("Subtitulo no introducido");
+                        System.out.println("Subtitle not entered");
                     }
                 }
                 case 2 -> 
@@ -70,11 +70,11 @@ public class MenuSubtitles {
                     boolean b = delete();
                     if (b) 
                     {
-                        System.out.println("Subtitulo borrado correctamente");
+                        System.out.println("Subtitle deleted correctly");
                     } 
                     else 
                     {
-                        System.out.println("El Subtitulo no pudo ser borrado");
+                        System.out.println("The Subtitle could not be deleted");
                     }
                 }
                 case 3 -> 
@@ -83,11 +83,11 @@ public class MenuSubtitles {
                     boolean b = modify();
                     if (b) 
                     {
-                        System.out.println("Subtitulo modificado correctamente");
+                        System.out.println("Subtitle modified correctly");
                     } 
                     else 
                     {
-                        System.out.println("Subtitulo no pudo ser modificado");
+                        System.out.println("Subtitle could not be modified");
                     }
                 }
                 case 4 -> 
@@ -96,7 +96,7 @@ public class MenuSubtitles {
                     boolean b = searchByLanguage();
                     if (!b) 
                     {
-                        System.out.println("Error en la busqueda");
+                        System.out.println("Error in the search");
                     }
                 }
                 case 5 -> 
