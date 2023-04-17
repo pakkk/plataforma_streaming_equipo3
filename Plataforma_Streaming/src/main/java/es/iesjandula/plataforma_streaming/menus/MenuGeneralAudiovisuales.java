@@ -4,7 +4,11 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import es.iesjandula.plataforma_streaming.clases.*;
-
+/**
+ * 
+ * @author Silvia Cofrades Mesa
+ *
+ */
 public class MenuGeneralAudiovisuales
 {
 
@@ -24,7 +28,7 @@ public class MenuGeneralAudiovisuales
 	 **/
 	public Audiovisual[] getDataBase() 
 	{
-		return dataBase;
+		return this.dataBase;
 	}
 	/**
 	 * Add an audiovisual to the array
@@ -48,8 +52,8 @@ public class MenuGeneralAudiovisuales
 				int views = 0;
 				System.out.println("Tell me a duration for the audiovisual");
 				int duration = Integer.parseInt(MyScanner.scanner.nextLine());
-				dataBase = Arrays.copyOf(dataBase, dataBase.length + 1);
-				dataBase[dataBase.length - 1] = new Films(title, originalLanguage, yearOfCreation, views, duration);
+				this.dataBase = Arrays.copyOf(this.dataBase, this.dataBase.length + 1);
+				this.dataBase[this.dataBase.length - 1] = new Films(title, originalLanguage, yearOfCreation, views, duration);
 			} 
 			else if (menu == 2)
 			{
@@ -64,8 +68,8 @@ public class MenuGeneralAudiovisuales
 				int episodes = Integer.parseInt(MyScanner.scanner.nextLine());
 				System.out.println("Tell me the episodes for the audiovisual");
 				int season = Integer.parseInt(MyScanner.scanner.nextLine());
-				dataBase = Arrays.copyOf(dataBase, dataBase.length + 1);
-				dataBase[dataBase.length - 1] = new Serie(title, originalLanguage, yearOfCreation, views, episodes,season);
+				this.dataBase = Arrays.copyOf(this.dataBase, this.dataBase.length + 1);
+				this.dataBase[this.dataBase.length - 1] = new Serie(title, originalLanguage, yearOfCreation, views, episodes,season);
 			}
 		}
 		catch (NumberFormatException e) 
@@ -85,12 +89,12 @@ public class MenuGeneralAudiovisuales
 		{
 			System.out.println("Give me a title for the audiovisual");
 			String clave = MyScanner.scanner.nextLine();
-                        for(int i = 0; i < dataBase.length; i++){
-                            if(dataBase[i].getTitle().equals(clave))
+                        for(int i = 0; i < this.dataBase.length; i++){
+                            if(this.dataBase[i].getTitle().equals(clave))
                                 position = i;
                         }
                         if(position>= 0)
-                            a = dataBase[position];
+                            a = this.dataBase[position];
                         else
                             a = null;
 
@@ -119,7 +123,7 @@ public class MenuGeneralAudiovisuales
 				System.out.println("4:- Add visit");
 				System.out.println("5:- Add duration");
 				int option=Integer.parseInt(MyScanner.scanner.nextLine());
-				Films a=(Films)findAudiovisual();
+				Films a=(Films)this.findAudiovisual();
 				switch(option) 
 				{
 				case 1:
@@ -168,7 +172,7 @@ public class MenuGeneralAudiovisuales
 					System.out.println("5:- Add new season");
 					System.out.println("5:- Add new chapter");
 					int option=Integer.parseInt(MyScanner.scanner.nextLine());
-					Serie a=(Serie)findAudiovisual();
+					Serie a=(Serie)this.findAudiovisual();
 					switch(option)
 					{
 					case 1:
@@ -227,12 +231,12 @@ public class MenuGeneralAudiovisuales
 	 **/
 	public void deleteAudiovisual() 
 	{
-		Arrays.sort(dataBase);
-		int  clave=Arrays.binarySearch(dataBase,findAudiovisual());
-                if(clave >=0 && clave < dataBase.length){
-                    if(clave != dataBase.length-1)
-                        System.arraycopy(dataBase, clave+1, dataBase, clave, dataBase.length-clave-1);
-                    dataBase=Arrays.copyOf(dataBase, dataBase.length-1);
+		Arrays.sort(this.dataBase);
+		int  clave=Arrays.binarySearch(this.dataBase,this.findAudiovisual());
+                if(clave >=0 && clave < this.dataBase.length){
+                    if(clave != this.dataBase.length-1)
+                        System.arraycopy(this.dataBase, clave+1, this.dataBase, clave, this.dataBase.length-clave-1);
+                    this.dataBase=Arrays.copyOf(this.dataBase, this.dataBase.length-1);
                 }		
 	}
 }
